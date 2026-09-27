@@ -1,0 +1,15 @@
+D:\SaduakasA\Adilbek Saduakas\15 Заданий\bin\Debug\net10.0\Tasks.exe
+D:\SaduakasA\Adilbek Saduakas\15 Заданий\bin\Debug\net10.0\Tasks.deps.json
+D:\SaduakasA\Adilbek Saduakas\15 Заданий\bin\Debug\net10.0\Tasks.runtimeconfig.json
+D:\SaduakasA\Adilbek Saduakas\15 Заданий\bin\Debug\net10.0\Tasks.dll
+D:\SaduakasA\Adilbek Saduakas\15 Заданий\bin\Debug\net10.0\Tasks.pdb
+D:\SaduakasA\Adilbek Saduakas\15 Заданий\obj\Debug\net10.0\Tasks.GeneratedMSBuildEditorConfig.editorconfig
+D:\SaduakasA\Adilbek Saduakas\15 Заданий\obj\Debug\net10.0\Tasks.AssemblyInfoInputs.cache
+D:\SaduakasA\Adilbek Saduakas\15 Заданий\obj\Debug\net10.0\Tasks.AssemblyInfo.cs
+D:\SaduakasA\Adilbek Saduakas\15 Заданий\obj\Debug\net10.0\Tasks.csproj.CoreCompileInputs.cache
+D:\SaduakasA\Adilbek Saduakas\15 Заданий\obj\Debug\net10.0\Tasks.sourcelink.json
+D:\SaduakasA\Adilbek Saduakas\15 Заданий\obj\Debug\net10.0\Tasks.dll
+D:\SaduakasA\Adilbek Saduakas\15 Заданий\obj\Debug\net10.0\refint\Tasks.dll
+D:\SaduakasA\Adilbek Saduakas\15 Заданий\obj\Debug\net10.0\Tasks.pdb
+D:\SaduakasA\Adilbek Saduakas\15 Заданий\obj\Debug\net10.0\Tasks.genruntimeconfig.cache
+D:\SaduakasA\Adilbek Saduakas\15 Заданий\obj\Debug\net10.0\ref\Tasks.dll

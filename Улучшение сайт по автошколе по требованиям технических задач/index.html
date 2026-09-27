@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light" data-accent="forest">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8f4">
+  <meta name="description" content="DriveSchool.kz. Обучение вождению категории B на автомате и механике. Выберите автомобиль, познакомьтесь с инструкторами и сделайте первый шаг к уверенности за рулём.">
+  <title>DriveSchool.kz | Твоя свобода начинается за рулём</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;450;500;550;600;650;700;750;800;900&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://images.pexels.com">
+  <link rel="preload" as="image" href="https://images.pexels.com/photos/32299100/pexels-photo-32299100.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script>
+    try {
+      const savedSite = JSON.parse(localStorage.getItem('driveschool.site.v1') || 'null');
+      const preference = localStorage.getItem('driveschool.theme.v1') || savedSite?.appearance?.theme || 'light';
+      document.documentElement.dataset.theme = preference === 'system' ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : preference;
+      document.documentElement.dataset.accent = savedSite?.appearance?.accent || 'forest';
+    } catch (_) {}
+  </script>
+  <style>
+    :root{--bg:#f7f8f4;--surface:#fff;--soft:#eef1e9;--ink:#202c25;--muted:#778076;--line:#dce1d7;--accent:#315c45;--accent-hover:#234834;--accent-soft:#e6ecdf;--lime:#e4edce;--footer:#183a2b;--danger:#bb453f;--font:'Golos Text',sans-serif;--brand:'Manrope',sans-serif;--header:82px;color-scheme:light}
+    [data-theme=dark]{--bg:#141b17;--surface:#1b241e;--soft:#212d24;--ink:#eef2e7;--muted:#a2afa0;--line:#354237;--accent:#b6cfa4;--accent-hover:#cce0bf;--accent-soft:#2b3d2d;--lime:#dce9c5;--footer:#101912;color-scheme:dark}
+    [data-accent=blue]{--accent:#355873;--accent-hover:#26455d;--accent-soft:#e1eaf0;--lime:#d9e8f1;--footer:#193344}
+    [data-accent=clay]{--accent:#985940;--accent-hover:#7e4935;--accent-soft:#f0e5dc;--lime:#f1dfca;--footer:#422e25}
+    [data-theme=dark][data-accent=blue]{--accent:#adcadd;--accent-hover:#c8dfed;--accent-soft:#253b49;--footer:#111e28}
+    [data-theme=dark][data-accent=clay]{--accent:#ddb49a;--accent-hover:#f0ceb7;--accent-soft:#432f25;--footer:#211914}
+    *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:104px}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}body.locked{overflow:hidden}button,input,select,textarea{font:inherit}button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:disabled{cursor:wait;opacity:.55}button{color:inherit}a{color:inherit;text-decoration:none}button{border:0}button:not(.btn):not(.icon-btn){line-height:inherit}img,video{max-width:100%;display:block}img{object-fit:cover}h1,h2,h3,p{margin:0}ul{padding:0;margin:0;list-style:none}svg{flex-shrink:0}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:4px}button:focus:not(:focus-visible){outline:none}[hidden]{display:none!important}::selection{background:#cadbb8;color:#173b29}
+    .shell{max-width:1440px;margin:0 auto;padding-left:6%;padding-right:6%}.icon{width:20px;height:20px;stroke:currentColor;stroke-width:1.65;fill:none;stroke-linecap:round;stroke-linejoin:round;display:inline-block;vertical-align:middle}.icon.sm{width:16px;height:16px}.icon.lg{width:25px;height:25px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip-link{position:fixed;left:20px;top:-60px;background:var(--surface);padding:12px 20px;z-index:100}.skip-link:focus{top:12px}
+    .btn{min-height:48px;padding:13px 24px;display:inline-flex;align-items:center;justify-content:center;gap:12px;border-radius:7px;font-size:13px;font-weight:550;line-height:1.4;border:1px solid transparent;transition:background .2s,transform .2s,border-color .2s,color .2s;white-space:nowrap}.btn .icon:last-child{transition:transform .25s}.btn:hover .icon:last-child{transform:translate(2px,-2px)}.btn.primary{background:var(--accent);color:var(--surface)}.btn.primary:hover{background:var(--accent-hover);transform:translateY(-2px)}.btn.outline{border-color:var(--line);background:transparent}.btn.outline:hover{background:var(--soft);border-color:var(--muted)}.btn.light{background:var(--lime);color:#263b2c}.btn.light:hover{background:#f2f6e8;transform:translateY(-2px)}.btn.ghost{color:inherit;background:transparent}.btn.ghost:hover{background:var(--soft)}.btn.danger{background:var(--danger);color:#fff}.btn.small{min-height:37px;padding:8px 14px;font-size:12px}.btn.full{width:100%}.text-link{display:inline-flex;gap:12px;align-items:center;font-size:13px;font-weight:550;background:none;padding:0}.text-link .icon{transition:transform .25s}.text-link:hover .icon{transform:translate(3px,-3px)}.icon-btn{display:inline-flex;justify-content:center;align-items:center;width:39px;height:39px;border-radius:50%;background:transparent;transition:background .2s,color .2s}.icon-btn:hover{background:var(--soft)}.icon-btn.danger{color:var(--danger)}.eyebrow{display:block;font-size:10px;font-weight:550;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:20px}.section{padding-top:96px;padding-bottom:96px}.section-title{font-size:clamp(30px,3.2vw,45px);font-weight:500;letter-spacing:-1.7px;line-height:1.18}.section-top{display:flex;justify-content:space-between;align-items:flex-end;gap:45px;margin-bottom:44px}.section-intro{max-width:343px;color:var(--muted);font-size:14px;line-height:1.8}.section-top .eyebrow{margin-bottom:17px}.divider{border-top:1px solid var(--line)}
+    .site-header{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid transparent;transition:background .25s,border-color .25s}.site-header.scrolled{border-color:var(--line)}.header-inner{height:var(--header);display:flex;align-items:center;justify-content:space-between;gap:26px}.brand{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;font-family:var(--brand);font-size:22px;font-weight:800;letter-spacing:-1px}.brand-mark{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;background:var(--accent);color:var(--surface);border-radius:9px}.brand-mark .icon{width:25px;height:25px;stroke-width:1.6}.brand-suffix{color:var(--accent)}.desktop-nav{display:flex;align-items:center;gap:27px;font-size:12px;font-weight:500}.desktop-nav a{position:relative;padding:10px 0;color:var(--muted);transition:color .2s}.desktop-nav a::after{content:'';position:absolute;bottom:3px;height:1px;left:0;right:100%;background:var(--accent);transition:right .25s}.desktop-nav a:hover,.desktop-nav a.active{color:var(--ink)}.desktop-nav a:hover::after,.desktop-nav a.active::after{right:0}.header-actions{display:flex;align-items:center;gap:15px}.theme-toggle{border:1px solid var(--line);width:35px;height:35px}.theme-toggle .icon{width:17px;height:17px}.account-btn{border-color:var(--line)!important;font-size:12px;min-height:39px;padding:9px 15px;gap:9px}.account-btn .icon{width:16px;height:16px}.menu-toggle{display:none}.mobile-nav{padding:10px 6% 25px;border-top:1px solid var(--line);position:absolute;left:0;right:0;top:var(--header);background:var(--bg);box-shadow:0 16px 20px #0000000d}.mobile-nav a{display:block;padding:12px 0;font-size:16px;border-bottom:1px solid var(--line)}
+    .hero{position:relative;isolation:isolate;min-height:638px;overflow:hidden;background:#263931;color:#fff;display:flex;align-items:center}.hero-photo{position:absolute;width:100%;height:100%;inset:0;object-fit:cover;object-position:center 60%;z-index:-3;animation:hero-settle 2s cubic-bezier(.2,.65,.3,1) both}.hero::before{content:'';position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(10,30,22,.82) 0%,rgba(12,28,21,.55) 40%,rgba(9,19,15,.09) 78%),linear-gradient(0deg,rgba(12,30,20,.25),rgba(14,26,21,.07))}.hero::after{content:'';position:absolute;inset:0;z-index:-1;background:#23462a;mix-blend-mode:color;opacity:.18;pointer-events:none}.hero-inner{padding-top:60px;padding-bottom:64px;width:100%}.hero-brand{font-family:var(--brand);font-size:clamp(54px,6.2vw,90px);font-weight:750;letter-spacing:-5px;line-height:1.1;animation:rise-in .8s .1s both}.hero-brand span{color:var(--lime)}.hero-headline{font-size:clamp(34px,3.7vw,53px);font-weight:450;letter-spacing:-1.8px;line-height:1.2;margin-top:26px;max-width:700px;white-space:pre-line;animation:rise-in .8s .23s both}.hero-description{font-size:14px;font-weight:400;color:#d5ddd5;line-height:1.85;max-width:422px;margin-top:24px;white-space:pre-line;animation:rise-in .8s .35s both}.hero-actions{display:flex;align-items:center;gap:26px;margin-top:31px;animation:rise-in .8s .46s both}.hero-actions .btn{min-height:51px;padding:15px 23px}.hero-actions .text-link{color:#f5f7ef;font-weight:400;font-size:12px;border-bottom:1px solid #ffffff50;padding:11px 0}.hero-actions .text-link:hover{border-color:#fff}.hero-actions .btn .icon:first-child{width:19px;height:19px}.hero-actions .btn .icon:last-child{width:16px;height:16px;margin-left:14px}
+    .approach{padding-top:77px;padding-bottom:78px}.approach .section-top{margin-bottom:43px}.approach .section-title{font-size:35px;max-width:560px}.approach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}.approach-item{padding-top:21px;border-top:1px solid var(--line)}.approach-number{font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:20px;display:block}.approach-item h3{font-size:16px;font-weight:550;margin-bottom:9px;letter-spacing:-.35px}.approach-item p{font-size:12px;color:var(--muted);line-height:1.8;max-width:240px}
+    .fleet-section{background:var(--surface)}.filter-group{display:flex;align-items:center;gap:3px;background:var(--soft);padding:4px;border-radius:7px;flex-wrap:wrap}.filter-btn{padding:8px 15px;border-radius:5px;color:var(--muted);font-size:11px;font-weight:500;transition:background .2s,color .2s;background:transparent}.filter-btn.active{background:var(--accent);color:var(--surface)}.filter-btn:hover:not(.active){color:var(--ink)}.fleet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}.car-card{min-width:0}.car-photo-wrap{aspect-ratio:1.48;overflow:hidden;background:var(--soft);position:relative}.car-photo{width:100%;height:100%;transition:transform .6s}.car-card:hover .car-photo{transform:scale(1.035)}.car-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:22px 0 12px}.car-heading h3{font-size:21px;font-weight:550;letter-spacing:-.8px}.transmission{font-size:9px;font-weight:550;letter-spacing:.8px;background:var(--soft);padding:4px 9px;color:var(--accent);white-space:nowrap}.car-desc{font-size:12px;line-height:1.8;color:var(--muted);min-height:44px}.car-specs{display:flex;flex-wrap:wrap;gap:8px 13px;margin-top:17px;font-size:10px;color:var(--muted)}.car-specs span+span::before{content:'/';margin-right:13px;color:var(--line)}.car-action{display:flex;align-items:center;justify-content:space-between;margin-top:24px;width:100%;border-top:1px solid var(--line);padding:17px 0 0;background:none;font-size:12px;font-weight:500}.car-action .icon{width:17px;transition:transform .25s}.car-action:hover{color:var(--accent)}.car-action:hover .icon{transform:translate(3px,-3px)}.empty-state{grid-column:1/-1;padding:55px 25px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:10px}.empty-state .icon{width:35px;height:35px;margin-bottom:15px}.empty-state h3{font-size:18px;color:var(--ink);font-weight:550;margin-bottom:8px}.empty-state p{font-size:13px}.owner-controls{display:flex;gap:8px;margin-top:14px}.owner-controls .btn{font-size:11px}
+    .instructor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}.instructor{display:grid;grid-template-columns:92px 1fr;gap:20px;border-top:1px solid var(--line);padding-top:29px;align-items:start}.instructor img{width:92px;height:113px;object-position:center 25%;filter:saturate(.7)}.instructor h3{font-size:17px;font-weight:550;letter-spacing:-.4px;margin:3px 0 4px}.instructor-role{font-size:10px;color:var(--accent);font-weight:500}.instructor p{font-size:11px;color:var(--muted);line-height:1.75;margin-top:10px}.instructor-experience{font-size:10px;display:block;margin-top:13px;color:var(--ink)}
+    .pricing-section{background:var(--surface)}.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.price-card{display:flex;flex-direction:column;padding:30px;background:var(--bg);border:1px solid var(--line);border-radius:9px}.price-card.popular{background:var(--footer);color:#f5f7ef;border-color:var(--footer)}.price-label{font-size:9px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;min-height:15px;margin-bottom:20px}.popular .price-label{color:#c8d7b6}.price-card h3{font-size:23px;font-weight:500;letter-spacing:-.7px}.price-description{font-size:12px;line-height:1.75;margin-top:9px;color:var(--muted);min-height:44px}.popular .price-description{color:#bdc9be}.price-amount{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;margin-top:30px;font-family:var(--brand);font-size:37px;letter-spacing:-1.8px;font-weight:650;line-height:1.2}.price-amount .prefix{font-family:var(--font);font-size:13px;letter-spacing:0;font-weight:400}.price-amount .currency{font-family:var(--font);font-size:25px;font-weight:400;margin-left:1px}.price-unit{font-size:10px;color:var(--muted);margin-top:8px}.popular .price-unit{color:#bdc9be}.price-features{margin-top:28px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:13px;flex:1;margin-bottom:30px}.popular .price-features{border-color:#ffffff24}.price-features li{display:flex;gap:10px;font-size:11px;line-height:1.7}.price-features .icon{width:15px;height:15px;color:var(--accent);margin-top:2px}.popular .price-features .icon{color:#c4d6af}.price-card>.btn{min-height:44px;font-size:12px}.pricing-note{display:flex;align-items:center;justify-content:center;gap:9px;font-size:11px;color:var(--muted);margin-top:27px}.pricing-note .icon{width:16px;height:16px}
+    .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:27px}.post-cover{display:block;width:100%;aspect-ratio:1.5;overflow:hidden;position:relative;background:var(--soft);padding:0}.post-cover img,.post-cover video{height:100%;width:100%;object-fit:cover;transition:transform .6s}.post-card:hover .post-cover img,.post-card:hover .post-cover video{transform:scale(1.04)}.play-button{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:47px;height:47px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#f7f8f4ec;color:#234332;backdrop-filter:blur(8px)}.play-button .icon{width:19px;height:19px;fill:currentColor;stroke-width:1}.post-meta{display:flex;align-items:center;justify-content:space-between;font-size:9px;color:var(--muted);margin:19px 0 10px}.post-meta>span:first-child{color:var(--accent);font-weight:550}.post-card h3{font-size:21px;line-height:1.45;font-weight:500;letter-spacing:-.55px}.post-card h3 button{text-align:left;background:transparent;padding:0;font:inherit}.post-excerpt{font-size:12px;color:var(--muted);line-height:1.8;margin:11px 0 20px}.post-card>.text-link{font-size:11px}.blog-bottom{display:flex;justify-content:center;margin-top:35px}
+    .reviews-section{background:var(--surface);padding:72px 0}.reviews-layout{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}.reviews-content{font-size:13px;color:var(--muted);line-height:1.9;max-width:420px}.review-links{margin-top:25px;display:flex;align-items:center;gap:25px;flex-wrap:wrap}.review-links iframe{width:150px;height:50px;border:0;background:transparent}.review-links a{color:var(--ink);font-size:11px}.contact-cta{background:var(--accent-soft);padding:75px 0}.contact-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:40px}.contact-cta .section-title{font-size:clamp(34px,4vw,55px)}.contact-cta p{font-size:13px;color:var(--muted);max-width:350px;margin-bottom:23px}.contact-cta .btn{min-height:49px}.site-footer{background:var(--footer);color:#f0f4e9;padding-top:54px}.footer-grid{display:grid;grid-template-columns:1.3fr 1fr .7fr;gap:65px;padding-bottom:46px}.site-footer .brand{font-size:23px}.site-footer .brand-mark{background:#dce8c8;color:#214332}.site-footer .brand-suffix{color:#c6d6b7}.footer-description{max-width:270px;font-size:11px;color:#b0bfae;line-height:1.9;margin-top:18px}.footer-heading{font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#b0bfae;margin-bottom:16px}.footer-contacts{font-size:12px;display:flex;flex-direction:column;gap:11px}.footer-contacts a{display:flex;align-items:center;gap:10px}.footer-contacts .icon{width:14px;height:14px;color:#b0bfae}.footer-hours{font-size:10px;color:#b0bfae;margin-top:4px}.footer-nav{display:grid;grid-template-columns:1fr 1fr;gap:9px 26px;font-size:11px}.site-footer a:hover{color:#dbe9bf}.footer-socials{display:flex;gap:15px;margin-top:21px}.footer-socials a{display:inline-flex;align-items:center;gap:7px;font-size:10px}.footer-socials .icon{width:15px;height:15px}.footer-bottom{padding-top:21px;padding-bottom:22px;border-top:1px solid #ffffff20;display:flex;justify-content:space-between;gap:20px;font-size:9px;color:#a3b49f}.footer-bottom button{background:none;padding:0;color:inherit;font-size:inherit}
+    dialog{padding:0;border:1px solid var(--line);border-radius:15px;color:var(--ink);background:var(--surface);width:calc(100% - 32px);max-width:570px;max-height:90dvh;box-shadow:0 25px 90px #00000038;overflow:auto;margin:auto}dialog::backdrop{background:#0d201bb0;backdrop-filter:blur(5px)}dialog[open]{animation:modal-in .22s ease-out}dialog.wide{max-width:790px}.modal-close{position:absolute;right:16px;top:16px;z-index:3;background:var(--soft);width:32px;height:32px}.modal-close .icon{width:16px;height:16px}.modal-inner{padding:37px}.modal-inner>.eyebrow{margin-bottom:14px}.modal-title{font-size:29px;font-weight:550;letter-spacing:-1px;line-height:1.25;padding-right:22px}.modal-description{font-size:12px;color:var(--muted);line-height:1.85;margin-top:12px;margin-bottom:27px}.modal-form{margin-top:25px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{display:flex;flex-direction:column;gap:7px;margin-bottom:18px;min-width:0}.form-grid>.field{margin-bottom:0}.field-label{font-size:11px;font-weight:550}.field input:not([type=checkbox]):not([type=radio]):not([type=file]),.field select,.field textarea,.url-row input{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:6px;padding:11px 13px;font-size:12px;min-height:43px;transition:border .2s,box-shadow .2s}.field input::placeholder,.field textarea::placeholder,.url-row input::placeholder{color:var(--muted);opacity:.8}.field textarea{resize:vertical;min-height:100px;line-height:1.8}.field .hint,.hint{font-size:10px;line-height:1.75;color:var(--muted)}.field input:focus,.field select:focus,.field textarea:focus,.url-row input:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}.password-wrap{position:relative}.password-wrap input{padding-right:45px!important}.password-wrap .icon-btn{position:absolute;top:4px;right:4px;width:34px;height:34px}.password-wrap .icon{width:17px;height:17px}.checkbox-row{display:flex;align-items:flex-start;gap:9px;font-size:11px;color:var(--muted);line-height:1.75}.checkbox-row input{accent-color:var(--accent);width:15px;height:15px;margin-top:3px;flex-shrink:0}.form-actions{display:flex;justify-content:flex-end;gap:10px;padding-top:23px;margin-top:24px;border-top:1px solid var(--line)}.form-error{font-size:11px;color:var(--danger);padding:10px 12px;background:color-mix(in srgb,var(--danger) 7%,transparent);border-radius:5px;margin:15px 0}.local-note{display:flex;gap:11px;background:var(--soft);padding:14px 16px;border-radius:6px;font-size:10px;color:var(--muted);line-height:1.8}.local-note>.icon{width:17px;height:17px;margin-top:2px;color:var(--accent)}.local-note strong{font-weight:550;color:var(--ink)}.auth-logo{display:inline-flex;width:47px;height:47px;background:var(--accent-soft);color:var(--accent);border-radius:11px;align-items:center;justify-content:center;margin-bottom:25px}.auth-logo .icon{width:27px;height:27px}.auth-footer{font-size:10px;text-align:center;color:var(--muted);margin-top:20px}.success-mark{width:50px;height:50px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:22px}.message-preview{padding:18px;background:var(--soft);border-radius:7px;font-size:12px;white-space:pre-line;margin:20px 0;max-height:210px;overflow:auto}.confirm-dialog{max-width:405px}.confirm-dialog .modal-inner{padding:29px}.confirm-dialog .modal-title{font-size:23px}.confirm-dialog p{font-size:12px;color:var(--muted);line-height:1.8;margin-top:12px}.confirm-dialog .form-actions{padding-top:20px;margin-top:19px}.toast-stack{position:fixed;right:25px;bottom:24px;z-index:100;display:flex;flex-direction:column;gap:9px;pointer-events:none;max-width:380px;width:calc(100% - 40px)}.toast{display:flex;align-items:flex-start;gap:10px;background:var(--ink);color:var(--bg);padding:15px 18px;border-radius:8px;font-size:12px;box-shadow:0 6px 25px #00000016;animation:toast-in .25s ease-out;pointer-events:auto}.toast>.icon{width:17px;height:17px;margin-top:2px}.toast.error{background:var(--danger);color:white}
+    .upload-zone{padding:23px 18px;border:1px dashed var(--line);background:var(--bg);text-align:center;border-radius:7px;transition:border-color .2s,background .2s}.upload-zone.dragging{border-color:var(--accent);background:var(--accent-soft)}.upload-zone>.icon{color:var(--muted);width:25px;height:25px;margin-bottom:11px}.upload-zone p{font-size:10px;color:var(--muted);margin-top:9px}.upload-zone .btn{min-height:34px;font-size:11px;padding:8px 13px}.media-picker{margin-top:20px}.media-picker>.field-label{display:block;margin-bottom:9px}.media-preview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.media-preview{position:relative;background:var(--soft);height:97px;overflow:hidden;border-radius:5px}.media-preview img,.media-preview video{width:100%;height:100%;object-fit:cover}.media-preview>.icon-btn{position:absolute;right:5px;top:5px;width:24px;height:24px;background:#fff;box-shadow:0 1px 8px #0002;color:#293529}.media-preview .icon-btn .icon{width:13px;height:13px}.media-type-label{position:absolute;bottom:4px;left:6px;color:#fff;background:#182b23aa;padding:1px 5px;font-size:8px;border-radius:3px}.url-row{display:flex;gap:7px;margin-top:13px}.url-row input{min-width:0;flex:1;min-height:36px;font-size:10px;padding:8px 10px}.url-row select{width:75px;flex-shrink:0;background:var(--bg);border:1px solid var(--line);border-radius:5px;font-size:10px;padding:5px}.url-row .btn{min-height:36px;font-size:10px;padding:7px 11px}.media-picker>.hint{display:block;margin-top:9px}.article-inner{padding:40px}.article-meta{display:flex;gap:16px;font-size:10px;color:var(--muted);margin:20px 0 26px}.article-meta>span:first-child{color:var(--accent)}.article-media{display:grid;gap:16px;margin-bottom:27px}.article-media img{width:100%;max-height:470px;object-fit:contain;background:var(--soft)}.article-media video{width:100%;max-height:470px;background:#111}.article-body{font-size:14px;line-height:1.95;white-space:pre-wrap;overflow-wrap:anywhere}.article-footer{border-top:1px solid var(--line);padding-top:22px;margin-top:30px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:11px;color:var(--muted)}.media-failed{object-fit:contain!important;background:var(--soft)}
+    .cabinet{min-height:100dvh;background:var(--bg)}.cabinet-sidebar{position:fixed;left:0;top:0;bottom:0;width:246px;border-right:1px solid var(--line);background:var(--surface);padding:31px 23px 22px;display:flex;flex-direction:column;z-index:35}.cabinet-sidebar .brand{font-size:21px;gap:8px}.cabinet-sidebar .brand-mark{width:30px;height:30px;border-radius:8px}.cabinet-sidebar .brand-mark .icon{width:22px;height:22px}.workspace-label{display:block;font-size:9px;letter-spacing:1.5px;color:var(--muted);margin:38px 13px 14px;text-transform:uppercase}.admin-nav{display:flex;flex-direction:column;gap:5px}.admin-nav button{display:flex;align-items:center;gap:12px;text-align:left;padding:11px 13px;font-size:12px;font-weight:450;background:transparent;border-radius:6px;color:var(--muted)}.admin-nav button:hover{background:var(--bg);color:var(--ink)}.admin-nav button.active{background:var(--accent-soft);color:var(--accent);font-weight:550}.admin-nav .icon{width:17px;height:17px}.sidebar-bottom{margin-top:auto;padding-top:30px}.sidebar-user{display:flex;gap:10px;align-items:center;padding:19px 3px 0;border-top:1px solid var(--line)}.avatar{width:35px;height:35px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent);border-radius:50%;font-size:12px;font-weight:550;flex-shrink:0}.sidebar-user-name{font-size:11px;font-weight:550;max-width:127px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.sidebar-user-role{font-size:9px;color:var(--muted)}.sidebar-user .icon-btn{margin-left:auto;width:28px;height:28px}.sidebar-user .icon{width:16px;height:16px}.sidebar-local{font-size:9px;color:var(--muted);display:flex;gap:7px;align-items:center;padding:12px 8px}.sidebar-local .icon{width:13px;height:13px}.cabinet-main{margin-left:246px}.cabinet-header{height:82px;display:flex;align-items:center;justify-content:space-between;padding:0 43px;border-bottom:1px solid var(--line);background:var(--surface);gap:20px}.cabinet-breadcrumb{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:12px}.cabinet-breadcrumb .icon{width:13px;height:13px}.cabinet-breadcrumb strong{font-weight:450;color:var(--ink)}.cabinet-header-actions{display:flex;align-items:center;gap:13px}.cabinet-header-actions .btn{font-size:11px;min-height:36px;padding:8px 13px}.admin-menu-btn{display:none}.admin-content{max-width:1200px;padding:44px;margin:0 auto}.admin-page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:25px;margin-bottom:30px}.admin-page-head h1{font-size:32px;font-weight:550;letter-spacing:-1.2px;line-height:1.3}.admin-page-head p{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.85}.admin-page-head .btn{font-size:11px;min-height:41px;padding:10px 15px}.admin-notice{display:flex;align-items:flex-start;gap:13px;border-left:3px solid var(--accent);background:var(--accent-soft);padding:15px 19px;font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:28px}.admin-notice .icon{width:18px;height:18px;color:var(--accent);margin-top:2px}.admin-notice strong{display:block;color:var(--ink);font-weight:550}.admin-quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-bottom:35px}.admin-quick{padding:25px;background:var(--surface);border:1px solid var(--line);border-radius:8px;text-align:left;transition:border-color .2s,transform .2s}.admin-quick:hover{border-color:var(--accent);transform:translateY(-2px)}.quick-top{display:flex;justify-content:space-between;align-items:center;color:var(--accent);margin-bottom:24px}.quick-top>.icon:first-child{width:25px;height:25px}.quick-top>.icon:last-child{color:var(--muted);width:16px;height:16px}.admin-quick h3{font-size:17px;font-weight:550;letter-spacing:-.3px}.admin-quick p{font-size:11px;color:var(--muted);margin-top:7px}.admin-panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:27px;margin-bottom:22px}.admin-panel h2{font-size:17px;font-weight:550;letter-spacing:-.3px;margin-bottom:7px}.admin-panel>.hint{display:block;margin-bottom:24px}.admin-panel-title{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:20px}.admin-panel-title h2{margin:0}.admin-list{display:flex;flex-direction:column}.admin-row{display:flex;gap:18px;align-items:center;padding:19px 0;border-bottom:1px solid var(--line)}.admin-row:first-child{padding-top:0}.admin-row:last-child{border-bottom:0;padding-bottom:0}.admin-row-media{width:102px;height:72px;object-fit:cover;border-radius:5px;background:var(--soft);flex-shrink:0;overflow:hidden}.admin-row-media img,.admin-row-media video{width:100%;height:100%;object-fit:cover}.admin-row-copy{min-width:0;flex:1}.admin-row-copy h3{font-size:14px;font-weight:550;letter-spacing:-.25px;overflow-wrap:anywhere}.admin-row-copy p{font-size:10px;color:var(--muted);margin-top:5px}.admin-row-actions{display:flex;gap:6px;align-items:center;margin-left:auto}.admin-row-actions .icon-btn{width:33px;height:33px;border:1px solid var(--line);border-radius:6px}.admin-row-actions .icon{width:15px;height:15px}.admin-row-price{font-family:var(--brand);font-size:22px;font-weight:600;white-space:nowrap;margin-right:20px;letter-spacing:-.8px}.status-label{display:inline-flex;gap:5px;align-items:center;font-size:9px;color:var(--accent)}.status-label::before{content:'';width:5px;height:5px;background:currentColor;border-radius:50%}.status-label.draft{color:var(--muted)}.admin-filter-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:24px}.admin-filter-bar .filter-group{background:var(--bg)}.admin-search{position:relative;max-width:260px;width:100%}.admin-search .icon{position:absolute;left:11px;top:10px;width:15px;height:15px;color:var(--muted)}.admin-search input{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:9px 12px 9px 34px;min-height:36px;width:100%;font-size:11px;color:var(--ink)}.admin-form{max-width:780px}.admin-form .form-grid{gap:22px;margin-bottom:20px}.admin-form .form-actions{padding-top:20px;margin-top:12px}.theme-options{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}.theme-option{cursor:pointer;border:1px solid var(--line);border-radius:7px;padding:12px;font-size:11px;display:flex;flex-direction:column;gap:12px}.theme-option:has(input:checked){border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}.theme-sample{display:block;background:#f4f5f0;border-radius:4px;border:1px solid #dce1d7;height:70px;padding:10px}.theme-sample::before{content:'';display:block;width:45%;height:7px;background:#425e44;border-radius:2px}.theme-sample::after{content:'';display:block;width:85%;height:24px;background:#e3e8dc;border-radius:2px;margin-top:9px}.theme-sample.dark{background:#19221b;border-color:#334337}.theme-sample.dark::before{background:#c6d8b5}.theme-sample.dark::after{background:#2f4031}.theme-sample.system{background:linear-gradient(90deg,#f4f5f0 50%,#19221b 50%)}.theme-option>span:last-child{display:flex;align-items:center;gap:7px}.theme-option input{accent-color:var(--accent)}.accent-options{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}.accent-option{display:flex;align-items:center;gap:8px;font-size:11px;cursor:pointer}.accent-option input{accent-color:var(--accent)}.color-dot{width:19px;height:19px;border-radius:50%;display:block}.profile-avatar-row{display:flex;gap:15px;align-items:center;margin:22px 0}.profile-avatar-row .avatar{width:52px;height:52px;font-size:18px}.profile-avatar-row strong{font-size:13px;font-weight:550}.profile-avatar-row p{font-size:10px;color:var(--muted)}.data-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.data-buttons .btn{font-size:11px;min-height:39px;padding:10px 15px}.admin-mobile-shade{display:none}
+    @keyframes hero-settle{from{transform:scale(1.055)}to{transform:scale(1)}}@keyframes rise-in{from{opacity:0;transform:translateY(23px)}to{opacity:1;transform:translateY(0)}}@keyframes modal-in{from{opacity:0;transform:translateY(13px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes toast-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}.will-reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}.will-reveal.revealed{opacity:1;transform:translateY(0)}
+    @media(min-width:1600px){.hero{min-height:700px}.hero-inner{padding-top:75px;padding-bottom:85px}.hero-photo{object-position:center 63%}}
+    @media(max-width:1200px){.shell{padding-left:5%;padding-right:5%}.desktop-nav{gap:20px}.header-inner{gap:20px}.brand{font-size:20px}.header-actions{gap:10px}.account-btn{padding:9px 12px}.hero-brand{font-size:75px}.hero-headline{font-size:47px}.hero{min-height:610px}.instructor{grid-template-columns:75px 1fr;gap:14px}.instructor img{width:75px;height:100px}.price-card{padding:25px}.price-amount{font-size:32px}.cabinet-sidebar{width:218px;padding-left:17px;padding-right:17px}.cabinet-sidebar .brand{font-size:19px}.cabinet-main{margin-left:218px}.admin-content{padding:32px}.cabinet-header{padding:0 32px}.admin-row-price{font-size:19px;margin-right:10px}}
+    @media(max-width:1000px){.desktop-nav{gap:16px}.desktop-nav a{font-size:11px}.account-btn span{display:none}.account-btn{width:37px;min-height:37px;padding:8px}.header-inner{gap:15px}.hero-brand{font-size:70px;letter-spacing:-4px}.hero-headline{font-size:43px}.hero{min-height:600px}.hero-photo{object-position:61% center}.hero::before{background:linear-gradient(90deg,#0c2118d9 0%,#0c211880 58%,#0c211812 100%)}.section{padding-top:75px;padding-bottom:75px}.section-title{font-size:35px}.section-intro{max-width:290px;font-size:13px}.approach-grid{gap:20px}.approach-item h3{font-size:14px}.approach-item p{font-size:11px}.fleet-grid{gap:20px}.car-heading h3{font-size:18px}.car-specs{font-size:9px;gap:6px 8px}.car-specs span+span::before{margin-right:8px}.instructor-grid{gap:23px}.instructor{display:block}.instructor img{width:86px;height:100px;margin-bottom:16px}.price-card{padding:23px}.price-card h3{font-size:20px}.price-amount{font-size:29px}.price-features li{font-size:10px}.post-card h3{font-size:19px}.footer-grid{gap:35px}.admin-quick{padding:22px}.admin-row-media{width:78px;height:62px}.admin-row-copy h3{font-size:12px}.admin-row-price{font-size:18px;margin-right:0}.admin-panel{padding:22px}.theme-options{gap:9px}.admin-page-head h1{font-size:28px}}
+    @media(max-width:760px){:root{--header:70px}.shell{padding-left:6%;padding-right:6%}.desktop-nav{display:none}.header-inner{gap:15px}.brand{font-size:20px}.brand-mark{width:31px;height:31px}.header-actions{gap:11px}.account-btn{width:auto;min-height:35px;font-size:10px;padding:8px 11px}.account-btn span{display:inline}.menu-toggle{display:inline-flex;width:28px;height:35px}.theme-toggle{width:32px;height:32px}.hero{min-height:610px}.hero-inner{padding-top:65px;padding-bottom:65px}.hero-brand{font-size:clamp(41px,9vw,65px);letter-spacing:-3px}.hero-headline{font-size:clamp(32px,6.2vw,43px);letter-spacing:-1.3px;max-width:520px;margin-top:27px}.hero-description{font-size:12px;max-width:360px;margin-top:23px}.hero-photo{object-position:67% center}.hero::before{background:linear-gradient(90deg,#0c2118c9,#0c21187d 73%,#0c211852),linear-gradient(0deg,#142d1d52,transparent)}.hero-actions{gap:24px;margin-top:30px}.hero-actions .btn{padding:14px 19px;font-size:12px;gap:9px}.hero-actions .btn .icon:last-child{margin-left:4px}.hero-actions .text-link{font-size:11px}.section{padding-top:64px;padding-bottom:64px}.section-top{align-items:flex-start;gap:24px;flex-direction:column;margin-bottom:32px}.section-title{font-size:34px;letter-spacing:-1.2px}.section-intro{max-width:440px;font-size:12px}.eyebrow{font-size:9px;margin-bottom:16px}.approach .section-title{font-size:31px}.approach-grid{grid-template-columns:1fr 1fr;gap:27px 25px}.approach-number{margin-bottom:14px}.approach-item h3{font-size:15px}.approach-item p{font-size:11px}.fleet-grid{grid-template-columns:1fr 1fr;gap:35px 22px}.car-heading h3{font-size:19px}.car-desc{font-size:11px}.car-specs{font-size:9px}.car-card:last-child{grid-column:auto}.filter-group{gap:2px}.filter-btn{padding:8px 14px;font-size:10px}.instructor-grid{grid-template-columns:1fr;gap:25px}.instructor{display:grid;grid-template-columns:80px 1fr;padding-top:24px;gap:22px}.instructor img{width:80px;height:103px;margin:0}.instructor h3{font-size:18px}.instructor p{max-width:410px;font-size:12px}.instructor-experience{margin-top:9px}.pricing-grid{grid-template-columns:1fr;max-width:500px;margin:0 auto;gap:20px}.price-card{padding:28px}.price-label{margin-bottom:14px}.price-card h3{font-size:25px}.price-description{min-height:0;font-size:12px}.price-amount{font-size:38px;margin-top:24px}.price-features li{font-size:12px}.price-features{gap:12px;margin-top:23px;padding-top:22px}.price-card>.btn{font-size:12px}.pricing-note{font-size:10px;align-items:flex-start;text-align:center}.pricing-note .icon{flex-shrink:0}.blog-grid{grid-template-columns:1fr 1fr;gap:35px 23px}.post-card h3{font-size:19px}.post-excerpt{font-size:11px}.post-meta{font-size:8px}.reviews-layout{grid-template-columns:1fr;gap:27px}.reviews-content{font-size:12px;max-width:100%}.review-links{margin-top:19px}.contact-cta{padding:53px 0}.contact-cta-inner{flex-direction:column;align-items:flex-start;gap:28px}.contact-cta .section-title{font-size:37px}.contact-cta p{font-size:12px;max-width:400px;margin-bottom:18px}.footer-grid{grid-template-columns:1fr 1fr;gap:35px 30px}.footer-grid>div:first-child{grid-column:1/-1}.footer-description{max-width:370px}.footer-bottom{font-size:8px;gap:15px}.cabinet-sidebar{transform:translateX(-100%);width:246px;transition:transform .25s;z-index:45}.cabinet-sidebar.open{transform:translateX(0)}.admin-mobile-shade.active{display:block;position:fixed;inset:0;background:#0007;z-index:40;backdrop-filter:blur(3px)}.cabinet-main{margin-left:0}.admin-menu-btn{display:inline-flex;width:30px;height:34px;margin-right:5px}.cabinet-header{height:70px;padding:0 23px;gap:12px}.cabinet-breadcrumb{gap:6px;font-size:10px}.cabinet-header-actions{gap:9px}.cabinet-header-actions .btn{min-height:34px;padding:8px 10px;font-size:10px}.admin-content{padding:30px 23px}.admin-page-head h1{font-size:28px}.admin-page-head p{font-size:11px}.admin-quick h3{font-size:16px}.admin-quick p{font-size:10px}.admin-page-head .btn{font-size:10px;min-height:36px;padding:9px 12px}.admin-notice{font-size:10px;padding:13px 15px}.admin-row-media{width:75px;height:62px}.admin-row{gap:14px}.admin-row-copy h3{font-size:12px}.admin-row-price{font-size:19px}.admin-row-actions{gap:5px}.admin-row-actions .icon-btn{width:29px;height:29px}.modal-inner{padding:30px}.article-inner{padding:32px}.modal-title{font-size:26px}.modal-description{font-size:11px}.toast-stack{right:20px;bottom:18px}}
+    @media(max-width:450px){.brand{font-size:18px;gap:8px;letter-spacing:-.9px}.brand-mark{width:29px;height:29px;border-radius:8px}.brand-mark .icon{width:22px;height:22px}.header-actions{gap:8px}.account-btn{width:32px;min-height:32px;padding:7px}.account-btn span{display:none}.theme-toggle{width:30px;height:30px}.menu-toggle{width:23px}.header-inner{gap:12px}.hero{min-height:576px}.hero-inner{padding-top:51px;padding-bottom:58px}.hero-brand{font-size:42px;letter-spacing:-2.7px}.hero-headline{font-size:33px;letter-spacing:-1.4px;margin-top:27px;line-height:1.25}.hero-description{font-size:12px;max-width:315px}.hero-actions{gap:19px;flex-wrap:wrap}.hero-actions .btn{font-size:11px;padding:13px 17px;min-height:47px}.hero-actions .text-link{font-size:10px;gap:8px}.hero-actions .text-link .icon{width:14px}.hero-photo{object-position:66% center}.section-title{font-size:30px}.approach .section-title{font-size:28px}.approach-grid{gap:27px 22px}.approach-item h3{font-size:14px}.approach-item p{font-size:10px}.fleet-grid{grid-template-columns:1fr;gap:38px}.car-photo-wrap{aspect-ratio:1.5}.car-heading{margin-top:18px}.car-heading h3{font-size:22px}.car-desc{font-size:12px;min-height:0}.car-specs{font-size:10px;margin-top:14px}.car-action{margin-top:19px}.blog-grid{grid-template-columns:1fr;gap:36px}.post-card h3{font-size:22px}.post-meta{font-size:9px}.post-excerpt{font-size:12px}.footer-grid{gap:28px 19px}.footer-nav{gap:9px 16px;font-size:10px}.footer-contacts{font-size:10px}.footer-hours{font-size:9px}.footer-bottom{flex-direction:column;gap:8px}.form-grid,.admin-form .form-grid{grid-template-columns:1fr;gap:17px}.modal-inner{padding:29px 23px}.modal-title{font-size:25px}.modal-close{right:11px;top:11px;width:29px;height:29px}.article-inner{padding:30px 23px}.article-body{font-size:12px}.article-footer{font-size:10px;flex-wrap:wrap}.form-actions .btn{font-size:11px;padding:11px 16px;min-height:41px}.media-preview-grid{grid-template-columns:repeat(3,1fr)}.media-preview{height:83px}.url-row{flex-wrap:wrap}.url-row input{width:100%;flex-basis:100%}.admin-content{padding:25px 18px}.cabinet-header{padding:0 17px}.cabinet-breadcrumb>span{display:none}.cabinet-breadcrumb>.icon{display:none}.cabinet-header-actions .btn{font-size:9px}.cabinet-header-actions .btn .icon{width:14px}.admin-page-head{gap:14px;align-items:flex-start;flex-direction:column;margin-bottom:25px}.admin-page-head h1{font-size:27px}.admin-quick-grid{gap:11px}.admin-quick{padding:18px}.admin-quick h3{font-size:14px}.admin-quick p{font-size:9px}.quick-top{margin-bottom:18px}.admin-panel{padding:20px 17px}.admin-row{gap:12px;flex-wrap:wrap}.admin-row-media{width:65px;height:59px}.admin-row-copy{flex-basis:calc(100% - 82px)}.admin-row-actions{margin-left:auto}.admin-row-price{font-size:21px}.admin-filter-bar{align-items:flex-start;flex-direction:column;gap:14px}.admin-search{max-width:none}.theme-options{gap:7px}.theme-option{padding:8px;font-size:9px}.theme-sample{height:54px;padding:8px}.theme-sample::after{height:18px}.theme-option>span:last-child{gap:5px}.theme-option input{width:11px;height:11px}.accent-options{gap:14px}.accent-option{font-size:10px}.color-dot{width:15px;height:15px}}
+    html{scrollbar-gutter:stable}body:has(dialog[open]){overflow:hidden}.cabinet-sidebar{overflow-y:auto}.mobile-nav{max-height:calc(100dvh - var(--header));overflow-y:auto}.hero-headline,.hero-description,.modal-title,.price-card h3,.car-heading h3,.post-card h3{overflow-wrap:anywhere}.price-card,.post-card,.car-heading h3{min-width:0}.transmission{flex-shrink:0}.toast-stack[popover]{inset:auto 25px 24px auto;margin:0;padding:0;border:0;background:transparent;overflow:visible;color:inherit}.toast-stack::backdrop{background:transparent;pointer-events:none}
+    @media(max-width:760px){.field input:not([type=checkbox]):not([type=radio]),.field select,.field textarea,.url-row input,.url-row select,.admin-search input{font-size:16px}.toast-stack[popover]{right:20px;bottom:18px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0ms!important;transition-duration:.01ms!important}.will-reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <symbol id="i-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="2.2"/><path d="M3 10h6.8M14.2 10H21M10.5 14 8.8 20.5M13.5 14l1.7 6.5M7 6.8a7 7 0 0 1 10 0"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M20 12H4m6-6-6 6 6 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.8 13.1A9 9 0 0 1 10.9 3.2a9 9 0 1 0 9.9 9.9Z"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.8 7.4L3 20.5l1.4-4.6a8.5 8.5 0 1 1 16.1-4.2Z"/><path d="M8.1 7.4c-.4 0-1 .6-1 1.6 0 2.6 3.5 6.1 6.1 6.1 1 0 1.6-.6 1.6-1l-2-1.3-1 .7c-1-.5-1.9-1.4-2.4-2.4l.7-1-1.3-2.7Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24"><path d="M21 11.2V12a9 9 0 1 1-5.4-8.3M21 4l-9 9-3-3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6l-8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="m5 9 2-6h10l2 6M3 16v3a1 1 0 0 0 2 0v-2m14-1v3a1 1 0 0 0 2 0v-3M3 9h18v8H3V9Zm3 4h2m8 0h2"/></symbol>
+    <symbol id="i-blog" viewBox="0 0 24 24"><path d="M14 3H5v18h14V8l-5-5Zm0 0v5h5M8 12h8m-8 4h6"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+    <symbol id="i-credit" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h3"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18h1a2 2 0 0 0 1.2-3.6c-1.2-1 0-2.4 1.5-2.4H18a3 3 0 0 0 3-3 9 9 0 0 0-9-9Z"/><circle cx="7.5" cy="11" r=".75"/><circle cx="10" cy="7" r=".75"/><circle cx="15" cy="7.5" r=".75"/><circle cx="17" cy="11" r=".75"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="m8 3 3 5-3 2a15 15 0 0 0 6 6l2-3 5 3v4c-9 3-20-8-17-17h4Z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="m16 3 5 5L9 20l-6 1 1-6L16 3Zm-3 3 5 5M3 21l6-1"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v6h16v-6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 15v6h16v-6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 4 13 8-13 8V4Z"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="1.5"/><path d="m21 15-6-6L3 21"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 4H4v16h5m6-12 5 4-5 4M9 12h11"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="m3 3 18 18M10.5 5.1A12 12 0 0 1 12 5c6 0 10 7 10 7a20 20 0 0 1-3 3.8M6.2 6.2A23 23 0 0 0 2 12s4 7 10 7a12 12 0 0 0 5.2-1.3M10 10a3 3 0 0 0 4 4"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V6a4 4 0 0 1 8 0v4m-4 5v2"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V3h14l4 4v12a2 2 0 0 1-2 2ZM7 3v6h9V3M7 21v-8h10v8"/></symbol>
+  </svg>
+  <a class="skip-link" href="#hero">Перейти к содержимому</a>
+  <div id="public-site">
+    <header class="site-header" id="site-header">
+      <div class="shell header-inner">
+        <a href="#hero" class="brand" aria-label="DriveSchool.kz, главная"><span class="brand-mark"><svg class="icon"><use href="#i-wheel"></use></svg></span><span>DriveSchool<span class="brand-suffix">.kz</span></span></a>
+        <nav class="desktop-nav" aria-label="Основная навигация">
+          <a href="#fleet">Автопарк</a><a href="#instructors">Инструкторы</a><a href="#pricing">Тарифы</a><a href="#blog">Блог</a><a href="#contacts">Контакты</a>
+        </nav>
+        <div class="header-actions">
+          <button class="icon-btn theme-toggle" data-action="theme" aria-label="Включить ночную тему" title="Дневная / ночная тема"><svg class="icon"><use href="#i-moon"></use></svg></button>
+          <button class="btn outline account-btn" data-action="account"><svg class="icon"><use href="#i-user"></use></svg><span id="account-label">Личный кабинет</span></button>
+          <button class="icon-btn menu-toggle" id="menu-toggle" data-action="mobile-menu" aria-label="Открыть меню" aria-controls="mobile-nav" aria-expanded="false"><svg class="icon"><use href="#i-menu"></use></svg></button>
+        </div>
+      </div>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация" hidden><a href="#fleet">Автопарк</a><a href="#instructors">Инструкторы</a><a href="#pricing">Тарифы</a><a href="#blog">Блог</a><a href="#reviews">Отзывы</a><a href="#contacts">Контакты</a></nav>
+    </header>
+    <main>
+      <section class="hero" id="hero">
+        <img id="hero-photo" class="hero-photo" src="https://images.pexels.com/photos/32299100/pexels-photo-32299100.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Автомобиль на дороге у гор. Впереди новый путь." fetchpriority="high" width="1440" height="740">
+        <div class="shell hero-inner">
+          <h1 class="hero-brand">DriveSchool<span>.kz</span></h1>
+          <h2 class="hero-headline" id="hero-headline">Твоя свобода<br>начинается за рулём.</h2>
+          <p class="hero-description" id="hero-description">Учимся спокойно. Водим уверенно. Автошкола категории B<br>для тех, кто готов открыть для себя новые дороги.</p>
+          <div class="hero-actions"><button class="btn light" data-action="enroll"><svg class="icon"><use href="#i-whatsapp"></use></svg>Начать обучение<svg class="icon"><use href="#i-arrow-up"></use></svg></button><a class="text-link" href="#pricing">Выбрать тариф<svg class="icon sm"><use href="#i-arrow-right"></use></svg></a></div>
+        </div>
+      </section>
+      <section class="section approach shell" id="about">
+        <div class="section-top" data-reveal><div><span class="eyebrow">01 / Больше, чем автошкола</span><h2 class="section-title">Учиться спокойно.<br>Водить с удовольствием.</h2></div><p class="section-intro">Первый поворот, первая парковка, первый выезд в город. На каждом шаге мы рядом, чтобы вы чувствовали себя увереннее.</p></div>
+        <div class="approach-grid" data-reveal>
+          <div class="approach-item"><span class="approach-number">01</span><h3>В вашем ритме</h3><p>Онлайн или в классе. Подберём удобное время для теории и практики.</p></div>
+          <div class="approach-item"><span class="approach-number">02</span><h3>Без лишнего стресса</h3><p>Терпеливые инструкторы объясняют, поддерживают и верят в вас.</p></div>
+          <div class="approach-item"><span class="approach-number">03</span><h3>Ближе к реальной дороге</h3><p>Городские маршруты, автодром и подготовка к экзамену в ЦОНе.</p></div>
+          <div class="approach-item"><span class="approach-number">04</span><h3>Всё прозрачно</h3><p>Понятные тарифы, топливо включено в практику. Есть оплата частями.</p></div>
+        </div>
+      </section>
+      <section class="section fleet-section" id="fleet"><div class="shell">
+        <div class="section-top" data-reveal><div><span class="eyebrow">02 / Наш автопарк</span><h2 class="section-title">Найдите общий язык<br>со своей первой машиной.</h2></div><div class="filter-group" id="fleet-filters" role="group" aria-label="Коробка передач"><button class="filter-btn active" data-fleet-filter="all" aria-pressed="true">Все авто</button><button class="filter-btn" data-fleet-filter="akpp" aria-pressed="false">Автомат</button><button class="filter-btn" data-fleet-filter="mkpp" aria-pressed="false">Механика</button></div></div>
+        <div class="fleet-grid" id="fleet-grid" aria-live="polite"></div>
+      </div></section>
+      <section class="section shell" id="instructors">
+        <div class="section-top" data-reveal><div><span class="eyebrow">03 / Люди рядом</span><h2 class="section-title">Спокойствие передаётся.<br>От инструктора к вам.</h2></div><p class="section-intro">Без крика и спешки. Только понятные объяснения, поддержка и опыт, которым хочется поделиться.</p></div>
+        <div class="instructor-grid" data-reveal>
+          <article class="instructor"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=240&h=300&q=80" alt="Портрет инструктора, иллюстративное фото" width="92" height="113" loading="lazy"><div><h3>Арман Сериков</h3><span class="instructor-role">МКПП / АКПП</span><p>Поможет преодолеть страх вождения и подготовиться к экзамену.</p><span class="instructor-experience">12 лет преподавания</span></div></article>
+          <article class="instructor"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=240&h=300&q=80" alt="Портрет инструктора, иллюстративное фото" width="92" height="113" loading="lazy"><div><h3>Елена Смирнова</h3><span class="instructor-role">АКПП</span><p>Научит чувствовать автомобиль и спокойно ездить в городском потоке.</p><span class="instructor-experience">8 лет преподавания</span></div></article>
+          <article class="instructor"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=240&h=300&q=80" alt="Портрет инструктора, иллюстративное фото" width="92" height="113" loading="lazy"><div><h3>Данияр Ахметов</h3><span class="instructor-role">МКПП</span><p>Объяснит сложные манёвры просто. Даже параллельную парковку.</p><span class="instructor-experience">15 лет преподавания</span></div></article>
+        </div>
+      </section>
+      <section class="section pricing-section" id="pricing"><div class="shell">
+        <div class="section-top" data-reveal><div><span class="eyebrow">04 / Стоимость обучения</span><h2 class="section-title">Ваш маршрут.<br>Ваш формат обучения.</h2></div><p class="section-intro">Изучайте теорию там, где удобно. Практикуйтесь столько, сколько нужно для уверенности.</p></div>
+        <div class="pricing-grid" id="pricing-grid"></div>
+        <p class="pricing-note"><svg class="icon"><use href="#i-shield"></use></svg>Без скрытых платежей. Подробности рассрочки уточняйте у администратора.</p>
+      </div></section>
+      <section class="section shell" id="blog">
+        <div class="section-top" data-reveal><div><span class="eyebrow">05 / Дневник автошколы</span><h2 class="section-title">Полезное<br>перед поворотом.</h2></div><div class="filter-group" id="blog-filters" role="group" aria-label="Формат публикации"><button class="filter-btn active" data-blog-filter="all" aria-pressed="true">Все записи</button><button class="filter-btn" data-blog-filter="article" aria-pressed="false">Статьи</button><button class="filter-btn" data-blog-filter="video" aria-pressed="false">Видео</button></div></div>
+        <div id="blog-grid" class="blog-grid" aria-live="polite"></div>
+        <div class="blog-bottom" id="blog-bottom" hidden><button class="btn outline" data-action="more-posts">Показать ещё<svg class="icon"><use href="#i-plus"></use></svg></button></div>
+      </section>
+      <section class="reviews-section" id="reviews"><div class="shell reviews-layout" data-reveal><div><span class="eyebrow">06 / Нам доверяют</span><h2 class="section-title">Лучше нас<br>расскажут ученики.</h2></div><div><p class="reviews-content">Самые важные слова говорят те, кто уже прошёл этот путь. Настоящие впечатления об обучении, машинах и инструкторах читайте в 2ГИС.</p><div class="review-links"><iframe id="gis-widget" title="Официальный рейтинг DriveSchool.kz в 2ГИС" loading="lazy" src="https://widget.2gis.ru/api/widget?org_id=70000001116301566&branch_id=70000001116301567&size=medium&theme=light" width="150" height="50"></iframe><a class="text-link" href="https://2gis.kz/astana/firm/70000001116301567/tab/reviews" target="_blank" rel="noopener noreferrer">Все отзывы в 2ГИС<svg class="icon sm"><use href="#i-arrow-up"></use></svg></a></div></div></div></section>
+      <section class="contact-cta"><div class="shell contact-cta-inner" data-reveal><h2 class="section-title">Хорошая дорога<br>начинается с первого шага.</h2><div><p>Расскажите о себе. Мы поможем выбрать формат и ответим на все вопросы.</p><button class="btn primary" data-action="enroll">Давайте знакомиться<svg class="icon"><use href="#i-arrow-up"></use></svg></button></div></div></section>
+    </main>
+    <footer class="site-footer" id="contacts"><div class="shell">
+      <div class="footer-grid"><div><a href="#hero" class="brand"><span class="brand-mark"><svg class="icon"><use href="#i-wheel"></use></svg></span><span>DriveSchool<span class="brand-suffix">.kz</span></span></a><p class="footer-description">Не просто водительское удостоверение.<br>Уверенность, самостоятельность и целый мир новых дорог.</p><div class="footer-socials"><a data-contact-instagram href="https://www.instagram.com/driveschool.kz/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-instagram"></use></svg>Instagram</a><a data-wa href="https://wa.me/77774414888" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-whatsapp"></use></svg>WhatsApp</a></div></div>
+      <div><h3 class="footer-heading">Будем на связи</h3><div class="footer-contacts"><a id="contact-phone" href="tel:+77774414888"><svg class="icon"><use href="#i-phone"></use></svg><span>+7 (777) 441-48-88</span></a><a href="https://2gis.kz/astana/firm/70000001116301567" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-pin"></use></svg><span id="contact-address">Улица Айнакол, 155</span></a><span class="footer-hours" id="contact-hours">Пн - Пт: 09:00 - 18:00</span></div></div>
+      <div><h3 class="footer-heading">Всё об автошколе</h3><nav class="footer-nav" aria-label="Навигация в подвале"><a href="#fleet">Автопарк</a><a href="#blog">Блог</a><a href="#instructors">Инструкторы</a><a href="#reviews">Отзывы</a><a href="#pricing">Тарифы</a><a href="#contacts">Контакты</a></nav></div></div>
+      <div class="footer-bottom"><span>© <span id="current-year">2026</span> DriveSchool.kz. С заботой о вашем пути.</span><button data-action="privacy">Политика конфиденциальности</button><button data-action="account">Кабинет владельца<svg class="icon sm" style="width:11px;margin-left:5px"><use href="#i-arrow-up"></use></svg></button></div>
+    </div></footer>
+  </div>
+  <div class="cabinet" id="cabinet" hidden>
+    <div class="admin-mobile-shade" id="admin-mobile-shade" data-action="admin-menu-close"></div>
+    <aside class="cabinet-sidebar" id="cabinet-sidebar">
+      <button class="brand" data-action="view-site" style="background:none;padding:0"><span class="brand-mark"><svg class="icon"><use href="#i-wheel"></use></svg></span><span>DriveSchool<span class="brand-suffix">.kz</span></span></button>
+      <span class="workspace-label">Ваше пространство</span>
+      <nav class="admin-nav" id="admin-nav" aria-label="Разделы личного кабинета"></nav>
+      <div class="sidebar-bottom"><div class="sidebar-local"><svg class="icon"><use href="#i-monitor"></use></svg>Локальная версия</div><div class="sidebar-user"><span class="avatar" id="sidebar-avatar"></span><div><div class="sidebar-user-name" id="sidebar-name"></div><div class="sidebar-user-role">Владелец сайта</div></div><button class="icon-btn" data-action="logout" aria-label="Выйти из кабинета" title="Выйти"><svg class="icon"><use href="#i-logout"></use></svg></button></div></div>
+    </aside>
+    <div class="cabinet-main"><header class="cabinet-header"><div class="cabinet-breadcrumb"><button class="icon-btn admin-menu-btn" data-action="admin-menu" aria-label="Открыть разделы кабинета" aria-expanded="false" aria-controls="cabinet-sidebar"><svg class="icon"><use href="#i-menu"></use></svg></button><span>Личный кабинет</span><svg class="icon"><use href="#i-chevron"></use></svg><strong id="cabinet-breadcrumb">Обзор</strong></div><div class="cabinet-header-actions"><button class="icon-btn theme-toggle" data-action="theme" aria-label="Включить ночную тему"><svg class="icon"><use href="#i-moon"></use></svg></button><button class="btn outline" data-action="view-site">Открыть сайт<svg class="icon sm"><use href="#i-arrow-up"></use></svg></button></div></header><main id="admin-content" class="admin-content" tabindex="-1"></main></div>
+  </div>
+  <dialog id="main-dialog" aria-labelledby="dialog-title"><button class="icon-btn modal-close" data-action="close-modal" aria-label="Закрыть окно"><svg class="icon"><use href="#i-x"></use></svg></button><div id="modal-content"></div></dialog>
+  <dialog id="confirm-dialog" class="confirm-dialog" aria-labelledby="confirm-title"><div class="modal-inner"><h2 class="modal-title" id="confirm-title"></h2><p id="confirm-message"></p><div class="form-actions"><button class="btn outline" id="confirm-cancel">Отмена</button><button class="btn danger" id="confirm-accept">Удалить</button></div></div></dialog>
+  <div class="toast-stack" id="toast-stack" popover="manual" aria-live="polite" aria-atomic="false"></div>
+  <input type="file" id="backup-input" accept="application/json,.json" hidden>
+  <noscript><p style="padding:20px;text-align:center">Для фильтров, личного кабинета и редактора включите JavaScript. Записаться можно по телефону +7 (777) 441-48-88.</p></noscript>
+  <script>
+    'use strict';
+    const KEYS = { site: 'driveschool.site.v1', owner: 'driveschool.owner.v1', session: 'driveschool.session.v1', theme: 'driveschool.theme.v1' };
+    const ASSETS = {
+      hero: 'https://images.pexels.com/photos/32299100/pexels-photo-32299100.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+      driving: 'https://images.pexels.com/photos/13633258/pexels-photo-13633258.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+      gears: 'https://images.pexels.com/photos/91152/pexels-photo-91152.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200',
+      video: 'https://videos.pexels.com/video-files/38854050/16516333_1920_1080_25fps.mp4',
+      videoPoster: 'https://images.pexels.com/videos/38854050/car-cars-driving-fast-38854050.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200'
+    };
+    const DEFAULTS = {
+      version: 1,
+      updatedAt: '',
+      contacts: { phone: '77774414888', whatsapp: '77774414888', mode: 'auto', message: 'Здравствуйте! Хочу узнать об обучении в DriveSchool.kz.', address: 'Улица Айнакол, 155', hours: 'Пн - Пт: 09:00 - 18:00', instagram: 'https://www.instagram.com/driveschool.kz/', mapUrl: 'https://2gis.kz/astana/firm/70000001116301567' },
+      appearance: { accent: 'forest', theme: 'light', headline: 'Твоя свобода\nначинается за рулём.', description: 'Учимся спокойно. Водим уверенно. Автошкола категории B\nдля тех, кто готов открыть для себя новые дороги.', hero: { type: 'image', src: ASSETS.hero } },
+      cars: [
+        { id: 'car-accent', title: 'Hyundai Accent', year: 2023, transmission: 'akpp', description: 'Лёгкий в управлении и понятный с первого занятия. Идеален для знакомства с дорогой.', climate: 'Климат-контроль', pedals: true, image: { type: 'image', src: 'https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=800&h=530&q=85' } },
+        { id: 'car-rio', title: 'Kia Rio', year: 2022, transmission: 'mkpp', description: 'Почувствуйте автомобиль и научитесь уверенно управлять механической коробкой.', climate: 'Кондиционер', pedals: true, image: { type: 'image', src: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&h=530&q=85' } },
+        { id: 'car-corolla', title: 'Toyota Corolla', year: 2023, transmission: 'akpp', description: 'Плавный ход, комфортный салон и всё для спокойной практики в городском потоке.', climate: 'Климат-контроль', pedals: true, image: { type: 'image', src: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=800&h=530&q=85' } }
+      ],
+      prices: [
+        { id: 'price-online', title: 'Онлайн-теория', price: 59000, from: true, unit: 'за полный курс теории', description: 'В своём ритме, из любой точки мира. Всё необходимое в вашем смартфоне.', popular: false, features: ['Доступ к платформе и приложению', 'Видеоуроки и экзаменационные билеты', 'Онлайн-консультации преподавателя', 'Подготовка пакета документов'] },
+        { id: 'price-offline', title: 'Теория в классе', price: 84000, from: true, unit: 'за полный курс теории', description: 'Живое общение, понятные объяснения и поддержка на каждом занятии.', popular: true, features: ['Занятия в оборудованном классе', 'Подробный разбор правил и ситуаций', 'Подготовка к тестированию в ЦОНе', 'Сопровождение и регистрация в базе'] },
+        { id: 'price-driving', title: 'Практика вождения', price: 5000, from: false, unit: 'за 1 академический час (45 минут)', description: 'От первого знакомства с автомобилем до самостоятельных маршрутов.', popular: false, features: ['Индивидуально с инструктором', 'На автомате или механике', 'Автодром и городские маршруты', 'Топливо включено в стоимость'] }
+      ],
+      posts: [
+        { id: 'post-first-drive', title: 'Первый раз за рулём: с чего начать?', excerpt: 'Как подготовиться к первому занятию и оставить волнение за дверью автомобиля.', category: 'Советы', date: '2026-05-18', status: 'published', body: 'Первое занятие не требует от вас навыков. Для этого рядом и будет инструктор. Возьмите с собой удобную обувь с плоской подошвой и немного любопытства.\n\nНачните со знакомства с автомобилем. Вместе с инструктором отрегулируйте сиденье и зеркала, разберитесь с основными органами управления и обязательно пристегнитесь. Не торопитесь переходить к движению.\n\nВопросов «слишком простых» не бывает. Если что-то непонятно, попросите объяснить ещё раз. Важно не просто запомнить последовательность действий, а понять, зачем нужно каждое из них.\n\nПервую практику проводите на закрытой площадке с инструктором. Не сравнивайте свой темп с другими: у каждого человека свой путь к уверенности.\n\nПосле занятия отметьте, что уже получилось, и обсудите, над чем будете работать дальше. Маленький шаг сегодня становится большой уверенностью завтра.', media: [{ type: 'image', src: ASSETS.driving }] },
+        { id: 'post-transmission', title: 'Автомат или механика: что выбрать?', excerpt: 'Два разных подхода к вождению. Помогаем разобраться без сложных терминов.', category: 'Обучение', date: '2026-05-12', status: 'published', body: 'Выбор коробки передач зависит от ваших планов и от автомобиля, на котором вы хотите ездить после обучения. Одного правильного ответа для всех не существует.\n\nАвтоматическая коробка позволяет больше внимания уделять дорожной ситуации: переключение передач автомобиль берёт на себя. Многие начинающие водители выбирают автомат для регулярных городских поездок.\n\nМеханическая коробка требует освоить работу со сцеплением и переключение передач. На это нужно время, зато вы научитесь лучше понимать связь между оборотами двигателя, выбранной передачей и скоростью.\n\nПодумайте о машине, которой будете пользоваться. Если выбор ещё не сделан, обсудите оба варианта с инструктором. Условия экзамена и ограничения водительского удостоверения уточните в ЦОНе перед записью.\n\nВ DriveSchool.kz можно заниматься и на автомате, и на механике. Мы поможем выбрать подходящий автомобиль для практики.', media: [{ type: 'image', src: ASSETS.gears }] },
+        { id: 'post-road', title: 'Учимся видеть дорогу, а не только капот', excerpt: 'Короткое видео и несколько привычек, которые помогают лучше замечать дорожную обстановку.', category: 'Советы', date: '2026-05-06', status: 'published', body: 'Уверенное вождение начинается с наблюдения. Учитесь замечать дорожные знаки, разметку, пешеходов и изменения потока заранее, а не только прямо перед автомобилем.\n\nНа занятии попросите инструктора объяснить, как распределять внимание и проверять зеркала. Не пытайтесь копировать поведение других водителей: ориентируйтесь на правила и безопасную дорожную ситуацию.\n\nПоддерживайте безопасную дистанцию и выбирайте скорость с учётом условий. Если ситуация непонятна, обсудите её после безопасной остановки.\n\nВидео иллюстрирует обычный дорожный поток и не является примером выполнения учебного упражнения. Смотрите его только вне управления автомобилем. Источник видео: Kiwi and Camera, Pexels.', media: [{ type: 'video', src: ASSETS.video, poster: ASSETS.videoPoster }] }
+      ]
+    };
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+    const icon = (name, extra = '') => `<svg class="icon ${extra}" aria-hidden="true"><use href="#i-${name}"></use></svg>`;
+    const clone = object => JSON.parse(JSON.stringify(object));
+    const uid = prefix => `${prefix}-${crypto.randomUUID ? crypto.randomUUID() : Array.from(crypto.getRandomValues(new Uint8Array(16)), byte => byte.toString(16).padStart(2, '0')).join('')}`;
+    const money = number => new Intl.NumberFormat('ru-RU').format(number);
+    const today = () => { const date = new Date(); return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`; };
+    const isPhone = value => /^[1-9][0-9]{7,14}$/.test(value);
+    const digits = value => String(value || '').replace(/\D/g, '');
+    const shortText = (value, fallback = '', max = 500) => typeof value === 'string' ? value.slice(0, max) : fallback;
+    function esc(value) { const element = document.createElement('span'); element.textContent = String(value ?? ''); return element.innerHTML.replace(/"/g, '&#34;').replace(/'/g, '&#39;'); }
+    function safeURL(value) {
+      try { const url = new URL(String(value)); return ['http:', 'https:'].includes(url.protocol) && !url.username && !url.password ? url.href : ''; } catch (_) { return ''; }
+    }
+    function readJSON(key, fallback) { try { const data = localStorage.getItem(key); return data ? JSON.parse(data) : fallback; } catch (_) { return fallback; } }
+    function writeJSON(key, value) {
+      try { localStorage.setItem(key, JSON.stringify(value)); } catch (_) { throw new Error('Браузер не смог сохранить данные. Разрешите локальное хранилище и проверьте свободное место.'); }
+    }
+    function cleanMedia(items, allowVideo = true) {
+      if (!Array.isArray(items)) return [];
+      return items.slice(0, 8).flatMap(item => {
+        if (!item || !['image', ...(allowVideo ? ['video'] : [])].includes(item.type)) return [];
+        const media = { type: item.type };
+        if (typeof item.asset === 'string' && /^asset-[a-zA-Z0-9-]{5,90}$/.test(item.asset)) media.asset = item.asset;
+        else if (safeURL(item.src)) media.src = safeURL(item.src);
+        else return [];
+        if (safeURL(item.poster)) media.poster = safeURL(item.poster);
+        if (item.name) media.name = shortText(item.name, '', 180);
+        return [media];
+      });
+    }
+    function normaliseState(raw, strict = false) {
+      if (!raw || typeof raw !== 'object' || !Array.isArray(raw.cars) || !Array.isArray(raw.prices) || !Array.isArray(raw.posts) || !raw.contacts || !raw.appearance) throw new Error('Файл не содержит корректные данные DriveSchool.');
+      if (raw.cars.length > 100 || raw.prices.length > 30 || raw.posts.length > 300) throw new Error('Слишком много записей в файле. Максимум: 100 машин, 30 тарифов и 300 публикаций.');
+      const c = raw.contacts, a = raw.appearance;
+      if (strict && (!isPhone(digits(c.phone)) || !isPhone(digits(c.whatsapp)))) throw new Error('В резервной копии указан некорректный номер телефона.');
+      const output = {
+        version: 1, updatedAt: shortText(raw.updatedAt, '', 40),
+        contacts: { phone: isPhone(digits(c.phone)) ? digits(c.phone) : DEFAULTS.contacts.phone, whatsapp: isPhone(digits(c.whatsapp)) ? digits(c.whatsapp) : DEFAULTS.contacts.whatsapp, mode: c.mode === 'web' ? 'web' : 'auto', message: shortText(c.message, DEFAULTS.contacts.message, 1200), address: shortText(c.address, DEFAULTS.contacts.address, 250), hours: shortText(c.hours, DEFAULTS.contacts.hours, 150), instagram: safeURL(c.instagram), mapUrl: safeURL(c.mapUrl) || DEFAULTS.contacts.mapUrl },
+        appearance: { accent: ['forest', 'blue', 'clay'].includes(a.accent) ? a.accent : 'forest', theme: ['light', 'dark', 'system'].includes(a.theme) ? a.theme : 'light', headline: shortText(a.headline, DEFAULTS.appearance.headline, 150), description: shortText(a.description, DEFAULTS.appearance.description, 300), hero: cleanMedia([a.hero], false)[0] || clone(DEFAULTS.appearance.hero) },
+        cars: raw.cars.map(car => {
+          if (!car || typeof car !== 'object') throw new Error('Повреждены данные автомобиля.');
+          return { id: shortText(car.id, uid('car'), 100), title: shortText(car.title, 'Автомобиль', 100), year: Math.min(new Date().getFullYear() + 1, Math.max(1990, Number(car.year) || 2023)), transmission: car.transmission === 'mkpp' ? 'mkpp' : 'akpp', description: shortText(car.description, '', 600), climate: shortText(car.climate, 'Кондиционер', 50), pedals: Boolean(car.pedals), image: cleanMedia([car.image], false)[0] || clone(DEFAULTS.cars[0].image) };
+        }),
+        prices: raw.prices.map(price => {
+          if (!price || typeof price !== 'object' || !Number.isFinite(Number(price.price)) || Number(price.price) < 0 || Number(price.price) > 99999999) throw new Error('В файле есть некорректная цена.');
+          return { id: shortText(price.id, uid('price'), 100), title: shortText(price.title, 'Тариф', 100), price: Math.round(Number(price.price)), from: Boolean(price.from), unit: shortText(price.unit, '', 100), description: shortText(price.description, '', 300), popular: Boolean(price.popular), features: Array.isArray(price.features) ? price.features.slice(0, 15).map(item => shortText(item, '', 180)).filter(Boolean) : [] };
+        }),
+        posts: raw.posts.map(post => {
+          if (!post || typeof post !== 'object') throw new Error('Повреждены данные публикации.');
+          return { id: shortText(post.id, uid('post'), 100), title: shortText(post.title, 'Новая запись', 150), excerpt: shortText(post.excerpt, '', 300), body: shortText(post.body, '', 50000), category: shortText(post.category, 'Новости', 40), date: /^\d{4}-\d{2}-\d{2}$/.test(post.date) && !isNaN(Date.parse(post.date)) ? post.date : today(), status: post.status === 'published' ? 'published' : 'draft', media: cleanMedia(post.media) };
+        })
+      };
+      for (const list of [output.cars, output.prices, output.posts]) {
+        const ids = new Set();
+        list.forEach(item => { if (!/^[a-zA-Z0-9-]{1,100}$/.test(item.id) || ids.has(item.id)) { if (strict) throw new Error('Идентификаторы записей повреждены или повторяются.'); item.id = uid('item'); } ids.add(item.id); });
+      }
+      return output;
+    }
+    let state;
+    try { state = normaliseState(readJSON(KEYS.site, clone(DEFAULTS))); } catch (_) { state = clone(DEFAULTS); }
+    let owner = readJSON(KEYS.owner, null);
+    if (!owner || !owner.id || !owner.email || !owner.hash || !owner.salt) owner = null;
+    let authenticated = false;
+    try { authenticated = Boolean(owner && sessionStorage.getItem(KEYS.session) === owner.id); } catch (_) {}
+    let fleetFilter = 'all', blogFilter = 'all', blogLimit = 3, adminPage = 'overview', adminPostFilter = 'all', adminSearch = '';
+    let adminDirty = false, modalDirty = false, adminBusy = false, modalBusy = false, publicScroll = 0, modalFocus = null;
+    const modal = $('#main-dialog'), confirmation = $('#confirm-dialog');
+    const mediaDrafts = new Map(), assetCache = new Map();
+    let dbPromise;
+
+    // Large media lives in IndexedDB; only small, serializable site data goes into localStorage.
+    function openDatabase() {
+      if (dbPromise) return dbPromise;
+      dbPromise = new Promise((resolve, reject) => {
+        if (!window.indexedDB) return reject(new Error('Этот браузер не поддерживает сохранение медиа. Используйте современный браузер или добавьте ссылку на файл.'));
+        const request = indexedDB.open('driveschool.media.v1', 1);
+        request.onupgradeneeded = () => request.result.createObjectStore('files');
+        request.onerror = () => { dbPromise = null; reject(new Error('Не удалось открыть хранилище медиа. Проверьте настройки приватности браузера.')); };
+        request.onblocked = () => { dbPromise = null; reject(new Error('Закройте другие вкладки DriveSchool и попробуйте снова.')); };
+        request.onsuccess = () => { const db = request.result; db.onversionchange = () => { db.close(); dbPromise = null; }; resolve(db); };
+      });
+      return dbPromise;
+    }
+    async function getBlob(id) {
+      const db = await openDatabase();
+      return new Promise((resolve, reject) => { const request = db.transaction('files', 'readonly').objectStore('files').get(id); request.onsuccess = () => resolve(request.result); request.onerror = () => reject(new Error('Не удалось прочитать медиафайл.')); });
+    }
+    async function putBlobs(entries) {
+      if (!entries.length) return;
+      const db = await openDatabase();
+      return new Promise((resolve, reject) => {
+        const transaction = db.transaction('files', 'readwrite');
+        transaction.oncomplete = () => resolve();
+        transaction.onabort = transaction.onerror = () => reject(new Error('Медиа не сохранены. Возможно, не хватает места в браузере. Попробуйте файл меньшего размера.'));
+        entries.forEach(entry => transaction.objectStore('files').put(entry.blob, entry.id));
+      });
+    }
+    async function removeBlobs(ids) {
+      if (!ids.length) return;
+      const db = await openDatabase();
+      await new Promise((resolve, reject) => {
+        const transaction = db.transaction('files', 'readwrite');
+        ids.forEach(id => transaction.objectStore('files').delete(id));
+        transaction.oncomplete = resolve; transaction.onerror = transaction.onabort = reject;
+      });
+      ids.forEach(async id => { if (assetCache.has(id)) { try { URL.revokeObjectURL(await assetCache.get(id)); } catch (_) {} assetCache.delete(id); } });
+    }
+    function assetIDs(data) { return new Set([data.appearance.hero, ...data.cars.map(car => car.image), ...data.posts.flatMap(post => post.media)].filter(item => item?.asset).map(item => item.asset)); }
+    function getAssetURL(id) {
+      if (!assetCache.has(id)) assetCache.set(id, getBlob(id).then(blob => { if (!(blob instanceof Blob)) throw new Error('Медиафайл отсутствует в этом браузере.'); return URL.createObjectURL(blob); }));
+      return assetCache.get(id);
+    }
+    function mediaHTML(media, { className = '', alt = '', controls = false, lazy = true } = {}) {
+      if (!media) return `<div class="${esc(className)}" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--soft);color:var(--muted)">${icon('image')}</div>`;
+      if (media.type === 'video' && !controls && safeURL(media.poster)) return `<img class="${esc(className)}" src="${esc(media.poster)}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
+      const source = media._preview || safeURL(media.src);
+      const attributes = `${source ? `src="${esc(source)}"` : ''} ${media.asset && !media._preview ? `data-asset="${esc(media.asset)}"` : ''}`;
+      if (media.type === 'video') return `<video class="${esc(className)}" ${attributes} ${controls ? 'controls' : 'muted aria-hidden="true" tabindex="-1"'} playsinline preload="metadata" ${safeURL(media.poster) ? `poster="${esc(media.poster)}"` : ''} aria-label="${esc(alt || 'Видео публикации')}"></video>`;
+      return `<img class="${esc(className)}" ${attributes} alt="${esc(alt)}" ${lazy ? 'loading="lazy"' : ''} decoding="async">`;
+    }
+    function hydrateMedia(root = document) {
+      $$('[data-asset]', root).forEach(async element => {
+        const id = element.dataset.asset;
+        try { const url = await getAssetURL(id); if (element.isConnected && element.dataset.asset === id && element.getAttribute('src') !== url) element.src = url; }
+        catch (_) { if (element.isConnected) markFailedMedia(element); }
+      });
+    }
+    function markFailedMedia(element) {
+      if (element.dataset.failed) return;
+      element.dataset.failed = 'true';
+      if (element.tagName === 'IMG') {
+        element.classList.add('media-failed');
+        element.src = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500"><rect width="800" height="500" fill="#e8ece3"/><g fill="none" stroke="#81947a" stroke-width="3"><rect x="365" y="205" width="70" height="60" rx="5"/><circle cx="387" cy="224" r="6"/><path d="m365 257 25-22 16 14 12-9 17 17"/></g><text x="400" y="303" text-anchor="middle" font-size="15" font-family="Arial" fill="#63735d">Фото недоступно</text></svg>');
+      } else if (element.tagName === 'VIDEO') {
+        const message = document.createElement('p'); message.className = 'hint'; message.textContent = 'Видео не загрузилось. Проверьте подключение или ссылку на файл.'; element.after(message);
+      }
+    }
+    function commitState(next, message = 'Изменения сохранены в этом браузере.') {
+      if (!authenticated) throw new Error('Сначала войдите в кабинет владельца.');
+      const persisted = readJSON(KEYS.site, null);
+      if (persisted && persisted.updatedAt !== state.updatedAt) throw new Error('Сайт изменён в другой вкладке. Скопируйте свои правки, затем перезагрузите страницу, чтобы не перезаписать новые данные.');
+      next.updatedAt = new Date().toISOString();
+      writeJSON(KEYS.site, next);
+      const oldAssets = assetIDs(state), newAssets = assetIDs(next);
+      state = next; adminDirty = false; modalDirty = false;
+      renderPublic();
+      if (!$('#cabinet').hidden) renderAdmin();
+      removeBlobs([...oldAssets].filter(id => !newAssets.has(id))).catch(() => {});
+      if (message) toast(message);
+    }
+    function toast(message, error = false) {
+      const stack = $('#toast-stack');
+      if (stack.showPopover) {
+        try { if (stack.matches(':popover-open')) stack.hidePopover(); stack.showPopover(); } catch (_) {}
+      } else if (modal.open && error && $('form [data-error]', modal)) { showFormError($('form', modal), message); return; }
+      const element = document.createElement('div'); element.className = 'toast' + (error ? ' error' : '');
+      element.innerHTML = icon(error ? 'info' : 'check-circle') + `<span>${esc(message)}</span>`;
+      stack.append(element);
+      setTimeout(() => { element.style.opacity = '0'; element.style.transition = 'opacity .25s'; setTimeout(() => { element.remove(); if (!stack.children.length && stack.hidePopover) { try { stack.hidePopover(); } catch (_) {} } }, 250); }, error ? 7000 : 4500);
+    }
+    function getThemePreference() { try { return localStorage.getItem(KEYS.theme) || state.appearance.theme; } catch (_) { return state.appearance.theme; } }
+    function applyTheme(preference = getThemePreference()) {
+      const theme = preference === 'system' ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : preference;
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.dataset.accent = state.appearance.accent;
+      $$('[data-action="theme"]').forEach(button => { button.innerHTML = icon(theme === 'dark' ? 'sun' : 'moon'); button.setAttribute('aria-label', theme === 'dark' ? 'Включить дневную тему' : 'Включить ночную тему'); button.title = theme === 'dark' ? 'Дневная тема' : 'Ночная тема'; });
+      $('meta[name="theme-color"]').content = theme === 'dark' ? '#141b17' : '#f7f8f4';
+      const widget = $('#gis-widget'), url = `https://widget.2gis.ru/api/widget?org_id=70000001116301566&branch_id=70000001116301567&size=medium&theme=${theme}`;
+      if (widget.getAttribute('src') !== url) widget.src = url;
+    }
+    function toggleTheme() {
+      const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem(KEYS.theme, theme); } catch (_) { toast('Тема изменена только до перезагрузки: хранилище недоступно.', true); }
+      applyTheme(theme);
+    }
+    function whatsappURL(message = state.contacts.message, contacts = state.contacts) {
+      const phone = digits(contacts.whatsapp);
+      const url = new URL(contacts.mode === 'web' ? 'https://web.whatsapp.com/send' : `https://wa.me/${phone}`);
+      if (contacts.mode === 'web') url.searchParams.set('phone', phone);
+      if (message) url.searchParams.set('text', message);
+      return url.href;
+    }
+    function formatPhone(phone) { return /^7\d{10}$/.test(phone) ? `+7 (${phone.slice(1, 4)}) ${phone.slice(4, 7)}-${phone.slice(7, 9)}-${phone.slice(9, 11)}` : `+${phone}`; }
+    function dateLabel(value, full = false) { return new Date(value + 'T12:00:00').toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', ...(full ? { year: 'numeric' } : {}) }); }
+    const isVideoPost = post => post.media.some(item => item.type === 'video');
+    const sortedPosts = posts => [...posts].sort((a, b) => b.date.localeCompare(a.date));
+    const ownerActions = (type, id) => authenticated ? `<div class="owner-controls"><button class="btn small outline" data-action="edit-${type}" data-id="${esc(id)}">${icon('edit', 'sm')}Редактировать</button><button class="btn small ghost" data-action="delete-${type}" data-id="${esc(id)}" aria-label="Удалить">${icon('trash', 'sm')}</button></div>` : '';
+    function emptyState(title, text, action = '') { return `<div class="empty-state">${icon('blog')}<h3>${esc(title)}</h3><p>${esc(text)}</p>${action}</div>`; }
+    function renderFleet() {
+      const cars = state.cars.filter(car => fleetFilter === 'all' || car.transmission === fleetFilter);
+      $('#fleet-grid').innerHTML = cars.map(car => `<article class="car-card" data-reveal>
+        <div class="car-photo-wrap">${mediaHTML(car.image, { className: 'car-photo', alt: `${car.title}, ${car.year}. Иллюстрация учебного автомобиля.` })}</div>
+        <div class="car-heading"><h3>${esc(car.title)}</h3><span class="transmission">${car.transmission === 'akpp' ? 'АКПП' : 'МКПП'}</span></div>
+        <p class="car-desc">${esc(car.description)}</p><div class="car-specs"><span>${car.year} год</span>${car.climate ? `<span>${esc(car.climate)}</span>` : ''}${car.pedals ? '<span>Двойные педали</span>' : ''}</div>
+        <button class="car-action" data-action="enroll" data-car="${esc(car.id)}"><span>Хочу на этой машине</span>${icon('arrow-up')}</button>${ownerActions('car', car.id)}</article>`).join('') || emptyState('Пока нет автомобилей', fleetFilter === 'all' ? 'Скоро здесь появится наш обновлённый автопарк.' : 'Попробуйте выбрать другую коробку передач.');
+      $$('[data-fleet-filter]').forEach(button => { const selected = button.dataset.fleetFilter === fleetFilter; button.classList.toggle('active', selected); button.setAttribute('aria-pressed', String(selected)); });
+      hydrateMedia($('#fleet-grid')); observeReveals($('#fleet-grid'));
+    }
+    function renderPrices() {
+      $('#pricing-grid').innerHTML = state.prices.map((price, index) => `<article class="price-card ${price.popular ? 'popular' : ''}" data-reveal>
+        <span class="price-label">${price.popular ? 'Выбор наших учеников' : `${String(index + 1).padStart(2, '0')} / Ваш формат`}</span><h3>${esc(price.title)}</h3><p class="price-description">${esc(price.description)}</p>
+        <div class="price-amount">${price.from ? '<span class="prefix">от</span>' : ''}${money(price.price)}<span class="currency">₸</span></div><span class="price-unit">${esc(price.unit)}</span>
+        <ul class="price-features">${price.features.map(feature => `<li>${icon('check')}<span>${esc(feature)}</span></li>`).join('')}</ul>
+        <button class="btn ${price.popular ? 'light' : 'outline'} full" data-action="enroll" data-price="${esc(price.id)}">Выбрать этот формат${icon('arrow-up', 'sm')}</button>
+        ${authenticated ? `<button class="text-link" style="font-size:10px;margin-top:16px;justify-content:center" data-action="edit-price" data-id="${esc(price.id)}">${icon('edit', 'sm')}Редактировать тариф</button>` : ''}</article>`).join('') || emptyState('Тарифы обновляются', 'Напишите нам в WhatsApp, чтобы узнать стоимость обучения.');
+      observeReveals($('#pricing-grid'));
+    }
+    function renderPosts() {
+      const posts = sortedPosts(state.posts.filter(post => post.status === 'published' && (blogFilter === 'all' || (blogFilter === 'video' ? isVideoPost(post) : !isVideoPost(post)))));
+      $('#blog-grid').innerHTML = posts.slice(0, blogLimit).map(post => `<article class="post-card" data-reveal><button class="post-cover" data-action="read-post" data-id="${esc(post.id)}" aria-label="Открыть: ${esc(post.title)}">${mediaHTML(post.media[0], { alt: post.title })}${isVideoPost(post) ? `<span class="play-button">${icon('play')}</span>` : ''}</button><div class="post-meta"><span>${esc(post.category)}${isVideoPost(post) ? ' / Видео' : ''}</span><time datetime="${post.date}">${dateLabel(post.date)}</time></div><h3><button data-action="read-post" data-id="${esc(post.id)}">${esc(post.title)}</button></h3><p class="post-excerpt">${esc(post.excerpt)}</p><button class="text-link" data-action="read-post" data-id="${esc(post.id)}">${isVideoPost(post) ? 'Смотреть и читать' : 'Читать историю'}${icon('arrow-up', 'sm')}</button>${ownerActions('post', post.id)}</article>`).join('') || emptyState('Новые истории уже в пути', 'В этом разделе пока нет опубликованных записей.');
+      $('#blog-bottom').hidden = posts.length <= blogLimit;
+      $$('[data-blog-filter]').forEach(button => { const selected = button.dataset.blogFilter === blogFilter; button.classList.toggle('active', selected); button.setAttribute('aria-pressed', String(selected)); });
+      hydrateMedia($('#blog-grid')); observeReveals($('#blog-grid'));
+    }
+    function renderPublic() {
+      $('#hero-headline').textContent = state.appearance.headline;
+      $('#hero-description').textContent = state.appearance.description;
+      const hero = $('#hero-photo'), media = state.appearance.hero;
+      const heroKey = media.asset || media.src;
+      if (hero.dataset.mediaKey !== heroKey) {
+        hero.dataset.mediaKey = heroKey; delete hero.dataset.failed; hero.classList.remove('media-failed');
+        if (media.asset) { hero.dataset.asset = media.asset; hero.removeAttribute('src'); hydrateMedia($('.hero')); }
+        else { delete hero.dataset.asset; hero.src = safeURL(media.src); }
+      }
+      renderFleet(); renderPrices(); renderPosts();
+      $('#contact-phone').href = `tel:+${state.contacts.phone}`;
+      $('#contact-phone span').textContent = formatPhone(state.contacts.phone);
+      $('#contact-address').textContent = state.contacts.address;
+      $('#contact-address').closest('a').href = state.contacts.mapUrl;
+      $('#contact-hours').textContent = state.contacts.hours;
+      $$('[data-wa]').forEach(link => { link.href = whatsappURL(); });
+      $$('[data-contact-instagram]').forEach(link => { link.hidden = !state.contacts.instagram; if (state.contacts.instagram) link.href = state.contacts.instagram; });
+      $('#account-label').textContent = authenticated ? 'Мой кабинет' : 'Личный кабинет';
+      $('#current-year').textContent = new Date().getFullYear();
+      applyTheme();
+    }
+    let revealObserver;
+    const observedElements = new WeakSet();
+    function observeReveals(root = document) {
+      if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!revealObserver) revealObserver = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('revealed'); revealObserver.unobserve(entry.target); } }), { threshold: .08 });
+      $$('[data-reveal]', root).forEach(element => { if (!observedElements.has(element)) { observedElements.add(element); element.classList.add('will-reveal'); revealObserver.observe(element); } });
+    }
+    function clearDraft(key) {
+      const draft = mediaDrafts.get(key);
+      if (draft) {
+        draft.items.forEach(item => { if (item._preview) URL.revokeObjectURL(item._preview); });
+        const referenced = assetIDs(state);
+        removeBlobs(draft.items.filter(item => item._stored && !referenced.has(item._asset)).map(item => item._asset)).catch(() => {});
+      }
+      mediaDrafts.delete(key);
+    }
+    function showModal(content, wide = false) {
+      if (!modal.open) modalFocus = document.activeElement;
+      $$('video', modal).forEach(video => video.pause());
+      clearDraft('car'); clearDraft('post');
+      modalDirty = false; modal.classList.toggle('wide', wide);
+      $('#modal-content').innerHTML = content;
+      if (!modal.open) modal.showModal();
+      modal.scrollTop = 0; document.body.classList.add('locked');
+      hydrateMedia(modal);
+    }
+    async function closeModal(force = false) {
+      if (modalBusy && !force) { toast('Дождитесь завершения сохранения.'); return false; }
+      if (modalDirty && !force && !await askConfirm('Закрыть без сохранения?', 'Изменения в этой форме ещё не сохранены.', 'Не сохранять')) return false;
+      $$('video', modal).forEach(video => video.pause());
+      modal.close(); $('#modal-content').innerHTML = ''; modalDirty = false;
+      clearDraft('car'); clearDraft('post'); document.body.classList.remove('locked');
+      if (modalFocus?.isConnected) modalFocus.focus({ preventScroll: true });
+      else (!$('#cabinet').hidden ? $('#admin-content') : $('[data-action="account"]')).focus({ preventScroll: true });
+      return true;
+    }
+    function askConfirm(title, message, label = 'Удалить') {
+      if (confirmation.open) return Promise.resolve(false);
+      $('#confirm-title').textContent = title; $('#confirm-message').textContent = message; $('#confirm-accept').textContent = label;
+      return new Promise(resolve => {
+        const finish = result => { confirmation.close(); resolve(result); };
+        $('#confirm-cancel').onclick = () => finish(false);
+        $('#confirm-accept').onclick = () => finish(true);
+        confirmation.oncancel = event => { event.preventDefault(); finish(false); };
+        confirmation.showModal(); $('#confirm-cancel').focus();
+      });
+    }
+    function field(label, name, value = '', options = {}) {
+      const id = `field-${++field.count}`, type = options.type || 'text';
+      const attributes = `id="${id}" name="${name}" ${options.required === false ? '' : 'required'} ${options.min !== undefined ? `min="${options.min}"` : ''} ${options.max !== undefined ? `max="${options.max}"` : ''} ${options.minlength ? `minlength="${options.minlength}"` : ''} ${options.maxlength ? `maxlength="${options.maxlength}"` : ''} ${options.autocomplete ? `autocomplete="${options.autocomplete}"` : ''} ${options.placeholder ? `placeholder="${esc(options.placeholder)}"` : ''}`;
+      const input = type === 'textarea' ? `<textarea ${attributes} rows="${options.rows || 3}">${esc(value)}</textarea>` : `<input type="${type}" ${attributes} value="${esc(value)}" ${type === 'number' ? 'step="1"' : ''}>`;
+      return `<label class="field" for="${id}"><span class="field-label">${esc(label)}</span>${input}${options.hint ? `<span class="hint">${esc(options.hint)}</span>` : ''}</label>`;
+    }
+    field.count = 0;
+    function selectField(label, name, value, options) { const id = `field-${++field.count}`; return `<label class="field" for="${id}"><span class="field-label">${esc(label)}</span><select id="${id}" name="${name}">${options.map(([option, text]) => `<option value="${esc(option)}" ${value === option ? 'selected' : ''}>${esc(text)}</option>`).join('')}</select></label>`; }
+    function passwordField(label, name, newPassword = false, required = true) { const id = `field-${++field.count}`; return `<div class="field"><label class="field-label" for="${id}">${esc(label)}</label><div class="password-wrap"><input id="${id}" name="${name}" type="password" ${required ? 'required' : ''} minlength="8" maxlength="128" autocomplete="${newPassword ? 'new-password' : 'current-password'}" placeholder="${newPassword ? 'Не менее 8 символов' : 'Ваш пароль'}"><button type="button" class="icon-btn" data-password-toggle="${id}" aria-label="Показать пароль">${icon('eye')}</button></div></div>`; }
+    const formErrorSlot = '<p class="form-error" data-error role="alert" hidden></p>';
+    function formActions(label = 'Сохранить изменения') { return `<div class="form-actions"><button class="btn outline" type="button" data-action="close-modal">Отмена</button><button class="btn primary" type="submit">${icon('check', 'sm')}${esc(label)}</button></div>`; }
+    function showFormError(form, message) { const error = $('[data-error]', form); if (error && form.isConnected) { error.hidden = false; error.textContent = message; error.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } else toast(message, true); }
+    function openAuth() {
+      const register = !owner;
+      showModal(`<div class="modal-inner"><div class="auth-logo">${icon('wheel')}</div><span class="eyebrow">Кабинет владельца</span><h2 class="modal-title" id="dialog-title">${register ? 'Ваш сайт.<br>Ваши правила.' : 'С возвращением.'}</h2><p class="modal-description">${register ? 'Создайте локальную учётную запись, чтобы менять цены, управлять автопарком и вести блог.' : 'Войдите, чтобы продолжить работу над вашей автошколой.'}</p><form data-form="${register ? 'register' : 'login'}">
+        ${register ? field('Как вас зовут', 'name', '', { maxlength: 80, autocomplete: 'name', placeholder: 'Ваше имя' }) : ''}
+        ${field('Email', 'email', '', { type: 'email', maxlength: 160, autocomplete: 'username', placeholder: 'you@example.com' })}
+        ${passwordField('Пароль', 'password', register)}${register ? passwordField('Повторите пароль', 'confirmPassword', true) : ''}
+        ${formErrorSlot}<button class="btn primary full" type="submit" style="margin-top:3px">${register ? 'Создать кабинет' : 'Войти в кабинет'}${icon('arrow-right', 'sm')}</button></form>
+        <div class="local-note" style="margin-top:24px">${icon('monitor')}<div><strong>Локальная версия, без сервера.</strong><br>Учётная запись и изменения доступны только в этом браузере. Это не защищённая серверная авторизация. Email используется для входа, письма не отправляются.</div></div><p class="auth-footer">${register ? 'Используйте отдельный пароль, не от других сервисов.' : 'Данные хранятся на устройстве. Сброс по email недоступен.'}</p></div>`);
+    }
+    async function hashPassword(password, salt) {
+      if (!crypto.subtle) throw new Error('Для создания кабинета откройте сайт через HTTPS или localhost. Браузер не предоставил Web Crypto.');
+      const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits']);
+      const saltBytes = Uint8Array.from(salt.match(/.{2}/g), pair => parseInt(pair, 16));
+      const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: saltBytes, iterations: 210000 }, key, 256);
+      return Array.from(new Uint8Array(bits), byte => byte.toString(16).padStart(2, '0')).join('');
+    }
+    const newSalt = () => Array.from(crypto.getRandomValues(new Uint8Array(16)), byte => byte.toString(16).padStart(2, '0')).join('');
+    function requireAuth() { if (authenticated) return true; openAuth(); return false; }
+    function openEnrollment(carId = '', priceId = '') {
+      const car = state.cars.find(item => item.id === carId), price = state.prices.find(item => item.id === priceId);
+      showModal(`<div class="modal-inner"><span class="eyebrow">Первый шаг к свободе</span><h2 class="modal-title" id="dialog-title">Давайте знакомиться.</h2><p class="modal-description">Подготовим сообщение для администратора. Вы сможете отправить его в WhatsApp и обсудить удобное время занятий.</p><form data-form="enroll">${field('Ваше имя', 'name', '', { maxlength: 80, autocomplete: 'given-name', placeholder: 'Как к вам обращаться?' })}${selectField('Что вам интересно', 'price', price?.id || '', [['', 'Помогите выбрать формат'], ...state.prices.map(item => [item.id, `${item.title} / ${item.from ? 'от ' : ''}${money(item.price)} ₸`])])}${selectField('Учебный автомобиль', 'car', car?.id || '', [['', 'Выберу вместе с вами'], ...state.cars.map(item => [item.id, `${item.title} / ${item.transmission === 'akpp' ? 'Автомат' : 'Механика'}`])])}${field('Вопрос или пожелание', 'note', '', { type: 'textarea', required: false, maxlength: 800, rows: 2, placeholder: 'Например: хочу заниматься после обеда' })}${formErrorSlot}<button class="btn primary full" type="submit">${icon('whatsapp')}Продолжить в WhatsApp${icon('arrow-up', 'sm')}</button><p class="hint" style="margin-top:15px;text-align:center">Сообщение не отправляется автоматически. Ваши данные из этой формы не сохраняются на сайте.</p></form></div>`);
+    }
+    function openPost(id) {
+      const post = state.posts.find(item => item.id === id);
+      if (!post || (post.status !== 'published' && !authenticated)) return toast('Публикация недоступна.', true);
+      showModal(`<article class="article-inner"><span class="eyebrow">Дневник DriveSchool.kz</span><h2 class="modal-title" id="dialog-title" style="font-size:clamp(25px,4vw,36px)">${esc(post.title)}</h2><div class="article-meta"><span>${esc(post.category)}</span><time datetime="${post.date}">${dateLabel(post.date, true)}</time>${post.status === 'draft' ? '<span>Черновик / виден только вам</span>' : ''}</div><div class="article-media">${post.media.map(media => mediaHTML(media, { alt: post.title, controls: true, lazy: false })).join('')}</div><div class="article-body">${esc(post.body)}</div><div class="article-footer"><span>Команда DriveSchool.kz</span>${authenticated ? `<button class="text-link" data-action="edit-post" data-id="${esc(post.id)}">${icon('edit', 'sm')}Редактировать</button>` : `<button class="text-link" data-action="enroll">Начать свой путь${icon('arrow-up', 'sm')}</button>`}</div></article>`, true);
+    }
+    function showPrivacy() {
+      showModal(`<div class="modal-inner"><span class="eyebrow">Ваши данные</span><h2 class="modal-title" id="dialog-title">Конфиденциальность</h2><div class="article-body" style="font-size:12px;margin-top:24px">Этот сайт работает как локальное одностраничное приложение. Регистрация не создаёт учётную запись на сервере.<br><br><strong>Что хранится в браузере</strong><br>Имя владельца, email, соль и производный хеш пароля, цены, контакты, оформление и записи блога сохраняются в localStorage. Медиафайлы хранятся в IndexedDB, текущий вход в sessionStorage. Локальный кабинет не заменяет защищённую серверную систему доступа.<br><br><strong>Запись через WhatsApp</strong><br>Данные формы используются только для подготовки сообщения. Отправка происходит, когда вы самостоятельно отправляете сообщение в WhatsApp. Далее действуют правила WhatsApp.<br><br><strong>Внешние ресурсы</strong><br>Для шрифтов, стилей, фотографий, видео и рейтинга сайт обращается к Google Fonts, jsDelivr, Unsplash, Pexels и 2ГИС. Эти сервисы могут получать технические данные запроса.<br><br><strong>Хранение и удаление</strong><br>Очистка данных сайта в настройках браузера удалит учётную запись, настройки и загруженные файлы на этом устройстве. Перед очисткой скачайте резервную копию в разделе «Мой профиль». Копия не включает пароль.<br><br>Для общего сайта с доступом с разных устройств необходимо подключить сервер, защищённую авторизацию и постоянное хранилище.</div><div class="form-actions"><button class="btn primary" data-action="close-modal">Понятно</button></div></div>`);
+    }
+    const ADMIN_SECTIONS = [
+      { id: 'overview', label: 'Обзор', icon: 'grid' }, { id: 'prices', label: 'Тарифы', icon: 'credit' },
+      { id: 'cars', label: 'Автопарк', icon: 'car' }, { id: 'posts', label: 'Мой блог', icon: 'blog' },
+      { id: 'contacts', label: 'Контакты и WhatsApp', icon: 'phone' }, { id: 'appearance', label: 'Оформление', icon: 'palette' },
+      { id: 'profile', label: 'Мой профиль', icon: 'user' }
+    ];
+    function adminHeading(title, description, action = '') { return `<div class="admin-page-head"><div><h1>${esc(title)}</h1><p>${esc(description)}</p></div>${action}</div>`; }
+    function addButton(type, label) { return `<button class="btn primary" data-action="add-${type}">${icon('plus', 'sm')}${esc(label)}</button>`; }
+    function rowActions(type, id, preview = false) { return `<div class="admin-row-actions">${preview ? `<button class="icon-btn" data-action="read-post" data-id="${esc(id)}" title="Предпросмотр" aria-label="Предпросмотр записи">${icon('eye')}</button>` : ''}<button class="icon-btn" data-action="edit-${type}" data-id="${esc(id)}" title="Редактировать" aria-label="Редактировать">${icon('edit')}</button><button class="icon-btn danger" data-action="delete-${type}" data-id="${esc(id)}" title="Удалить" aria-label="Удалить">${icon('trash')}</button></div>`; }
+    function postRow(post) { return `<div class="admin-row"><div class="admin-row-media">${mediaHTML(post.media[0], { alt: post.title })}</div><div class="admin-row-copy"><h3>${esc(post.title)}</h3><p>${dateLabel(post.date)} / ${esc(post.category)} / <span class="status-label ${post.status === 'draft' ? 'draft' : ''}">${post.status === 'draft' ? 'Черновик' : 'На сайте'}</span></p></div>${rowActions('post', post.id, true)}</div>`; }
+    function overviewHTML() {
+      const name = owner?.name?.trim().split(/\s+/)[0] || 'владелец';
+      return adminHeading(`Рады видеть вас, ${name}.`, 'Всё, что нужно вашей автошколе, в одном пространстве.') +
+        `<div class="admin-notice">${icon('monitor')}<div><strong>Ваш сайт, на этом устройстве</strong>Изменения сохраняются в текущем браузере и сразу видны в его версии сайта. Для публикации в интернете и защищённого входа с разных устройств нужен сервер.</div></div>
+        <div class="admin-quick-grid"><button class="admin-quick" data-admin-page="prices"><span class="quick-top">${icon('credit')}${icon('arrow-up')}</span><h3>Актуальные цены</h3><p>Тарифов на сайте: ${state.prices.length}. Измените стоимость и состав.</p></button><button class="admin-quick" data-admin-page="cars"><span class="quick-top">${icon('car')}${icon('arrow-up')}</span><h3>Ваш автопарк</h3><p>Автомобилей: ${state.cars.length}. Фото, описания и характеристики.</p></button><button class="admin-quick" data-admin-page="posts"><span class="quick-top">${icon('blog')}${icon('arrow-up')}</span><h3>Истории автошколы</h3><p>Записей: ${state.posts.length}. Делитесь моментами, фото и видео.</p></button><button class="admin-quick" data-admin-page="contacts"><span class="quick-top">${icon('whatsapp')}${icon('arrow-up')}</span><h3>Всегда на связи</h3><p>Настройте номер WhatsApp, телефон и адрес.</p></button></div>
+        <div class="admin-panel"><div class="admin-panel-title"><h2>Последние публикации</h2><button class="text-link" style="font-size:10px" data-action="add-post">Новая запись${icon('plus', 'sm')}</button></div><div class="admin-list">${sortedPosts(state.posts).slice(0, 3).map(postRow).join('') || emptyState('Здесь начнётся ваша история', 'Добавьте первую публикацию о жизни автошколы.')}</div></div>
+        <p class="hint">${state.updatedAt ? `Последнее сохранение: ${new Date(state.updatedAt).toLocaleString('ru-RU')}.` : 'Начните с любого раздела. Все изменения можно посмотреть на сайте.'} Резервная копия доступна в разделе «Мой профиль».</p>`;
+    }
+    function pricesAdminHTML() {
+      return adminHeading('Тарифы обучения', 'Прозрачные цены для ваших будущих учеников.', addButton('price', 'Добавить тариф')) +
+        `<div class="admin-panel"><div class="admin-list">${state.prices.map(price => `<div class="admin-row"><div class="admin-row-copy"><h3>${esc(price.title)}</h3><p>${esc(price.unit)}${price.popular ? ' / Рекомендуемый' : ''}</p></div><span class="admin-row-price">${price.from ? '<small style="font-size:11px;font-family:var(--font)">от </small>' : ''}${money(price.price)} ₸</span>${rowActions('price', price.id)}</div>`).join('') || emptyState('Добавьте первый тариф', 'Укажите название, цену и что входит в обучение.')}</div></div><p class="hint">После сохранения цена обновится в карточке тарифа и в форме записи. Изменения локальны для этого браузера.</p>`;
+    }
+    function carsAdminHTML() {
+      return adminHeading('Ваш автопарк', 'У каждой машины свой характер. Расскажите о нём.', addButton('car', 'Добавить машину')) +
+        `<div class="admin-panel"><div class="admin-list">${state.cars.map(car => `<div class="admin-row"><div class="admin-row-media">${mediaHTML(car.image, { alt: car.title })}</div><div class="admin-row-copy"><h3>${esc(car.title)}</h3><p>${car.year} год / ${car.transmission === 'akpp' ? 'Автомат' : 'Механика'} / ${esc(car.climate)}</p></div>${rowActions('car', car.id)}</div>`).join('') || emptyState('Автопарк пока пуст', 'Добавьте автомобиль с фотографией и описанием.')}</div></div><div class="local-note">${icon('image')}<div>Фотографии в исходном шаблоне иллюстративные. Загрузите реальные фотографии своего автопарка, чтобы ученики могли познакомиться с ним до занятия.</div></div>`;
+    }
+    function postsAdminHTML() {
+      return adminHeading('Мой блог', 'Делитесь знаниями, важными моментами и жизнью автошколы.', addButton('post', 'Новая запись')) +
+        `<div class="admin-panel"><div class="admin-filter-bar"><div class="filter-group" role="group" aria-label="Статус записей">${[['all', 'Все записи'], ['published', 'На сайте'], ['draft', 'Черновики']].map(([value, text]) => `<button class="filter-btn ${adminPostFilter === value ? 'active' : ''}" data-admin-post-filter="${value}" aria-pressed="${adminPostFilter === value}">${text}</button>`).join('')}</div><label class="admin-search">${icon('search')}<span class="sr-only">Поиск публикаций</span><input id="admin-post-search" type="search" placeholder="Найти запись..." value="${esc(adminSearch)}" autocomplete="off"></label></div><div class="admin-list" id="admin-post-list"></div></div><p class="hint">Черновики видны только в кабинете. Статус «На сайте» открывает запись в публичной части этого браузера, но не отправляет её на сервер.</p>`;
+    }
+    function renderAdminPostsList() {
+      const list = $('#admin-post-list'); if (!list) return;
+      const term = adminSearch.trim().toLocaleLowerCase('ru-RU');
+      const posts = sortedPosts(state.posts.filter(post => (adminPostFilter === 'all' || post.status === adminPostFilter) && `${post.title} ${post.category}`.toLocaleLowerCase('ru-RU').includes(term)));
+      list.innerHTML = posts.map(postRow).join('') || emptyState('Записи не найдены', term ? 'Попробуйте другой поисковый запрос.' : 'Добавьте новую запись или выберите другой статус.');
+      $$('[data-admin-post-filter]').forEach(button => { const selected = button.dataset.adminPostFilter === adminPostFilter; button.classList.toggle('active', selected); button.setAttribute('aria-pressed', String(selected)); });
+      hydrateMedia(list);
+    }
+    function contactsAdminHTML() {
+      const contacts = state.contacts;
+      return adminHeading('Контакты и WhatsApp', 'Один номер в настройках, актуальные ссылки на всём сайте.') +
+        `<form class="admin-form" data-form="contacts" data-admin-form><div class="admin-panel"><h2>На связи с учениками</h2><span class="hint">Укажите номера в международном формате с кодом страны.</span><div class="form-grid">${field('Телефон для звонков', 'phone', formatPhone(contacts.phone), { type: 'tel', maxlength: 25, autocomplete: 'tel', placeholder: '+7 (777) 441-48-88' })}${field('Номер WhatsApp', 'whatsapp', formatPhone(contacts.whatsapp), { type: 'tel', maxlength: 25, placeholder: '+7 (777) 441-48-88' })}</div>${selectField('Где открывать WhatsApp', 'mode', contacts.mode, [['auto', 'Автоматически: приложение или WhatsApp Web'], ['web', 'В браузере: WhatsApp Web']])}${field('Сообщение по умолчанию', 'message', contacts.message, { type: 'textarea', maxlength: 1200, rows: 3 })}<a id="whatsapp-preview" class="btn outline small" href="${esc(whatsappURL())}" target="_blank" rel="noopener noreferrer">${icon('whatsapp', 'sm')}Проверить ссылку${icon('arrow-up', 'sm')}</a><p class="hint" style="margin-top:10px">Открытие чата не отправляет сообщение. Для WhatsApp Web потребуется вход в WhatsApp.</p></div>
+        <div class="admin-panel"><h2>Как вас найти</h2><span class="hint">Эта информация отображается в контактах сайта.</span>${field('Адрес автошколы', 'address', contacts.address, { maxlength: 250 })}${field('Часы работы', 'hours', contacts.hours, { maxlength: 150 })}${field('Ссылка на карту', 'mapUrl', contacts.mapUrl, { type: 'url', maxlength: 2000 })}${field('Instagram', 'instagram', contacts.instagram, { type: 'url', maxlength: 2000, required: false, placeholder: 'https://www.instagram.com/driveschool.kz/' })}</div>${formErrorSlot}<div class="form-actions"><button class="btn primary" type="submit">${icon('check', 'sm')}Сохранить контакты</button></div></form>`;
+    }
+    function appearanceAdminHTML() {
+      const appearance = state.appearance;
+      return adminHeading('Оформление сайта', 'Пусть ваш сайт будет таким же узнаваемым, как ваша автошкола.') +
+        `<form class="admin-form" data-form="appearance" data-admin-form><div class="admin-panel"><h2>Свет и настроение</h2><span class="hint">Тема по умолчанию. Посетитель также может переключить её кнопкой в шапке.</span><div class="theme-options">${[['light', 'Дневная', ''], ['dark', 'Ночная', 'dark'], ['system', 'Системная', 'system']].map(([value, label, style]) => `<label class="theme-option"><span class="theme-sample ${style}" aria-hidden="true"></span><span><input type="radio" name="theme" value="${value}" ${appearance.theme === value ? 'checked' : ''}>${label}</span></label>`).join('')}</div><div class="accent-options">${[['forest', 'Лесной', '#315c45'], ['blue', 'Небесный', '#355873'], ['clay', 'Терракота', '#985940']].map(([value, label, color]) => `<label class="accent-option"><input type="radio" name="accent" value="${value}" ${appearance.accent === value ? 'checked' : ''}><span class="color-dot" style="background:${color}"></span>${label}</label>`).join('')}</div></div>
+        <div class="admin-panel"><h2>Первый экран</h2><span class="hint">Короткий заголовок, пара предложений и фотография, которая передаёт ваше настроение.</span>${field('Главный заголовок', 'headline', appearance.headline, { type: 'textarea', maxlength: 150, rows: 2, hint: 'Перенос строки сохранится. Лучше не больше двух строк.' })}${field('Короткое описание', 'description', appearance.description, { type: 'textarea', maxlength: 300, rows: 3 })}<div id="picker-hero"></div></div>${formErrorSlot}<div class="form-actions"><button class="btn primary" type="submit">${icon('check', 'sm')}Сохранить оформление</button></div></form>`;
+    }
+    function profileAdminHTML() {
+      return adminHeading('Мой профиль', 'Ваши данные, доступ и резервная копия сайта.') +
+        `<div class="admin-form"><form data-form="profile" data-admin-form><div class="admin-panel"><h2>Учётная запись владельца</h2><div class="profile-avatar-row"><span class="avatar">${esc(initials())}</span><div><strong>${esc(owner?.name)}</strong><p>Локальная учётная запись на этом устройстве</p></div></div><div class="form-grid">${field('Ваше имя', 'name', owner?.name || '', { maxlength: 80, autocomplete: 'name' })}${field('Email для входа', 'email', owner?.email || '', { type: 'email', maxlength: 160, autocomplete: 'username' })}</div>${passwordField('Текущий пароль для подтверждения', 'currentPassword')}<div class="form-grid">${passwordField('Новый пароль', 'newPassword', true, false)}${passwordField('Повторите новый пароль', 'confirmPassword', true, false)}</div><p class="hint">Оставьте новый пароль пустым, если хотите изменить только имя или email. Письма на email не отправляются.</p>${formErrorSlot}<div class="form-actions"><button class="btn primary" type="submit">${icon('check', 'sm')}Сохранить профиль</button></div></div></form>
+        <div class="admin-panel"><h2>Ваш сайт, с собой</h2><p class="hint" style="margin-top:10px">Резервная копия включает цены, автомобили, публикации, оформление, фото и видео. Пароль и учётная запись не экспортируются. Храните файл в надёжном месте: очистка браузера удалит локальные данные.</p><div class="data-buttons"><button class="btn outline" data-action="export-backup">${icon('download', 'sm')}Скачать копию</button><button class="btn outline" data-action="import-backup">${icon('upload', 'sm')}Восстановить из файла</button></div><p class="hint" style="margin-top:13px">Максимальный размер копии 256 МБ. Большие видео лучше добавлять по ссылке. При восстановлении содержимое сайта будет заменено.</p></div>
+        <div class="local-note">${icon('lock')}<div><strong>Важно об этой версии</strong><br>Пароль хранится как производный PBKDF2-хеш с индивидуальной солью. Но проверка выполняется в браузере, поэтому это не защита серверных данных. Для реального общего сайта нужна серверная авторизация.</div></div></div>`;
+    }
+    function initials() { return String(owner?.name || 'Владелец').trim().split(/\s+/).slice(0, 2).map(part => part[0]).join('').toLocaleUpperCase('ru-RU'); }
+    function renderAdmin() {
+      if (!authenticated) return;
+      const section = ADMIN_SECTIONS.find(item => item.id === adminPage) || ADMIN_SECTIONS[0];
+      $('#admin-nav').innerHTML = ADMIN_SECTIONS.map(item => `<button class="${item.id === adminPage ? 'active' : ''}" data-admin-page="${item.id}" ${item.id === adminPage ? 'aria-current="page"' : ''}>${icon(item.icon)}${item.label}</button>`).join('');
+      $('#cabinet-breadcrumb').textContent = section.label; $('#sidebar-name').textContent = owner?.name || 'Владелец'; $('#sidebar-avatar').textContent = initials();
+      const views = { overview: overviewHTML, prices: pricesAdminHTML, cars: carsAdminHTML, posts: postsAdminHTML, contacts: contactsAdminHTML, appearance: appearanceAdminHTML, profile: profileAdminHTML };
+      $('#admin-content').innerHTML = (views[adminPage] || overviewHTML)();
+      clearDraft('hero');
+      if (adminPage === 'appearance') { mediaDrafts.set('hero', { items: [clone(state.appearance.hero)], multiple: false, allowVideo: false }); renderMediaPicker('hero'); }
+      if (adminPage === 'posts') renderAdminPostsList();
+      hydrateMedia($('#admin-content')); applyTheme();
+    }
+    async function navigateAdmin(page = 'overview') {
+      if (!requireAuth()) return;
+      if (adminBusy) return toast('Дождитесь завершения сохранения.');
+      if (adminDirty && !await askConfirm('Перейти без сохранения?', 'Правки в текущем разделе не будут сохранены.', 'Не сохранять')) return;
+      adminDirty = false; clearDraft('hero');
+      if ($('#cabinet').hidden) publicScroll = window.scrollY;
+      $('#public-site').hidden = true; $('#cabinet').hidden = false;
+      $('.skip-link').href = '#admin-content';
+      adminPage = ADMIN_SECTIONS.some(item => item.id === page) ? page : 'overview';
+      setMobileMenu(false); setAdminMenu(false); renderAdmin();
+      window.scrollTo({ top: 0, behavior: 'instant' }); $('#admin-content').focus({ preventScroll: true });
+      document.title = `${ADMIN_SECTIONS.find(item => item.id === adminPage).label} | Кабинет DriveSchool.kz`;
+    }
+    async function viewSite(force = false) {
+      if (!force && adminBusy) return toast('Дождитесь завершения сохранения.');
+      if (!force && adminDirty && !await askConfirm('Вернуться на сайт?', 'Правки в текущей форме ещё не сохранены.', 'Не сохранять')) return;
+      adminDirty = false; clearDraft('hero'); setAdminMenu(false);
+      $('#cabinet').hidden = true; $('#public-site').hidden = false;
+      $('#admin-content').replaceChildren();
+      $('.skip-link').href = '#hero';
+      if (location.hash.startsWith('#cabinet')) history.replaceState(null, '', location.pathname + location.search + '#hero');
+      renderPublic(); window.scrollTo({ top: publicScroll, behavior: 'instant' }); observeReveals();
+      document.title = 'DriveSchool.kz | Твоя свобода начинается за рулём';
+    }
+    function renderMediaPicker(key) {
+      const draft = mediaDrafts.get(key), container = $(`#picker-${key}`); if (!draft || !container) return;
+      container.innerHTML = `<div class="media-picker"><span class="field-label">${key === 'post' ? 'Фото и видео' : 'Фотография'}</span><div class="upload-zone" data-dropzone="${key}">${icon(draft.allowVideo ? 'upload' : 'image')}<br><button class="btn outline" type="button" data-action="pick-file" data-picker="${key}">${draft.multiple ? 'Выбрать файлы' : 'Загрузить фотографию'}</button><p>${draft.multiple ? 'Или перетащите сюда до 8 файлов' : 'Или перетащите сюда фотографию. Новая заменит предыдущую.'}</p><input type="file" id="file-${key}" data-upload="${key}" accept="image/jpeg,image/png,image/webp,image/gif${draft.allowVideo ? ',video/mp4,video/webm,video/ogg' : ''}" ${draft.multiple ? 'multiple' : ''} hidden></div><div class="media-preview-grid">${draft.items.map((item, index) => `<div class="media-preview">${mediaHTML(item, { alt: item.name || `Медиа ${index + 1}`, lazy: false })}<button class="icon-btn" type="button" data-action="remove-media" data-picker="${key}" data-index="${index}" aria-label="Удалить ${item.type === 'video' ? 'видео' : 'фотографию'}">${icon('x')}</button>${item.type === 'video' ? '<span class="media-type-label">Видео</span>' : ''}</div>`).join('')}</div><div class="url-row"><input type="url" id="media-url-${key}" aria-label="Ссылка на медиафайл" placeholder="Или ссылка https://...">${draft.allowVideo ? `<select id="media-type-${key}" aria-label="Тип медиа"><option value="image">Фото</option><option value="video">Видео</option></select>` : ''}<button class="btn outline" type="button" data-action="add-media-url" data-picker="${key}">Добавить</button></div><span class="hint">JPG, PNG, WebP, GIF до 10 МБ.${draft.allowVideo ? ' Видео MP4, WebM, OGG до 80 МБ. Для видео нужна прямая ссылка на файл, не ссылка на YouTube.' : ''} ${draft.multiple ? 'До 120 МБ новых файлов за одно сохранение. Первый файл станет обложкой.' : 'Рекомендуем горизонтальное фото.'}</span></div>`;
+      hydrateMedia(container);
+    }
+    function markPickerDirty(key) { if (key === 'hero') adminDirty = true; else modalDirty = true; }
+    async function addFiles(key, files) {
+      if (modalBusy || adminBusy) return toast('Дождитесь завершения сохранения.');
+      const draft = mediaDrafts.get(key); if (!draft) return;
+      const accepted = Array.from(files); if (!accepted.length) return;
+      const imageTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'], videoTypes = ['video/mp4', 'video/webm', 'video/ogg'];
+      const extensionTypes = { jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', webp: 'image/webp', gif: 'image/gif', mp4: 'video/mp4', webm: 'video/webm', ogv: 'video/ogg' };
+      try {
+        if ((!draft.multiple && accepted.length > 1) || (draft.multiple && draft.items.length + accepted.length > 8)) throw new Error(draft.multiple ? 'В одной записи может быть не больше 8 файлов.' : 'Выберите одну фотографию.');
+        const currentSize = draft.multiple ? draft.items.reduce((sum, item) => sum + (item._file?.size || 0), 0) : 0;
+        if (currentSize + accepted.reduce((sum, file) => sum + file.size, 0) > 120 * 1024 * 1024) throw new Error('Общий размер файлов не должен превышать 120 МБ.');
+        const items = accepted.map(file => {
+          const mime = file.type || extensionTypes[file.name.split('.').pop().toLowerCase()] || '';
+          const type = imageTypes.includes(mime) ? 'image' : videoTypes.includes(mime) ? 'video' : '';
+          if (!type || (type === 'video' && !draft.allowVideo)) throw new Error(`Формат «${file.name}» не поддерживается. Выберите JPG, PNG, WebP, GIF${draft.allowVideo ? ', MP4, WebM или OGG' : ''}.`);
+          if (!file.size || file.size > (type === 'video' ? 80 : 10) * 1024 * 1024) throw new Error(`Файл «${file.name}» должен быть меньше ${type === 'video' ? '80' : '10'} МБ и не быть пустым.`);
+          return { type, name: file.name, _file: file.type ? file : new Blob([file], { type: mime }), _asset: uid('asset') };
+        });
+        items.forEach(item => { item._preview = URL.createObjectURL(item._file); });
+        if (!draft.multiple) { draft.items.forEach(item => { if (item._preview) URL.revokeObjectURL(item._preview); if (item._stored && !assetIDs(state).has(item._asset)) removeBlobs([item._asset]).catch(() => {}); }); draft.items = []; }
+        draft.items.push(...items); markPickerDirty(key); renderMediaPicker(key);
+      } catch (error) { toast(error.message, true); }
+    }
+    function addMediaURL(key) {
+      const draft = mediaDrafts.get(key), input = $(`#media-url-${key}`); if (!draft || !input) return;
+      const source = safeURL(input.value.trim()), type = $(`#media-type-${key}`)?.value || 'image';
+      if (!source) { input.focus(); return toast('Укажите полную ссылку на файл, начинающуюся с https:// или http://.', true); }
+      if (type === 'video' && /(?:youtube\.com|youtu\.be|vimeo\.com)/i.test(new URL(source).hostname)) return toast('Нужна прямая ссылка на видеофайл MP4/WebM/OGG. Также можно загрузить видео с устройства.', true);
+      if (draft.multiple && draft.items.length >= 8) return toast('В одной записи может быть не больше 8 файлов.', true);
+      if (!draft.multiple) { draft.items.forEach(item => { if (item._preview) URL.revokeObjectURL(item._preview); if (item._stored && !assetIDs(state).has(item._asset)) removeBlobs([item._asset]).catch(() => {}); }); draft.items = []; }
+      draft.items.push({ type, src: source }); markPickerDirty(key); renderMediaPicker(key);
+    }
+    async function savePicker(key) {
+      const draft = mediaDrafts.get(key); if (!draft) return [];
+      if ($(`#media-url-${key}`)?.value.trim()) throw new Error('Нажмите «Добавить» рядом со ссылкой, чтобы прикрепить её, или очистите поле ссылки.');
+      const entries = draft.items.filter(item => item._file).map(item => ({ id: item._asset, blob: item._file }));
+      await putBlobs(entries);
+      draft.items.forEach(item => { if (item._file) item._stored = true; });
+      return draft.items.map(item => item._file ? { type: item.type, asset: item._asset, name: item.name } : cleanMedia([item])[0]).filter(Boolean);
+    }
+    function openPriceEditor(id = '') {
+      if (!requireAuth()) return;
+      const existing = state.prices.find(item => item.id === id);
+      if (id && !existing) return toast('Тариф уже удалён.', true);
+      const price = existing || { title: '', price: '', from: true, unit: 'за курс', description: '', popular: false, features: [] };
+      showModal(`<div class="modal-inner"><span class="eyebrow">Тарифы обучения</span><h2 class="modal-title" id="dialog-title">${existing ? 'Редактировать тариф' : 'Новый формат обучения'}</h2><p class="modal-description">Укажите стоимость и расскажите, что входит в обучение.</p><form data-form="price" data-edit-form data-id="${esc(id)}">${field('Название тарифа', 'title', price.title, { maxlength: 100, placeholder: 'Например: Теория в классе' })}<div class="form-grid">${field('Стоимость, ₸', 'price', price.price, { type: 'number', min: 0, max: 99999999 })}${field('За что указана цена', 'unit', price.unit, { maxlength: 100, placeholder: 'За курс / за 45 минут' })}</div><label class="checkbox-row" style="margin:16px 0 22px"><input type="checkbox" name="from" ${price.from ? 'checked' : ''}>Показывать «от» перед ценой</label>${field('Краткое описание', 'description', price.description, { type: 'textarea', maxlength: 300, rows: 2 })}${field('Что входит в тариф', 'features', price.features.join('\n'), { type: 'textarea', maxlength: 2600, rows: 5, hint: 'Каждое преимущество с новой строки. Не больше 15 пунктов.' })}<label class="checkbox-row"><input type="checkbox" name="popular" ${price.popular ? 'checked' : ''}>Выделить как рекомендуемый тариф. Предыдущее выделение будет снято.</label>${formErrorSlot}${formActions('Сохранить тариф')}</form></div>`);
+    }
+    function openCarEditor(id = '') {
+      if (!requireAuth()) return;
+      const existing = state.cars.find(item => item.id === id);
+      if (id && !existing) return toast('Автомобиль уже удалён.', true);
+      const car = existing || { title: '', year: new Date().getFullYear(), transmission: 'akpp', description: '', climate: 'Климат-контроль', pedals: true };
+      showModal(`<div class="modal-inner"><span class="eyebrow">Ваш автопарк</span><h2 class="modal-title" id="dialog-title">${existing ? 'Редактировать автомобиль' : 'Новая машина в автопарке'}</h2><p class="modal-description">Покажите ученикам автомобиль, на котором начнётся их путь.</p><form data-form="car" data-edit-form data-id="${esc(id)}">${field('Марка и модель', 'title', car.title, { maxlength: 100, placeholder: 'Например: Hyundai Accent' })}<div class="form-grid">${field('Год выпуска', 'year', car.year, { type: 'number', min: 1990, max: new Date().getFullYear() + 1 })}${selectField('Коробка передач', 'transmission', car.transmission, [['akpp', 'Автомат (АКПП)'], ['mkpp', 'Механика (МКПП)']])}</div><div style="margin-top:18px">${field('Описание автомобиля', 'description', car.description, { type: 'textarea', maxlength: 600, rows: 3, placeholder: 'Чем удобен автомобиль для обучения?' })}</div>${selectField('Климатическая система', 'climate', car.climate, [['Климат-контроль', 'Климат-контроль'], ['Кондиционер', 'Кондиционер'], ['', 'Не указана']])}<label class="checkbox-row"><input type="checkbox" name="pedals" ${car.pedals ? 'checked' : ''}>Установлены дублирующие педали</label><div id="picker-car"></div>${formErrorSlot}${formActions('Сохранить автомобиль')}</form></div>`, true);
+      mediaDrafts.set('car', { items: existing ? [clone(existing.image)] : [], multiple: false, allowVideo: false }); renderMediaPicker('car');
+    }
+    function openPostEditor(id = '') {
+      if (!requireAuth()) return;
+      const existing = state.posts.find(item => item.id === id);
+      if (id && !existing) return toast('Запись уже удалена.', true);
+      const post = existing || { title: '', excerpt: '', body: '', category: 'Советы', date: today(), status: 'draft', media: [] };
+      const categories = [...new Set(['Советы', 'Обучение', 'Жизнь школы', 'Новости', post.category])].map(item => [item, item]);
+      showModal(`<div class="modal-inner"><span class="eyebrow">Дневник автошколы</span><h2 class="modal-title" id="dialog-title">${existing ? 'Редактировать историю' : 'О чём расскажем сегодня?'}</h2><p class="modal-description">Добавьте текст, фотографии и видео. Черновик можно закончить позже.</p><form data-form="post" data-edit-form data-id="${esc(id)}">${field('Заголовок', 'title', post.title, { maxlength: 150, placeholder: 'У каждой истории есть начало...' })}${field('Краткое описание для ленты', 'excerpt', post.excerpt, { type: 'textarea', maxlength: 300, rows: 2, required: false, hint: 'Необязательно. Если оставить пустым, используем начало текста.' })}<div class="form-grid">${selectField('Рубрика', 'category', post.category, categories)}${field('Дата публикации', 'date', post.date, { type: 'date' })}</div><div style="margin-top:18px">${field('Ваша история', 'body', post.body, { type: 'textarea', maxlength: 50000, rows: 9, required: false, placeholder: 'Делитесь опытом, рассказывайте о занятиях, вдохновляйте...', hint: 'Можно опубликовать только фото или видео, без текста.' })}</div><div id="picker-post"></div><div style="margin-top:23px">${selectField('Статус записи', 'status', post.status, [['draft', 'Черновик: только в кабинете'], ['published', 'На сайте: видна посетителю этого браузера']])}</div>${formErrorSlot}${formActions('Сохранить запись')}</form></div>`, true);
+      mediaDrafts.set('post', { items: clone(post.media), multiple: true, allowVideo: true }); renderMediaPicker('post');
+    }
+    async function deleteItem(type, id) {
+      if (!requireAuth()) return;
+      const key = { car: 'cars', price: 'prices', post: 'posts' }[type]; if (!key) return;
+      const item = state[key].find(entry => entry.id === id); if (!item) return;
+      const names = { car: 'автомобиль', price: 'тариф', post: 'публикацию' };
+      if (!await askConfirm(`Удалить ${names[type]}?`, `«${item.title}» исчезнет с сайта в этом браузере. Связанные загруженные файлы также будут удалены, если больше нигде не используются.`)) return;
+      const next = clone(state); next[key] = next[key].filter(entry => entry.id !== id);
+      try { commitState(next, 'Запись удалена.'); } catch (error) { toast(error.message, true); }
+    }
+    function setMobileMenu(open) {
+      $('#mobile-nav').hidden = !open;
+      $('#menu-toggle').setAttribute('aria-expanded', String(open)); $('#menu-toggle').setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+      $('#menu-toggle').innerHTML = icon(open ? 'x' : 'menu');
+    }
+    function setAdminMenu(open) {
+      $('#cabinet-sidebar').classList.toggle('open', open); $('#admin-mobile-shade').classList.toggle('active', open);
+      $('#cabinet-sidebar').inert = innerWidth <= 760 && !open;
+      $('[data-action="admin-menu"]').setAttribute('aria-expanded', String(open));
+    }
+    async function submitForm(form) {
+      if (form.dataset.busy === 'true') return;
+      if (adminBusy || modalBusy) return toast('Дождитесь завершения текущей операции.');
+      const kind = form.dataset.form, data = new FormData(form), value = name => String(data.get(name) ?? '').trim();
+      const button = $('button[type="submit"]', form), originalButton = button?.innerHTML;
+      const controls = $$('input, select, textarea, button', form).map(element => ({ element, disabled: element.disabled }));
+      controls.forEach(({ element }) => { element.disabled = true; });
+      const inModal = modal.contains(form);
+      form.dataset.busy = 'true'; form.setAttribute('aria-busy', 'true');
+      if (inModal) modalBusy = true; else adminBusy = true;
+      if (button) { button.disabled = true; button.textContent = 'Подождите...'; }
+      const errorSlot = $('[data-error]', form); if (errorSlot) errorSlot.hidden = true;
+      try {
+        if (kind === 'register' || kind === 'login') {
+          const email = value('email').toLowerCase(), password = String(data.get('password') || '');
+          const storedOwner = readJSON(KEYS.owner, null);
+          if (kind === 'register') {
+            if (storedOwner?.hash) throw new Error('На этом устройстве уже создан кабинет. Закройте окно и войдите в существующую учётную запись.');
+            if (!value('name')) throw new Error('Пожалуйста, укажите ваше имя.');
+            if (password.length < 8) throw new Error('Пароль должен содержать не менее 8 символов.');
+            if (password !== String(data.get('confirmPassword'))) throw new Error('Пароли не совпадают. Проверьте повторный ввод.');
+            const salt = newSalt(), hash = await hashPassword(password, salt);
+            if (readJSON(KEYS.owner, null)?.hash) throw new Error('Кабинет только что создан в другой вкладке. Войдите в него.');
+            const nextOwner = { id: uid('owner'), name: value('name'), email, salt, hash, createdAt: new Date().toISOString() };
+            writeJSON(KEYS.owner, nextOwner); owner = nextOwner;
+          } else {
+            if (!storedOwner || storedOwner.email !== email || await hashPassword(password, storedOwner.salt) !== storedOwner.hash) throw new Error('Email или пароль не совпадают. Используйте учётную запись, созданную в этом браузере.');
+            owner = storedOwner;
+          }
+          authenticated = true;
+          try { sessionStorage.setItem(KEYS.session, owner.id); } catch (_) { toast('Вход действует до перезагрузки: сессионное хранилище недоступно.', true); }
+          await closeModal(true); renderPublic(); await navigateAdmin('overview');
+          toast(kind === 'register' ? 'Ваш локальный кабинет создан. Добро пожаловать!' : 'Вы вошли в кабинет.');
+          return;
+        }
+        if (kind === 'enroll') {
+          if (!value('name')) throw new Error('Подскажите, как к вам обращаться.');
+          const price = state.prices.find(item => item.id === value('price')), car = state.cars.find(item => item.id === value('car'));
+          if (value('price') && !price) throw new Error('Этот тариф изменился. Закройте форму и выберите актуальный формат.');
+          if (value('car') && !car) throw new Error('Этот автомобиль больше не доступен. Закройте форму и выберите другой.');
+          const message = [state.contacts.message, `Меня зовут ${value('name')}.`, price ? `Интересует ${price.title}: ${price.from ? 'от ' : ''}${money(price.price)} ₸, ${price.unit}.` : 'Помогите выбрать формат обучения.', car ? `Автомобиль: ${car.title}, ${car.transmission === 'akpp' ? 'АКПП' : 'МКПП'}.` : '', value('note') ? `Пожелание: ${value('note')}` : ''].filter(Boolean).join('\n');
+          const url = whatsappURL(message);
+          window.open(url, '_blank', 'noopener,noreferrer');
+          showModal(`<div class="modal-inner"><div class="success-mark">${icon('check')}</div><span class="eyebrow">Первый шаг сделан</span><h2 class="modal-title" id="dialog-title">Осталось отправить сообщение.</h2><p class="modal-description">Мы подготовили текст и открыли WhatsApp. Нажмите «Отправить» в чате, чтобы администратор получил ваше сообщение.</p><div class="message-preview">${esc(message)}</div><a class="btn primary full" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${icon('whatsapp')}Открыть WhatsApp${icon('arrow-up', 'sm')}</a><p class="hint" style="text-align:center;margin-top:14px">Если новая вкладка не открылась, воспользуйтесь кнопкой выше. Сайт сам не отправляет заявку.</p></div>`);
+          return;
+        }
+        if (!authenticated) throw new Error('Вход завершён. Сначала войдите в кабинет владельца.');
+        if (kind === 'price') {
+          if (!value('title')) throw new Error('Укажите название тарифа.');
+          const amount = Number(value('price'));
+          if (!value('price') || !Number.isSafeInteger(amount) || amount < 0 || amount > 99999999) throw new Error('Укажите целую стоимость от 0 до 99 999 999 ₸.');
+          const features = value('features').split('\n').map(item => item.trim()).filter(Boolean);
+          if (!features.length || features.length > 15 || features.some(item => item.length > 180)) throw new Error('Добавьте от 1 до 15 преимуществ, не длиннее 180 символов каждое.');
+          const next = clone(state), id = form.dataset.id || uid('price');
+          if (!form.dataset.id && next.prices.length >= 30) throw new Error('Можно создать не больше 30 тарифов.');
+          const item = { id, title: value('title'), price: amount, from: data.has('from'), unit: value('unit'), description: value('description'), popular: data.has('popular'), features };
+          if (item.popular) next.prices.forEach(price => { price.popular = false; });
+          const index = next.prices.findIndex(price => price.id === id);
+          if (index === -1) next.prices.push(item); else next.prices[index] = item;
+          commitState(next, 'Тариф сохранён. Цена обновлена на сайте.'); await closeModal(true); return;
+        }
+        if (kind === 'car') {
+          if (!value('title') || !value('description')) throw new Error('Добавьте название и описание автомобиля.');
+          const year = Number(value('year'));
+          if (!Number.isInteger(year) || year < 1990 || year > new Date().getFullYear() + 1) throw new Error('Проверьте год выпуска автомобиля.');
+          if (!mediaDrafts.get('car')?.items.length) throw new Error('Загрузите фотографию или добавьте ссылку на изображение.');
+          const next = clone(state), id = form.dataset.id || uid('car');
+          if (!form.dataset.id && next.cars.length >= 100) throw new Error('Можно добавить не больше 100 автомобилей.');
+          const images = await savePicker('car');
+          const item = { id, title: value('title'), year, transmission: value('transmission'), description: value('description'), climate: value('climate'), pedals: data.has('pedals'), image: images[0] };
+          const index = next.cars.findIndex(car => car.id === id); if (index === -1) next.cars.push(item); else next.cars[index] = item;
+          commitState(next, 'Автомобиль сохранён. Автопарк обновлён.'); await closeModal(true); return;
+        }
+        if (kind === 'post') {
+          if (!value('title')) throw new Error('Добавьте заголовок записи.');
+          if (!value('body') && !mediaDrafts.get('post')?.items.length) throw new Error('Добавьте текст, фотографию или видео для вашей истории.');
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(value('date')) || isNaN(Date.parse(value('date')))) throw new Error('Укажите корректную дату публикации.');
+          const next = clone(state), id = form.dataset.id || uid('post');
+          if (!form.dataset.id && next.posts.length >= 300) throw new Error('Можно добавить не больше 300 публикаций.');
+          const media = await savePicker('post');
+          const item = { id, title: value('title'), excerpt: value('excerpt') || value('body').replace(/\s+/g, ' ').slice(0, 180), body: value('body'), category: value('category'), date: value('date'), status: value('status') === 'published' ? 'published' : 'draft', media };
+          const index = next.posts.findIndex(post => post.id === id); if (index === -1) next.posts.unshift(item); else next.posts[index] = item;
+          commitState(next, item.status === 'published' ? 'Запись доступна на сайте в этом браузере.' : 'Черновик сохранён. Он виден только в кабинете.'); await closeModal(true); return;
+        }
+        if (kind === 'contacts') {
+          const phone = digits(value('phone')), whatsapp = digits(value('whatsapp'));
+          if (!isPhone(phone) || !isPhone(whatsapp)) throw new Error('Введите номера с кодом страны: от 8 до 15 цифр, без начального нуля. Например, +7 777 441 48 88.');
+          if (!value('address') || !value('hours') || !value('message')) throw new Error('Заполните адрес, часы работы и сообщение WhatsApp.');
+          const mapUrl = safeURL(value('mapUrl')), instagram = safeURL(value('instagram'));
+          if (!mapUrl) throw new Error('Добавьте корректную http(s)-ссылку на карту.');
+          if (value('instagram') && (!instagram || !['instagram.com', 'www.instagram.com'].includes(new URL(instagram).hostname))) throw new Error('Укажите ссылку на ваш профиль instagram.com или оставьте поле пустым.');
+          const next = clone(state); next.contacts = { phone, whatsapp, mode: value('mode') === 'web' ? 'web' : 'auto', message: value('message'), address: value('address'), hours: value('hours'), instagram, mapUrl };
+          commitState(next, 'Контакты сохранены. Все ссылки WhatsApp обновлены.'); return;
+        }
+        if (kind === 'appearance') {
+          if (!value('headline') || !value('description')) throw new Error('Заполните заголовок и описание первого экрана.');
+          if (!mediaDrafts.get('hero')?.items.length) throw new Error('Добавьте фотографию для первого экрана.');
+          const images = await savePicker('hero'), next = clone(state);
+          next.appearance = { accent: value('accent'), theme: value('theme'), headline: value('headline'), description: value('description'), hero: images[0] };
+          commitState(next, 'Новое оформление сохранено. Посмотрите его на сайте.');
+          try { localStorage.setItem(KEYS.theme, next.appearance.theme); } catch (_) {}
+          applyTheme(next.appearance.theme); return;
+        }
+        if (kind === 'profile') {
+          if (!value('name')) throw new Error('Укажите ваше имя.');
+          if (await hashPassword(String(data.get('currentPassword') || ''), owner.salt) !== owner.hash) throw new Error('Текущий пароль указан неверно. Изменения не сохранены.');
+          const nextOwner = { ...owner, name: value('name'), email: value('email').toLowerCase() };
+          const newPassword = String(data.get('newPassword') || ''), confirmPassword = String(data.get('confirmPassword') || '');
+          if (newPassword || confirmPassword) {
+            if (newPassword.length < 8) throw new Error('Новый пароль должен содержать не менее 8 символов.');
+            if (newPassword !== confirmPassword) throw new Error('Новые пароли не совпадают.');
+            nextOwner.salt = newSalt(); nextOwner.hash = await hashPassword(newPassword, nextOwner.salt); nextOwner.id = uid('owner');
+          }
+          writeJSON(KEYS.owner, nextOwner); owner = nextOwner;
+          try { sessionStorage.setItem(KEYS.session, owner.id); } catch (_) {}
+          adminDirty = false; renderAdmin(); renderPublic(); toast('Профиль обновлён.'); return;
+        }
+      } catch (error) { showFormError(form, error.message || 'Не удалось сохранить изменения. Попробуйте ещё раз.'); }
+      finally {
+        if (inModal) modalBusy = false; else adminBusy = false;
+        form.dataset.busy = 'false'; form.removeAttribute('aria-busy');
+        controls.forEach(({ element, disabled }) => { element.disabled = disabled; });
+        if (button?.isConnected) { button.disabled = false; button.innerHTML = originalButton; }
+      }
+    }
+    function readDataURL(blob) { return new Promise((resolve, reject) => { const reader = new FileReader(); reader.onload = () => resolve(reader.result); reader.onerror = () => reject(new Error('Не удалось прочитать файл для резервной копии.')); reader.readAsDataURL(blob); }); }
+    function decodeDataURL(data) {
+      if (typeof data !== 'string' || data.length > 120 * 1024 * 1024) throw new Error('Медиафайл в резервной копии слишком большой или повреждён.');
+      const comma = data.indexOf(','), header = data.slice(0, comma);
+      const match = /^data:(image\/(?:jpeg|png|webp|gif)|video\/(?:mp4|webm|ogg));base64$/.exec(header);
+      if (!match) throw new Error('Резервная копия содержит неподдерживаемый формат медиа.');
+      let binary;
+      try { binary = atob(data.slice(comma + 1)); } catch (_) { throw new Error('Повреждены медиафайлы в резервной копии.'); }
+      const maxSize = match[1].startsWith('video/') ? 80 : 10;
+      if (!binary.length || binary.length > maxSize * 1024 * 1024) throw new Error(`Медиафайл пуст или превышает ограничение ${maxSize} МБ.`);
+      const parts = [];
+      for (let offset = 0; offset < binary.length; offset += 65536) { const chunk = binary.slice(offset, offset + 65536); parts.push(Uint8Array.from(chunk, character => character.charCodeAt(0))); }
+      return new Blob(parts, { type: match[1] });
+    }
+    async function exportBackup(button) {
+      if (!requireAuth() || adminBusy) return;
+      const oldHTML = button.innerHTML; button.disabled = true; button.textContent = 'Готовим копию...'; adminBusy = true;
+      try {
+        const snapshot = clone(state), assets = [];
+        for (const id of assetIDs(snapshot)) { const blob = await getBlob(id); if (!(blob instanceof Blob)) throw new Error('Один из медиафайлов утрачен. Замените его перед созданием полной резервной копии.'); assets.push({ id, data: await readDataURL(blob) }); }
+        const content = { format: 'driveschool-backup', version: 1, createdAt: new Date().toISOString(), state: snapshot, assets };
+        const file = new Blob([JSON.stringify(content)], { type: 'application/json' });
+        if (file.size > 256 * 1024 * 1024) throw new Error('Копия больше 256 МБ. Замените самые большие загруженные видео прямыми ссылками, чтобы создать переносимую копию.');
+        const url = URL.createObjectURL(file);
+        const link = document.createElement('a'); link.href = url; link.download = `driveschool-backup-${today()}.json`; document.body.append(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 60000);
+        toast('Резервная копия подготовлена. Проверьте папку загрузок.');
+      } catch (error) { toast(error.message || 'Не удалось создать резервную копию.', true); }
+      finally { adminBusy = false; if (button.isConnected) { button.disabled = false; button.innerHTML = oldHTML; } }
+    }
+    async function importBackup(file) {
+      if (!file || !requireAuth() || adminBusy) return;
+      let staged = [];
+      adminBusy = true;
+      try {
+        if (file.size > 256 * 1024 * 1024) throw new Error('Размер резервной копии не должен превышать 256 МБ.');
+        let backup;
+        try { backup = JSON.parse(await file.text()); } catch (_) { throw new Error('Не удалось прочитать JSON. Выберите резервную копию, созданную в DriveSchool.'); }
+        if (!backup || backup.format !== 'driveschool-backup' || backup.version !== 1 || !Array.isArray(backup.assets)) throw new Error('Это не резервная копия DriveSchool или её версия не поддерживается.');
+        const next = normaliseState(backup.state, true), requiredAssets = assetIDs(next);
+        const sourceAssets = new Map(backup.assets.filter(item => item && typeof item.id === 'string').map(item => [item.id, item.data]));
+        for (const id of requiredAssets) if (!sourceAssets.has(id)) throw new Error('В резервной копии отсутствуют необходимые медиафайлы.');
+        if (!await askConfirm('Восстановить сайт из копии?', `Будут восстановлены тарифы (${next.prices.length}), автомобили (${next.cars.length}) и записи (${next.posts.length}). Текущее содержимое и несохранённые правки будут заменены. Учётная запись останется прежней.`, 'Восстановить')) return;
+        const remap = new Map(), entries = [];
+        for (const id of requiredAssets) { const newId = uid('asset'); remap.set(id, newId); entries.push({ id: newId, blob: decodeDataURL(sourceAssets.get(id)) }); }
+        [next.appearance.hero, ...next.cars.map(car => car.image), ...next.posts.flatMap(post => post.media)].forEach(media => { if (media.asset) media.asset = remap.get(media.asset); });
+        staged = entries.map(entry => entry.id);
+        await putBlobs(entries); commitState(next, 'Сайт восстановлен из резервной копии в этом браузере.'); staged = [];
+      } catch (error) { const referenced = assetIDs(state); await removeBlobs(staged.filter(id => !referenced.has(id))).catch(() => {}); toast(error.message || 'Не удалось восстановить резервную копию.', true); }
+      finally { adminBusy = false; $('#backup-input').value = ''; }
+    }
+    async function logout() {
+      if (adminBusy || modalBusy) return toast('Дождитесь завершения сохранения.');
+      if ((adminDirty || modalDirty) && !await askConfirm('Выйти без сохранения?', 'Несохранённые изменения будут потеряны.', 'Выйти')) return;
+      authenticated = false;
+      try { sessionStorage.removeItem(KEYS.session); } catch (_) {}
+      if (modal.open) await closeModal(true);
+      await viewSite(true); toast('Вы вышли из кабинета. Изменения сайта сохранены.');
+    }
+    function updateWhatsAppPreview(form) {
+      const data = new FormData(form), link = $('#whatsapp-preview'); if (!link) return;
+      const phone = digits(data.get('whatsapp'));
+      if (isPhone(phone)) { link.href = whatsappURL(String(data.get('message') || ''), { whatsapp: phone, mode: data.get('mode') }); link.removeAttribute('aria-disabled'); link.removeAttribute('tabindex'); }
+      else { link.removeAttribute('href'); link.setAttribute('aria-disabled', 'true'); link.tabIndex = -1; }
+    }
+    async function handleAction(button) {
+      const action = button.dataset.action, id = button.dataset.id;
+      if (['add-car', 'add-price', 'add-post', 'edit-car', 'edit-price', 'edit-post', 'delete-car', 'delete-price', 'delete-post', 'pick-file', 'add-media-url', 'remove-media'].includes(action) && (adminBusy || modalBusy)) return toast('Дождитесь завершения сохранения.');
+      switch (action) {
+        case 'theme': toggleTheme(); break;
+        case 'account': authenticated ? await navigateAdmin('overview') : openAuth(); break;
+        case 'mobile-menu': setMobileMenu($('#mobile-nav').hidden); break;
+        case 'admin-menu': setAdminMenu(!$('#cabinet-sidebar').classList.contains('open')); break;
+        case 'admin-menu-close': setAdminMenu(false); break;
+        case 'view-site': await viewSite(); break;
+        case 'close-modal': await closeModal(); break;
+        case 'enroll': openEnrollment(button.dataset.car, button.dataset.price); break;
+        case 'read-post': openPost(id); break;
+        case 'more-posts': blogLimit += 6; renderPosts(); break;
+        case 'privacy': showPrivacy(); break;
+        case 'add-price': openPriceEditor(); break;
+        case 'edit-price': openPriceEditor(id); break;
+        case 'add-car': openCarEditor(); break;
+        case 'edit-car': openCarEditor(id); break;
+        case 'add-post': openPostEditor(); break;
+        case 'edit-post': openPostEditor(id); break;
+        case 'delete-price': await deleteItem('price', id); break;
+        case 'delete-car': await deleteItem('car', id); break;
+        case 'delete-post': await deleteItem('post', id); break;
+        case 'pick-file': $(`#file-${button.dataset.picker}`)?.click(); break;
+        case 'add-media-url': addMediaURL(button.dataset.picker); break;
+        case 'remove-media': {
+          const key = button.dataset.picker, draft = mediaDrafts.get(key), index = Number(button.dataset.index);
+          if (draft?.items[index]) { const [item] = draft.items.splice(index, 1); if (item._preview) URL.revokeObjectURL(item._preview); if (item._stored && !assetIDs(state).has(item._asset)) removeBlobs([item._asset]).catch(() => {}); markPickerDirty(key); renderMediaPicker(key); }
+          break;
+        }
+        case 'logout': await logout(); break;
+        case 'export-backup': await exportBackup(button); break;
+        case 'import-backup': if (requireAuth() && !adminBusy) { $('#backup-input').value = ''; $('#backup-input').click(); } break;
+      }
+    }
+    document.addEventListener('click', event => {
+      const element = event.target instanceof Element ? event.target : event.target.parentElement;
+      const action = element.closest('[data-action]');
+      if (action) { event.preventDefault(); handleAction(action).catch(error => toast(error.message || 'Не удалось выполнить действие.', true)); return; }
+      const page = element.closest('[data-admin-page]'); if (page) { navigateAdmin(page.dataset.adminPage).catch(error => toast(error.message, true)); return; }
+      const fleet = element.closest('[data-fleet-filter]'); if (fleet) { fleetFilter = fleet.dataset.fleetFilter; renderFleet(); return; }
+      const blog = element.closest('[data-blog-filter]'); if (blog) { blogFilter = blog.dataset.blogFilter; blogLimit = 3; renderPosts(); return; }
+      const adminFilter = element.closest('[data-admin-post-filter]'); if (adminFilter) { adminPostFilter = adminFilter.dataset.adminPostFilter; renderAdminPostsList(); return; }
+      const passwordToggle = element.closest('[data-password-toggle]');
+      if (passwordToggle) { const input = document.getElementById(passwordToggle.dataset.passwordToggle); const visible = input.type === 'password'; input.type = visible ? 'text' : 'password'; passwordToggle.innerHTML = icon(visible ? 'eye-off' : 'eye'); passwordToggle.setAttribute('aria-label', visible ? 'Скрыть пароль' : 'Показать пароль'); return; }
+      if (element.closest('#mobile-nav a')) setMobileMenu(false);
+      else if (!element.closest('#site-header') && !$('#mobile-nav').hidden) setMobileMenu(false);
+    });
+    document.addEventListener('submit', event => {
+      const form = event.target;
+      if (!(form instanceof HTMLFormElement) || !form.matches('[data-form]')) return;
+      event.preventDefault(); if (form.reportValidity()) submitForm(form);
+    });
+    document.addEventListener('input', event => {
+      const element = event.target;
+      if (element.closest('[data-edit-form]')) modalDirty = true;
+      if (element.closest('[data-admin-form]')) adminDirty = true;
+      if (element.id === 'admin-post-search') { adminSearch = element.value; renderAdminPostsList(); }
+      const contactsForm = element.closest('form[data-form="contacts"]'); if (contactsForm) updateWhatsAppPreview(contactsForm);
+    });
+    document.addEventListener('change', event => {
+      const element = event.target;
+      if (element.matches('[data-upload]')) addFiles(element.dataset.upload, element.files);
+      if (element.id === 'backup-input') importBackup(element.files[0]);
+      if (element.closest('[data-edit-form]')) modalDirty = true;
+      if (element.closest('[data-admin-form]')) adminDirty = true;
+      const contactsForm = element.closest('form[data-form="contacts"]'); if (contactsForm) updateWhatsAppPreview(contactsForm);
+    });
+    document.addEventListener('dragover', event => { const zone = event.target instanceof Element ? event.target.closest('[data-dropzone]') : null; if (mediaDrafts.size && Array.from(event.dataTransfer?.types || []).includes('Files')) event.preventDefault(); if (zone) { event.preventDefault(); zone.classList.add('dragging'); } });
+    document.addEventListener('dragleave', event => { const zone = event.target instanceof Element ? event.target.closest('[data-dropzone]') : null; if (zone && !zone.contains(event.relatedTarget)) zone.classList.remove('dragging'); });
+    document.addEventListener('drop', event => { const zone = event.target instanceof Element ? event.target.closest('[data-dropzone]') : null; if (mediaDrafts.size && event.dataTransfer?.files.length) event.preventDefault(); if (zone) { event.preventDefault(); zone.classList.remove('dragging'); addFiles(zone.dataset.dropzone, event.dataTransfer.files); } });
+    document.addEventListener('error', event => { if (event.target instanceof HTMLImageElement || event.target instanceof HTMLVideoElement) markFailedMedia(event.target); }, true);
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !modal.open && !confirmation.open) { setMobileMenu(false); setAdminMenu(false); }
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's') {
+        const form = modal.open ? $('form[data-edit-form]', modal) : !$('#cabinet').hidden ? $('[data-admin-form]', $('#admin-content')) : null;
+        if (form && !modalBusy && !adminBusy) { event.preventDefault(); form.requestSubmit(); }
+      }
+    });
+    modal.addEventListener('cancel', event => { event.preventDefault(); closeModal(); });
+    modal.addEventListener('click', event => { if (event.target === modal) { const bounds = modal.getBoundingClientRect(); if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) closeModal(); } });
+    window.addEventListener('beforeunload', event => { if (adminDirty || modalDirty || adminBusy || modalBusy) { event.preventDefault(); event.returnValue = ''; } });
+    window.addEventListener('resize', () => { if (innerWidth > 760) { setMobileMenu(false); setAdminMenu(false); } else $('#cabinet-sidebar').inert = !$('#cabinet-sidebar').classList.contains('open'); });
+    window.addEventListener('scroll', () => { $('#site-header').classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { if (getThemePreference() === 'system') applyTheme(); });
+    window.addEventListener('storage', event => {
+      if (event.key === KEYS.theme) { applyTheme(); return; }
+      if (event.key === KEYS.owner || event.key === null) {
+        owner = readJSON(KEYS.owner, null);
+        try { authenticated = Boolean(owner?.id && sessionStorage.getItem(KEYS.session) === owner.id); } catch (_) { authenticated = false; }
+        if (!authenticated) { if (modal.open) closeModal(true); viewSite(true); toast('Учётная запись изменена. Войдите снова.'); }
+        else if (!adminDirty && !$('#cabinet').hidden) renderAdmin();
+        renderPublic();
+      }
+      if (event.key === KEYS.site || event.key === null) {
+        if (adminDirty || modalDirty || adminBusy || modalBusy) { toast('Сайт изменён в другой вкладке. Сохранение проверит конфликт, чтобы не потерять данные.', true); return; }
+        try { state = normaliseState(readJSON(KEYS.site, clone(DEFAULTS))); renderPublic(); if (!$('#cabinet').hidden) renderAdmin(); } catch (_) { toast('Не удалось прочитать изменения из другой вкладки.', true); }
+      }
+    });
+    if ('IntersectionObserver' in window) {
+      const navigationObserver = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) $$('.desktop-nav a').forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`)); }); }, { rootMargin: '-15% 0px -65% 0px', threshold: 0 });
+      ['fleet', 'instructors', 'pricing', 'blog', 'contacts'].forEach(id => navigationObserver.observe(document.getElementById(id)));
+    }
+    renderPublic(); observeReveals();
+    if (location.hash && !location.hash.startsWith('#cabinet')) { const target = document.getElementById(location.hash.slice(1)); if (target) setTimeout(() => target.scrollIntoView({ behavior: 'instant' }), 150); }
+    if (location.hash.startsWith('#cabinet')) authenticated ? navigateAdmin('overview') : openAuth();
+  </script>
+</body>
+</html>

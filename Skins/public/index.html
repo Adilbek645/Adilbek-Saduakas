@@ -1,0 +1,2282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkinForge — Маркетплейс скинов и кейсов</title>
+<style>
+/* ================================================================
+   SkinForge — полная дизайн-система
+   Тёмный «арсенальный» стиль: неон, скошенные грани, сетка.
+   ================================================================ */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --void:#05060c;--panel:#0b0e1a;--panel2:#101528;--line:#1d2440;
+  --neon:#7c5cff;--cyan:#29e7ff;--lime:#b6ff3d;--ember:#ff6b2c;
+  --danger:#ff5f6d;--warn:#f5c451;
+  --font-sans:'Inter',system-ui,-apple-system,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,'Courier New',monospace;
+}
+html{color-scheme:dark;scroll-behavior:smooth}
+body{
+  font-family:var(--font-sans);color:#e7ecff;background:var(--void);
+  background-image:
+    radial-gradient(900px 600px at 8% -10%,rgba(124,92,255,.22),transparent 60%),
+    radial-gradient(700px 500px at 100% 0%,rgba(41,231,255,.14),transparent 55%),
+    linear-gradient(180deg,#05060c 0%,#070912 40%,#05060c 100%);
+  background-attachment:fixed;min-height:100vh;line-height:1.6;
+}
+::selection{background:rgba(124,92,255,.4)}
+a{color:var(--cyan);text-decoration:none;transition:color .2s}
+a:hover{color:#7de8ff}
+img{display:block;max-width:100%}
+button{cursor:pointer;font-family:inherit}
+input,select,textarea{font-family:inherit;color:inherit}
+
+/* ---------- scrollbar ---------- */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--void)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--neon),var(--cyan))}
+
+/* ---------- утилитарные классы ---------- */
+.container{max-width:1280px;margin:0 auto;padding:0 1rem}
+.grid-lines{
+  background-image:
+    linear-gradient(rgba(124,92,255,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(124,92,255,.06) 1px,transparent 1px);
+  background-size:42px 42px;
+}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.flex{display:flex}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}
+.items-center{align-items:center}.justify-between{justify-content:space-between}
+.gap-1{gap:.25rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}
+.grid{display:grid}
+.sm-2{grid-template-columns:repeat(2,1fr)}.sm-3{grid-template-columns:repeat(3,1fr)}.sm-4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:640px){.sm-2,.sm-3,.sm-4{grid-template-columns:1fr}}
+@media(min-width:641px) and (max-width:1023px){.sm-3,.sm-4{grid-template-columns:repeat(2,1fr)}}
+.text-center{text-align:center}.text-right{text-align:right}
+.w-full{width:100%}.mt-auto{margin-top:auto}
+.hidden{display:none!important}.block{display:block}
+.relative{position:relative}.overflow-hidden{overflow:hidden}
+
+/* ---------- типографика ---------- */
+.mono-label{
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.22em;
+  text-transform:uppercase;color:#7e8bab;
+}
+.display{
+  font-family:var(--font-sans);font-weight:900;letter-spacing:.02em;
+  text-transform:uppercase;line-height:.95;
+}
+.gradient-text{
+  background:linear-gradient(96deg,#fff 10%,var(--lime) 45%,var(--cyan) 78%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* ---------- панели ---------- */
+.panel{
+  position:relative;
+  background:linear-gradient(160deg,rgba(23,29,52,.9),rgba(9,12,22,.92));
+  border:1px solid var(--line);backdrop-filter:blur(8px);
+}
+.panel-glow::before{
+  content:"";position:absolute;inset:-1px;z-index:-1;
+  background:linear-gradient(120deg,rgba(124,92,255,.55),transparent 40%,rgba(41,231,255,.35));
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%);
+}
+.clip-corner{clip-path:polygon(0 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%)}
+.clip-sm{clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%)}
+
+/* ---------- кнопки ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.7rem 1.35rem;font-family:var(--font-mono);font-size:.75rem;
+  letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+  border:1px solid transparent;background:none;color:inherit;
+  transition:transform .15s,filter .15s,background .2s;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);
+}
+.btn:active{transform:translateY(1px)}
+.btn-primary{
+  background:linear-gradient(96deg,var(--neon),var(--cyan));color:var(--void);
+  box-shadow:0 0 0 1px rgba(124,92,255,.4),0 12px 34px -12px rgba(41,231,255,.7);
+}
+.btn-primary:hover{filter:brightness(1.12)}
+.btn-lime{background:linear-gradient(96deg,var(--lime),var(--cyan));color:var(--void)}
+.btn-ghost{background:rgba(255,255,255,.04);border-color:var(--line);color:#cbd5ff}
+.btn-ghost:hover{background:rgba(124,92,255,.16);border-color:rgba(124,92,255,.6)}
+.btn-danger{background:rgba(255,95,109,.12);border-color:rgba(255,95,109,.5);color:#ff98a2}
+.btn-danger:hover{background:rgba(255,95,109,.24)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+
+/* ---------- поля ввода ---------- */
+.field{
+  width:100%;background:rgba(5,7,15,.85);border:1px solid var(--line);
+  color:#e7ecff;padding:.65rem .85rem;font-size:.9rem;outline:none;
+  transition:border-color .15s,box-shadow .15s;
+}
+.field:focus{border-color:rgba(124,92,255,.8);box-shadow:0 0 0 3px rgba(124,92,255,.16)}
+.field::placeholder{color:#5c668a}
+select.field option{background:#0b0e1a}
+textarea.field{resize:vertical;min-height:80px}
+
+/* ---------- карточки ---------- */
+.skin-card{
+  position:relative;overflow:hidden;
+  transition:transform .2s,border-color .2s;
+}
+.skin-card:hover{transform:translateY(-4px);border-color:rgba(124,92,255,.55)}
+.skin-card::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+  background:var(--rarity,var(--neon));
+  box-shadow:0 0 18px 2px var(--rarity,var(--neon));
+}
+.skin-img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  background:linear-gradient(135deg,var(--panel2),var(--void));
+}
+
+/* ---------- анимации ---------- */
+@keyframes float-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(124,92,255,.5)}70%{box-shadow:0 0 0 18px rgba(124,92,255,0)}100%{box-shadow:0 0 0 0 rgba(124,92,255,0)}}
+@keyframes drop-in{from{opacity:0;transform:scale(.7) rotate(-6deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes roll{from{transform:translateX(0)}to{transform:translateX(var(--roll-to,-60%))}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.anim-fade{animation:fadeIn .4s ease-out both}
+.float{animation:float-slow 7s ease-in-out infinite}
+.drop-in{animation:drop-in .6s cubic-bezier(.2,1.4,.4,1) forwards}
+
+/* ---------- бейджи редкости ---------- */
+.rarity-common{--r:#9aa4b2}.rarity-uncommon{--r:#5e9bd8}.rarity-rare{--r:#4b69ff}
+.rarity-epic{--r:#8847ff}.rarity-legendary{--r:#d32ce6}.rarity-mythical{--r:#ff9a3c}.rarity-exotic{--r:#ff3b3b}
+
+/* ---------- модальное окно ---------- */
+.modal-overlay{
+  position:fixed;inset:0;z-index:1000;background:rgba(5,6,12,.85);
+  backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.modal-overlay.active{opacity:1;pointer-events:auto}
+.modal-box{
+  max-width:520px;width:95%;max-height:90vh;overflow-y:auto;
+  animation:fadeIn .35s ease-out both;
+}
+
+/* ---------- toast ---------- */
+.toast{
+  position:fixed;top:5.5rem;right:1rem;z-index:2000;min-width:260px;max-width:400px;
+  padding:1rem 1.2rem;border-left:4px solid var(--cyan);background:var(--panel);
+  font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;
+  transform:translateX(120%);transition:transform .4s ease;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%);
+}
+.toast.show{transform:none}
+.toast.error{border-color:var(--danger);color:#ff98a2}
+.toast.ok{border-color:var(--lime);color:var(--lime)}
+
+/* ---------- таблицы ---------- */
+.sf-table{width:100%;border-collapse:collapse;text-align:left;font-size:.82rem}
+.sf-table th{
+  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:#5c668a;padding:.75rem .8rem;border-bottom:1px solid var(--line);
+}
+.sf-table td{padding:.75rem .8rem;border-bottom:1px solid rgba(29,36,64,.5)}
+.sf-table tr:last-child td{border-bottom:none}
+.sf-table a{color:#e7ecff}.sf-table a:hover{color:var(--cyan)}
+
+/* ---------- навигация ---------- */
+.header{
+  position:sticky;top:0;z-index:500;border-bottom:1px solid rgba(29,36,64,.8);
+  background:rgba(5,6,12,.85);backdrop-filter:blur(16px);
+}
+.header-inner{
+  display:flex;align-items:center;gap:1rem;height:4rem;padding:0 1rem;
+  max-width:1280px;margin:0 auto;
+}
+.logo{display:flex;align-items:center;gap:.6rem}
+.logo-mark{
+  width:2.2rem;height:2.2rem;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--neon),var(--cyan));
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%);
+  font-family:var(--font-mono);font-size:.75rem;font-weight:900;color:var(--void);
+}
+.logo-text{font-weight:900;font-size:1.25rem;letter-spacing:.04em;text-transform:uppercase;color:#fff}
+.logo-text span{color:var(--cyan)}
+.nav-links{display:flex;gap:.25rem;margin-left:1rem}
+.nav-links a{
+  padding:.4rem .75rem;font-family:var(--font-mono);font-size:.68rem;
+  letter-spacing:.18em;text-transform:uppercase;color:#94a3b8;
+  transition:color .2s;
+}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.header-right{margin-left:auto;display:flex;align-items:center;gap:.5rem}
+.balance-badge{
+  display:flex;align-items:center;gap:.5rem;border:1px solid var(--line);
+  background:var(--panel);padding:.35rem .75rem;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%);
+  font-family:var(--font-mono);font-size:.72rem;
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .header-right .btn span{display:none}
+}
+
+/* ---------- секции ---------- */
+section{padding:3rem 0}
+.section-title{margin-bottom:1.5rem}
+.section-title h2{
+  font-size:clamp(1.8rem,5vw,2.8rem);line-height:.95;font-weight:900;
+  text-transform:uppercase;color:#fff;
+}
+
+/* ---------- footer ---------- */
+.footer{border-top:1px solid var(--line);background:rgba(5,6,12,.7)}
+.footer-grid{display:grid;gap:2rem;padding:3rem 0}
+@media(min-width:768px){.footer-grid{grid-template-columns:2fr 1fr 1fr 1fr}}
+.footer-copy{
+  border-top:1px solid rgba(29,36,64,.7);padding:1rem 0;text-align:center;
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.24em;
+  text-transform:uppercase;color:#475569;
+}
+
+/* ---------- загрузчик файлов ---------- */
+.upload-zone{
+  border:2px dashed var(--line);background:rgba(5,7,15,.6);padding:1.2rem;
+  text-align:center;cursor:pointer;transition:border-color .2s,background .2s;
+}
+.upload-zone:hover{border-color:rgba(124,92,255,.7);background:rgba(124,92,255,.05)}
+.upload-zone.drag-over{border-color:var(--lime);background:rgba(182,255,61,.05)}
+.upload-preview{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+.upload-preview .thumb{
+  width:5rem;height:4rem;border:1px solid var(--line);object-fit:cover;
+  position:relative;overflow:hidden;
+}
+.upload-preview .thumb .remove{
+  position:absolute;top:2px;right:2px;background:rgba(0,0,0,.7);
+  border:1px solid var(--danger);color:var(--danger);
+  font-size:.55rem;width:16px;height:16px;display:grid;place-items:center;cursor:pointer;
+}
+
+/* ---------- чекбокс-список ---------- */
+.checkbox-list{
+  max-height:12rem;overflow-y:auto;border:1px solid var(--line);background:rgba(5,7,15,.6);padding:.5rem;
+}
+.checkbox-list label{
+  display:flex;align-items:center;gap:.5rem;padding:.35rem .5rem;
+  font-family:var(--font-mono);font-size:.72rem;color:#cbd5e1;cursor:pointer;
+}
+.checkbox-list label:hover{background:rgba(124,92,255,.1)}
+
+/* ---------- рулетка ---------- */
+.case-reel-wrap{position:relative;height:9rem;overflow:hidden;background:rgba(5,6,12,.6)}
+.case-reel-wrap .marker{
+  position:absolute;left:50%;top:0;bottom:0;width:3px;transform:translateX(-50%);
+  background:var(--lime);z-index:10;box-shadow:0 0 18px 4px rgba(182,255,61,.7);
+}
+.case-reel-wrap .fade-l,.case-reel-wrap .fade-r{
+  position:absolute;top:0;bottom:0;width:3rem;z-index:5;
+}
+.case-reel-wrap .fade-l{left:0;background:linear-gradient(90deg,var(--void),transparent)}
+.case-reel-wrap .fade-r{right:0;background:linear-gradient(-90deg,var(--void),transparent)}
+.case-reel{
+  display:flex;gap:.75rem;height:100%;align-items:center;padding:0 1rem;
+  transition:none;
+}
+.case-reel.rolling{
+  animation:roll 2.8s cubic-bezier(.08,.82,.05,1) forwards;
+}
+.reel-item{
+  flex:0 0 7rem;height:7rem;position:relative;overflow:hidden;
+  border:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column;
+  justify-content:flex-end;
+}
+.reel-item::before{
+  content:"";position:absolute;inset:0;opacity:.6;
+}
+.reel-item span{
+  position:relative;z-index:2;background:rgba(5,6,12,.8);
+  padding:.2rem .4rem;font-family:var(--font-mono);font-size:.5rem;
+  text-transform:uppercase;letter-spacing:.1em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+
+/* ---------- drag-handle ---------- */
+.drag-indicator{
+  position:absolute;left:50%;top:-6px;transform:translateX(-50%);
+  width:32px;height:5px;background:var(--line);border-radius:2px;
+}
+
+/* ---------- pagnation tabs ---------- */
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
+.tab-btn{
+  border:1px solid var(--line);background:transparent;color:#94a3b8;
+  padding:.55rem 1rem;font-family:var(--font-mono);font-size:.68rem;
+  letter-spacing:.16em;text-transform:uppercase;transition:all .2s;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%);
+}
+.tab-btn.active{border-color:var(--neon);background:rgba(124,92,255,.2);color:#fff}
+.tab-btn:hover{color:#fff}
+
+/* ---------- фильтры ---------- */
+.chip{
+  display:inline-block;border:1px solid var(--line);background:transparent;
+  padding:.4rem .75rem;font-family:var(--font-mono);font-size:.65rem;
+  letter-spacing:.16em;text-transform:uppercase;color:#94a3b8;
+  transition:all .2s;cursor:pointer;
+}
+.chip.active{border-color:var(--neon);background:rgba(124,92,255,.2);color:#fff}
+.chip:hover{color:#fff}
+
+/* ---------- статистика карточки ---------- */
+.stat-card{padding:1.25rem}
+.stat-card .value{font-size:2rem;font-weight:900;line-height:1;color:#fff;margin:.3rem 0}
+.stat-card .label{font-size:.62rem}
+
+/* ---------- инвентарь карточка ---------- */
+.inv-row{
+  display:flex;flex-wrap:wrap;align-items:center;gap:1rem;
+  padding:1rem;border:1px solid rgba(29,36,64,.5);background:rgba(5,7,15,.5);
+  margin-bottom:.5rem;
+}
+.inv-row img{width:5rem;height:3.5rem;object-fit:cover;border:1px solid var(--line)}
+.inv-row .info{flex:1;min-width:120px}
+.inv-row .info .title{font-weight:700;color:#fff}
+.inv-row .info .meta{font-family:var(--font-mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.16em;color:#5c668a}
+.inv-row .actions{margin-left:auto}
+
+/* ---------- notice ---------- */
+.notice{
+  padding:.75rem 1rem;font-family:var(--font-mono);font-size:.68rem;
+  text-transform:uppercase;letter-spacing:.14em;border-left:4px solid;
+}
+.notice.ok{border-color:var(--lime);background:rgba(182,255,61,.08);color:var(--lime)}
+.notice.error{border-color:var(--danger);background:rgba(255,95,109,.08);color:#ff98a2}
+.notice.warn{border-color:var(--warn);background:rgba(245,196,81,.08);color:var(--warn)}
+.notice.info{border-color:var(--cyan);background:rgba(41,231,255,.08);color:var(--cyan)}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ HEADER -->
+<header class="header" id="appHeader"></header>
+
+<!-- ============================================================ MAIN -->
+<main id="appMain"></main>
+
+<!-- ============================================================ FOOTER -->
+<footer class="footer" id="appFooter"></footer>
+
+<!-- ============================================================ MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box" id="modalBox"></div>
+</div>
+
+<!-- ============================================================ TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ====================================================================
+   SkinForge — полный SPA на vanilla JS
+   Всё в одном файле: данные, авторизация, каталог, блог, личные кабинеты.
+   ==================================================================== */
+
+// ======================== УТИЛИТЫ ========================
+
+const $ = (sel, ctx) => (ctx || document).querySelector(sel);
+const $$ = (sel, ctx) => [...(ctx || document).querySelectorAll(sel)];
+
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
+
+function money(k) {
+  if (!k && k !== 0) return '—';
+  const v = (k||0)/100;
+  return new Intl.NumberFormat('ru-RU',{minimumFractionDigits:v%1===0?0:2,maximumFractionDigits:2}).format(v)+' ₽';
+}
+
+function parseMoney(s) {
+  const v = parseFloat(String(s).replace(/\s/g,'').replace(',','.'));
+  return (!isFinite(v)||v<0)?0:Math.round(v*100);
+}
+
+function formatDate(d) {
+  if (!d) return '—';
+  return new Intl.DateTimeFormat('ru-RU',{day:'2-digit',month:'short',year:'numeric'}).format(new Date(d));
+}
+
+const RARITIES = [
+  {key:'common',label:'Ширпотреб',color:'#9aa4b2'},
+  {key:'uncommon',label:'Промышленное',color:'#5e9bd8'},
+  {key:'rare',label:'Армейское',color:'#4b69ff'},
+  {key:'epic',label:'Запрещённое',color:'#8847ff'},
+  {key:'legendary',label:'Засекреченное',color:'#d32ce6'},
+  {key:'mythical',label:'Тайное',color:'#ff9a3c'},
+  {key:'exotic',label:'Контрабанда',color:'#ff3b3b'},
+];
+
+const EXTERIORS = ['Factory New','Minimal Wear','Field-Tested','Well-Worn','Battle-Scarred'];
+
+const STATUS_MAP = {
+  pending:{label:'На модерации',color:'#f5c451'},
+  approved:{label:'Опубликовано',color:'#4ade80'},
+  rejected:{label:'Отклонено',color:'#ff5f6d'},
+};
+
+function rarityInfo(key) { return RARITIES.find(r=>r.key===key)||RARITIES[0]; }
+function statusInfo(key) { return STATUS_MAP[key]||STATUS_MAP.pending; }
+
+function escHtml(s) {
+  const d=document.createElement('div');d.textContent=s;return d.innerHTML;
+}
+
+function fileToDataURL(file) {
+  return new Promise((resolve,reject) => {
+    const r=new FileReader();
+    r.onload=()=>resolve(r.result);
+    r.onerror=reject;
+    r.readAsDataURL(file);
+  });
+}
+
+function toast(msg, type='ok') {
+  const el=$('#toast');
+  el.textContent=msg;
+  el.className='toast '+type;
+  requestAnimationFrame(()=>el.classList.add('show'));
+  clearTimeout(toast._t);
+  toast._t=setTimeout(()=>el.classList.remove('show'),3500);
+}
+
+function openModal(html) {
+  $('#modalBox').innerHTML=html;
+  $('#modalOverlay').classList.add('active');
+}
+
+function closeModal() {
+  $('#modalOverlay').classList.remove('active');
+}
+
+$('#modalOverlay').addEventListener('click',e=>{ if(e.target===e.currentTarget) closeModal(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+function navigate(page, params={}) {
+  APP.page=page;
+  APP.params=params;
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ======================== STORE (localStorage) ========================
+
+const Store = {
+  get(key, fallback) {
+    try { const v=localStorage.getItem('sf_'+key); return v?JSON.parse(v):fallback; }
+    catch { return fallback; }
+  },
+  set(key, value) { localStorage.setItem('sf_'+key, JSON.stringify(value)); },
+};
+
+function getUsers() { return Store.get('users',[]); }
+function saveUsers(u) { Store.set('users',u); }
+function getSessions() { return Store.get('sessions',[]); }
+function saveSessions(s) { Store.set('sessions',s); }
+function getSkins() { return Store.get('skins',[]); }
+function saveSkins(s) { Store.set('skins',s); }
+function getCases() { return Store.get('cases',[]); }
+function saveCases(c) { Store.set('cases',c); }
+function getPosts() { return Store.get('posts',[]); }
+function savePosts(p) { Store.set('posts',p); }
+function getOrders() { return Store.get('orders',[]); }
+function saveOrders(o) { Store.set('orders',o); }
+function getInventory() { return Store.get('inventory',[]); }
+function saveInventory(i) { Store.set('inventory',i); }
+function getFavorites() { return Store.get('favorites',[]); }
+function saveFavorites(f) { Store.set('favorites',f); }
+
+// ======================== AUTH ========================
+
+function hashPw(pw) {
+  let h=0; for(let i=0;i<pw.length;i++) { h=((h<<5)-h)+pw.charCodeAt(i); h|=0; }
+  return 'h_'+Math.abs(h).toString(36)+'_'+pw.length;
+}
+
+function currentUser() {
+  const sid=Store.get('currentSession',null);
+  if (!sid) return null;
+  const sessions=getSessions();
+  const s=sessions.find(x=>x.id===sid);
+  if (!s) return null;
+  if (s.expiresAt && new Date(s.expiresAt)<new Date()) { Store.set('currentSession',null); return null; }
+  const users=getUsers();
+  const u=users.find(x=>x.id===s.userId);
+  if (!u || u.status==='banned') return null;
+  return u;
+}
+
+function registerUser(email, username, password) {
+  const users=getUsers();
+  if (users.find(u=>u.email.toLowerCase()===email.toLowerCase()||u.username.toLowerCase()===username.toLowerCase())) {
+    return {ok:false,message:'E-mail или никнейм уже заняты'};
+  }
+  const u={id:uid(),email:email.toLowerCase(),username,passwordHash:hashPw(password),role:'user',status:'active',bio:'',avatar:null,balance:50000,createdAt:new Date().toISOString()};
+  users.push(u);saveUsers(users);
+  const sid=uid();
+  const sessions=getSessions();
+  sessions.push({id:sid,userId:u.id,expiresAt:new Date(Date.now()+30*86400000).toISOString()});
+  saveSessions(sessions);
+  Store.set('currentSession',sid);
+  return {ok:true,user:u};
+}
+
+function loginUser(identity, password) {
+  const users=getUsers();
+  const u=users.find(x=>(x.email.toLowerCase()===identity.toLowerCase()||x.username.toLowerCase()===identity.toLowerCase()));
+  if (!u) return {ok:false,message:'Пользователь не найден'};
+  if (u.passwordHash!==hashPw(password)) return {ok:false,message:'Неверный пароль'};
+  if (u.status==='banned') return {ok:false,message:'Аккаунт заблокирован'};
+  const sid=uid();
+  const sessions=getSessions();
+  sessions.push({id:sid,userId:u.id,expiresAt:new Date(Date.now()+30*86400000).toISOString()});
+  saveSessions(sessions);
+  Store.set('currentSession',sid);
+  return {ok:true,user:u};
+}
+
+function logoutUser() {
+  const sid=Store.get('currentSession',null);
+  if (sid) {
+    const sessions=getSessions().filter(s=>s.id!==sid);
+    saveSessions(sessions);
+  }
+  Store.set('currentSession',null);
+  navigate('home');
+}
+
+function updateUser(id, updates) {
+  const users=getUsers();
+  const i=users.findIndex(u=>u.id===id);
+  if (i===-1) return;
+  Object.assign(users[i],updates);
+  saveUsers(users);
+}
+
+// ======================== SEED ========================
+
+function seedData() {
+  if (Store.get('seeded',false)) return;
+  const users=getUsers();
+  if (users.length>0) { Store.set('seeded',true); return; }
+
+  const admin={id:'u_admin',email:'admin@skinvault.gg',username:'OVERSEER',passwordHash:hashPw('admin123'),role:'admin',status:'active',bio:'Главный модератор SkinForge.',avatar:null,balance:1000000,createdAt:'2024-12-01T10:00:00Z'};
+  const author={id:'u_author',email:'author@skinvault.gg',username:'NEONWRITER',passwordHash:hashPw('author123'),role:'author',status:'active',bio:'Пишу про редкие скины и рынок CS2 с 2017 года.',avatar:null,balance:15000,createdAt:'2025-01-15T14:00:00Z'};
+  const buyer={id:'u_buyer',email:'buyer@skinvault.gg',username:'SKINHUNTER',passwordHash:hashPw('buyer123'),role:'user',status:'active',bio:'Коллекционирую ножи и гловые финиши.',avatar:null,balance:78000,createdAt:'2025-02-20T09:00:00Z'};
+  saveUsers([admin,author,buyer]);
+
+  const allSkins = [
+    {id:'s1',title:'AK-47 | Neon Circuit',weapon:'AK-47',game:'CS2',rarity:'legendary',exterior:'Factory New',floatValue:'0.021',price:489900,description:'Лимитированная серия с неоновой схемой платы. Паттерн светится при попадании в свет.',imageUrl:'https://picsum.photos/seed/ak47neon/600/450',status:'approved',authorId:'u_admin',reviewerId:'u_admin',reviewNote:'',views:847,createdAt:'2025-03-01T10:00:00Z',reviewedAt:'2025-03-01T10:05:00Z'},
+    {id:'s2',title:'AWP | Jade Serpent',weapon:'AWP',game:'CS2',rarity:'mythical',exterior:'Minimal Wear',floatValue:'0.072',price:1250000,description:'Ручная роспись дракона по белому лаку. Один из самых узнаваемых финишей.',imageUrl:'https://picsum.photos/seed/awpjade/600/450',status:'approved',authorId:'u_admin',reviewerId:'u_admin',reviewNote:'',views:1230,createdAt:'2025-03-02T10:00:00Z',reviewedAt:'2025-03-02T10:05:00Z'},
+    {id:'s3',title:'Karambit | Chromatic Decay',weapon:'Нож',game:'CS2',rarity:'exotic',exterior:'Factory New',floatValue:'0.008',price:3990000,description:'Радужное анодирование клинка. Переливается при повороте.',imageUrl:'https://picsum.photos/seed/karambit/600/450',status:'approved',authorId:'u_admin',reviewerId:'u_admin',reviewNote:'',views:2100,createdAt:'2025-03-03T10:00:00Z',reviewedAt:'2025-03-03T10:05:00Z'},
+    {id:'s4',title:'Desert Eagle | Ruby Glass',weapon:'Desert Eagle',game:'CS2',rarity:'epic',exterior:'Field-Tested',floatValue:'0.183',price:215000,description:'Полупрозрачные панели из рубинового стекла и золотая гравировка.',imageUrl:'https://picsum.photos/seed/deagle/600/450',status:'approved',authorId:'u_author',reviewerId:'u_admin',reviewNote:'',views:675,createdAt:'2025-03-05T10:00:00Z',reviewedAt:'2025-03-05T11:00:00Z'},
+    {id:'s5',title:'MP9 | Hologrid',weapon:'MP9',game:'CS2',rarity:'rare',exterior:'Factory New',floatValue:'0.034',price:74500,description:'Киберпанк-геометрия с голографическими вставками.',imageUrl:'https://picsum.photos/seed/mp9holo/600/450',status:'approved',authorId:'u_author',reviewerId:'u_admin',reviewNote:'',views:410,createdAt:'2025-03-06T10:00:00Z',reviewedAt:'2025-03-06T11:00:00Z'},
+    {id:'s6',title:'M4A1-S | Nightfall',weapon:'M4A1-S',game:'CS2',rarity:'rare',exterior:'Well-Worn',floatValue:'0.381',price:96000,description:'Матовый финиш для любителей стелса.',imageUrl:'https://picsum.photos/seed/m4a1night/600/450',status:'approved',authorId:'u_admin',reviewerId:'u_admin',reviewNote:'',views:320,createdAt:'2025-03-07T10:00:00Z',reviewedAt:'2025-03-07T10:05:00Z'},
+    {id:'s7',title:'Butterfly | Void Edge',weapon:'Нож',game:'CS2',rarity:'exotic',exterior:'Factory New',floatValue:'0.015',price:2450000,description:'Тёмная сталь с фиолетовой кромкой и анимацией раскрытия.',imageUrl:'https://picsum.photos/seed/butterfly/600/450',status:'approved',authorId:'u_admin',reviewerId:'u_admin',reviewNote:'',views:1580,createdAt:'2025-03-08T10:00:00Z',reviewedAt:'2025-03-08T10:05:00Z'},
+    {id:'s8',title:'Blade of the Viper',weapon:'Оружие героя',game:'Dota 2',rarity:'legendary',exterior:'Arcana',floatValue:'',price:640000,description:'Arcana-предмет с кастомным эффектом и счётчиком добиваний.',imageUrl:'https://picsum.photos/seed/viperblade/600/450',status:'approved',authorId:'u_author',reviewerId:'u_admin',reviewNote:'',views:890,createdAt:'2025-03-09T10:00:00Z',reviewedAt:'2025-03-09T12:00:00Z'},
+    {id:'s9',title:'Vandal | Ion Rush',weapon:'Vandal',game:'Valorant',rarity:'epic',exterior:'Factory New',floatValue:'',price:158000,description:'Плазменные линии и синие искры при перезарядке.',imageUrl:'https://picsum.photos/seed/vandalion/600/450',status:'approved',authorId:'u_author',reviewerId:'u_admin',reviewNote:'',views:720,createdAt:'2025-03-10T10:00:00Z',reviewedAt:'2025-03-10T12:00:00Z'},
+    {id:'s10',title:'Glock-18 | Sugar Rush',weapon:'Glock-18',game:'CS2',rarity:'uncommon',exterior:'Field-Tested',floatValue:'0.244',price:28900,description:'Сладкая палитра для быстрых раундов на пистолетках.',imageUrl:'https://picsum.photos/seed/glock/600/450',status:'approved',authorId:'u_admin',reviewerId:'u_admin',reviewNote:'',views:190,createdAt:'2025-03-11T10:00:00Z',reviewedAt:'2025-03-11T10:05:00Z'},
+    {id:'s11',title:'USP-S | Paper Cut',weapon:'USP-S',game:'CS2',rarity:'common',exterior:'Battle-Scarred',floatValue:'0.712',price:9900,description:'Классический бумажный принт, потёртый до металла.',imageUrl:'https://picsum.photos/seed/usp/600/450',status:'approved',authorId:'u_admin',reviewerId:'u_admin',reviewNote:'',views:120,createdAt:'2025-03-12T10:00:00Z',reviewedAt:'2025-03-12T10:05:00Z'},
+    {id:'s12',title:'P250 | Arctic Ghost',weapon:'P250',game:'CS2',rarity:'rare',exterior:'Minimal Wear',floatValue:'0.089',price:52000,description:'Ледяной финиш с призрачным силуэтом — на модерации.',imageUrl:'https://picsum.photos/seed/p250ghost/600/450',status:'pending',authorId:'u_author',reviewerId:'',reviewNote:'',views:0,createdAt:'2025-03-15T10:00:00Z',reviewedAt:null},
+  ];
+  saveSkins(allSkins);
+
+  const allCases = [
+    {id:'c1',title:'Neon Circuit Case',game:'CS2',price:34900,description:'Кейс с неоновыми финишами. Шанс на тайный нож — 1.2%.',imageUrl:'https://picsum.photos/seed/caseneon/800/500',status:'approved',authorId:'u_admin',skinIds:['s1','s4','s5','s10','s11'],weights:[10,25,30,25,10],createdAt:'2025-03-01T10:00:00Z'},
+    {id:'c2',title:'Dragon Vault',game:'CS2',price:89900,description:'Премиальный кейс для охотников за драконьими паттернами.',imageUrl:'https://picsum.photos/seed/casedragon/800/500',status:'approved',authorId:'u_admin',skinIds:['s2','s6','s7','s11'],weights:[35,33,22,10],createdAt:'2025-03-02T10:00:00Z'},
+    {id:'c3',title:'Rift Arsenal',game:'Valorant',price:19900,description:'Кросс-игровой кейс: Valorant, Dota 2 и CS2.',imageUrl:'https://picsum.photos/seed/caserift/800/500',status:'pending',authorId:'u_author',skinIds:['s8','s9','s4'],weights:[30,40,30],createdAt:'2025-03-14T10:00:00Z'},
+  ];
+  saveCases(allCases);
+
+  const allPosts = [
+    {id:'p1',title:'Как формируется цена на редкие скины в 2026 году',slug:'kak-formiruetsya-cena-2026',excerpt:'Разбираем, почему паттерн и float важнее редкости, и как читать графики рынка.',body:'Рынок скинов давно перестал быть хаотичным.\n\nТри фактора определяют цену: тираж, float и паттерн. Тираж задаёт нижнюю границу, float — средний коридор, а паттерн способен умножить стоимость в 10 раз.\n\nМы собрали статистику по 12 000 сделок за квартал и вывели простое правило: если паттерн центрирован и не обрезан краями модели — просите премию минимум 35%.',coverUrl:'https://picsum.photos/seed/blog1/1200/500',videoUrl:'https://www.youtube.com/watch?v=dQw4w9WgXcQ',tags:'рынок, аналитика, гайд',attachments:[{kind:'image',url:'https://picsum.photos/seed/attach1/800/400',title:'График динамики цен'},{kind:'image',url:'https://picsum.photos/seed/attach2/800/400',title:'Тепловая карта паттернов'}],status:'approved',authorId:'u_author',views:320,createdAt:'2025-03-05T10:00:00Z',reviewedAt:'2025-03-05T11:00:00Z'},
+    {id:'p2',title:'Топ-5 кейсов, которые всё ещё выгодно открывать',slug:'top-5-casey-vigodno',excerpt:'Математика кейсов: считаем ожидаемую ценность и сравниваем с прямой покупкой.',body:'Кейсы — это лотерея с прозрачными шансами.\n\nМы посчитали EV для каждого кейса в каталоге и выяснили: только три из них дают положительное ожидание при текущих ценах на скины.\n\nВажно помнить про комиссию при выводе — она съедает до 12% прибыли.',coverUrl:'https://picsum.photos/seed/blog2/1200/500',videoUrl:'',tags:'кейсы, математика',attachments:[],status:'approved',authorId:'u_author',views:210,createdAt:'2025-03-08T10:00:00Z',reviewedAt:'2025-03-08T12:00:00Z'},
+    {id:'p3',title:'Neon Circuit: как появился самый обсуждаемый финиш сезона',slug:'neon-circuit-poyavilsya',excerpt:'Интервью с художником и полный разбор референсов.',body:'Мы поговорили с автором финиша о том, как выбирали палитру и почему схема печатается в два прохода.\n\nВ галерее ниже — концепт-арты и короткое видео с вращением модели в игровом движке.',coverUrl:'https://picsum.photos/seed/blog3/1200/500',videoUrl:'',tags:'интервью, арт',attachments:[{kind:'image',url:'https://picsum.photos/seed/art1/800/400',title:'Концепт-арт палитры'},{kind:'file',url:'#',title:'Концепт-арт (презентация)'}],status:'approved',authorId:'u_author',views:180,createdAt:'2025-03-10T10:00:00Z',reviewedAt:'2025-03-10T12:00:00Z'},
+    {id:'p4',title:'Черновик: подборка дешёвых ножей до 5 000 ₽',slug:'chernovik-deshyovye-nozhi',excerpt:'Материал ещё на модерации у администратора.',body:'Собрал пять вариантов, жду проверки модератора перед публикацией.',coverUrl:'https://picsum.photos/seed/blog4/1200/500',videoUrl:'',tags:'подборка',attachments:[],status:'pending',authorId:'u_buyer',views:0,createdAt:'2025-03-13T10:00:00Z',reviewedAt:null},
+  ];
+  savePosts(allPosts);
+
+  const allOrders = [
+    {id:'o1',userId:'u_buyer',total:74500,status:'paid',items:'MP9 | Hologrid',createdAt:'2025-03-06T14:00:00Z'},
+    {id:'o2',userId:'u_buyer',total:249900,status:'paid',items:'Desert Eagle | Ruby Glass · Neon Circuit Case',createdAt:'2025-03-07T16:00:00Z'},
+  ];
+  saveOrders(allOrders);
+
+  saveInventory([
+    {id:'i1',userId:'u_buyer',skinId:'s5',source:'purchase',pricePaid:74500,createdAt:'2025-03-06T14:00:00Z'},
+    {id:'i2',userId:'u_buyer',skinId:'s4',source:'purchase',pricePaid:215000,createdAt:'2025-03-07T16:00:00Z'},
+    {id:'i3',userId:'u_buyer',skinId:'s11',source:'case',sourceCaseId:'c1',pricePaid:34900,createdAt:'2025-03-07T16:05:00Z'},
+  ]);
+
+  saveFavorites([
+    {id:'f1',userId:'u_buyer',skinId:'s3',createdAt:'2025-03-06T14:00:00Z'},
+    {id:'f2',userId:'u_buyer',skinId:'s2',createdAt:'2025-03-06T14:00:00Z'},
+  ]);
+
+  Store.set('seeded',true);
+}
+
+seedData();
+
+// ======================== APP STATE ========================
+
+const APP = { page:'home', params:{} };
+
+// ======================== RENDER ENGINE ========================
+
+function render() {
+  renderHeader();
+  renderMain();
+  renderFooter();
+  window.scrollTo({top:0});
+}
+
+function renderHeader() {
+  const user = currentUser();
+  const pages = [
+    ['#home','Главная'],['#skins','Скины'],['#cases','Кейсы'],['#blog','Блог']
+  ];
+  const loc = APP.page;
+
+  let authHtml;
+  if (user) {
+    const cabinetHref = user.role==='admin'?'#admin':user.role==='author'?'#studio':'#dashboard';
+    authHtml = `
+      <div class="balance-badge hidden sm:block"><span style="color:#7e8bab">БАЛАНС</span><span style="color:var(--lime)">${money(user.balance)}</span></div>
+      <a href="${cabinetHref}" class="btn btn-ghost" onclick="event.preventDefault();navigate('${cabinetHref.slice(1)}')">
+        <span style="display:inline-grid;place-items:center;width:1.5rem;height:1.5rem;border-radius:50%;background:linear-gradient(135deg,var(--neon),var(--ember));font-size:.6rem;font-weight:900;color:var(--void)">${user.username.slice(0,2).toUpperCase()}</span>
+        <span class="uname">${escHtml(user.username)}</span>
+      </a>
+      <button class="btn btn-ghost" onclick="logoutUser()" title="Выйти">⏻</button>
+    `;
+  } else {
+    authHtml = `
+      <a href="#login" class="btn btn-ghost" onclick="event.preventDefault();navigate('login')">Вход</a>
+      <a href="#register" class="btn btn-primary" onclick="event.preventDefault();navigate('register')">Регистрация</a>
+    `;
+  }
+
+  $('#appHeader').innerHTML = `
+    <div class="header-inner">
+      <a href="#home" class="logo" onclick="event.preventDefault();navigate('home')">
+        <span class="logo-mark">SF</span>
+        <span class="logo-text">SKIN<span>FORGE</span></span>
+      </a>
+      <nav class="nav-links">
+        ${pages.map(([href,label])=>`<a href="${href}" class="${loc===href.slice(1)?'active':''}" onclick="event.preventDefault();navigate('${href.slice(1)}')">${label}</a>`).join('')}
+      </nav>
+      <div class="header-right">${authHtml}</div>
+    </div>
+  `;
+}
+
+function renderFooter() {
+  $('#appFooter').innerHTML = `
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="display" style="font-size:1.5rem;color:#fff">SKIN<span style="color:var(--cyan)">FORGE</span></p>
+          <p style="margin-top:.75rem;max-width:20rem;font-size:.85rem;color:#64748b;line-height:1.7">
+            Кузница скинов: торговая площадка, кейсы с честными шансами и редакционный блог про рынок игровых предметов.
+          </p>
+        </div>
+        <div>
+          <p class="mono-label" style="margin-bottom:.75rem">Каталог</p>
+          <div style="display:flex;flex-direction:column;gap:.5rem;font-size:.85rem;color:#94a3b8">
+            <a href="#skins" onclick="event.preventDefault();navigate('skins')">Все скины</a>
+            <a href="#cases" onclick="event.preventDefault();navigate('cases')">Кейсы</a>
+            <a href="#blog" onclick="event.preventDefault();navigate('blog')">Блог</a>
+          </div>
+        </div>
+        <div>
+          <p class="mono-label" style="margin-bottom:.75rem">Кабинеты</p>
+          <div style="display:flex;flex-direction:column;gap:.5rem;font-size:.85rem;color:#94a3b8">
+            <a href="#dashboard" onclick="event.preventDefault();navigate('dashboard')">Кабинет покупателя</a>
+            <a href="#studio" onclick="event.preventDefault();navigate('studio')">Студия автора</a>
+            <a href="#admin" onclick="event.preventDefault();navigate('admin')">Панель администратора</a>
+          </div>
+        </div>
+        <div>
+          <p class="mono-label" style="margin-bottom:.75rem">Демо-доступы</p>
+          <div style="font-family:var(--font-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.2em;color:#5c668a;display:flex;flex-direction:column;gap:.4rem">
+            <span>admin@skinvault.gg / admin123</span>
+            <span>author@skinvault.gg / author123</span>
+            <span>buyer@skinvault.gg / buyer123</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copy">© ${new Date().getFullYear()} SkinForge · Учебный проект · Все предметы виртуальные</div>
+    </div>
+  `;
+}
+
+function renderMain() {
+  const main = $('#appMain');
+  const pages = {
+    home: renderHome,
+    skins: renderSkins,
+    skinDetail: renderSkinDetail,
+    cases: renderCases,
+    caseDetail: renderCaseDetail,
+    blog: renderBlog,
+    postDetail: renderPostDetail,
+    login: renderLogin,
+    register: renderRegister,
+    dashboard: renderDashboard,
+    studio: renderStudio,
+    admin: renderAdmin,
+  };
+  const fn = pages[APP.page] || renderHome;
+  main.innerHTML = '';
+  const content = document.createElement('div');
+  content.innerHTML = fn();
+  main.appendChild(content);
+  attachPageEvents();
+}
+
+// ======================== PAGE RENDERERS ========================
+
+// ----- SKIN CARD COMPONENT -----
+function skinCardHtml(skin, extra='') {
+  const r = rarityInfo(skin.rarity);
+  const st = skin.status && skin.status!=='approved' ? `<span style="position:absolute;top:.75rem;right:.5rem;font-family:var(--font-mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.16em;color:${statusInfo(skin.status).color};border:1px solid ${statusInfo(skin.status).color};padding:.15rem .5rem">${statusInfo(skin.status).label}</span>` : '';
+  return `
+    <div class="panel clip-corner skin-card" style="--rarity:${r.color}" data-skin-id="${skin.id}">
+      <a href="#skin/${skin.id}" onclick="event.preventDefault();navigate('skinDetail',{id:'${skin.id}'})" style="color:inherit;text-decoration:none">
+        <div class="relative" style="overflow:hidden;background:linear-gradient(135deg,var(--panel2),var(--void))">
+          <img src="${escHtml(skin.imageUrl||'')}" alt="${escHtml(skin.title)}" class="skin-img" onerror="this.style.display='none'">
+          <span style="position:absolute;left:0;top:.75rem;padding:.2rem .6rem;font-family:var(--font-mono);font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--void);background:${r.color}">${r.label}</span>
+          ${st}
+        </div>
+      </a>
+      <div style="padding:1rem;display:flex;flex-direction:column;gap:.4rem">
+        <div class="flex justify-between items-center">
+          <span class="mono-label">${escHtml(skin.weapon||'—')}</span>
+          <span class="mono-label" style="color:var(--cyan)">${escHtml(skin.game||'')}</span>
+        </div>
+        <a href="#skin/${skin.id}" onclick="event.preventDefault();navigate('skinDetail',{id:'${skin.id}'})" class="display" style="font-size:1.1rem;line-height:1.1;color:#fff">${escHtml(skin.title)}</a>
+        <span class="mono-label" style="color:#5c668a">${escHtml(skin.exterior)}</span>
+        <div class="flex justify-between items-center" style="margin-top:.5rem">
+          <span style="font-family:var(--font-mono);font-size:1rem;font-weight:700;color:var(--lime)">${money(skin.price)}</span>
+          <a href="#skin/${skin.id}" onclick="event.preventDefault();navigate('skinDetail',{id:'${skin.id}'})" class="btn btn-ghost" style="padding:.35rem .7rem;font-size:.6rem">Подробнее</a>
+        </div>
+        ${extra}
+      </div>
+    </div>
+  `;
+}
+
+// ----- HOME -----
+function renderHome() {
+  const skins = getSkins().filter(s=>s.status==='approved').sort((a,b)=>b.views-a.views);
+  const cases = getCases().filter(c=>c.status==='approved');
+  const posts = getPosts().filter(p=>p.status==='approved').slice(0,3);
+
+  const stats = {
+    skins: skins.length,
+    cases: cases.length,
+    posts: getPosts().filter(p=>p.status==='approved').length,
+    traders: getUsers().length,
+  };
+
+  const top4 = skins.slice(0,4);
+
+  return `
+    <section class="grid-lines" style="position:relative;overflow:hidden;border-bottom:1px solid var(--line);padding:3rem 0">
+      <div style="position:absolute;left:-6rem;top:2rem;width:18rem;height:18rem;border-radius:50%;background:rgba(124,92,255,.25);filter:blur(110px);pointer-events:none"></div>
+      <div style="position:absolute;right:-5rem;bottom:0;width:20rem;height:20rem;border-radius:50%;background:rgba(41,231,255,.18);filter:blur(120px);pointer-events:none"></div>
+      <div class="container" style="position:relative;display:grid;gap:2rem;align-items:center">
+        <div style="max-width:36rem">
+          <span style="display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(182,255,61,.4);background:rgba(182,255,61,.1);padding:.3rem .75rem;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--lime)">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulse-ring 2s infinite"></span>
+            ${stats.skins} скинов в наличии
+          </span>
+          <h1 class="display" style="font-size:clamp(2.5rem,7vw,4.5rem);margin-top:1.2rem;color:#fff;line-height:.9">
+            Кузница<br><span class="gradient-text">легендарных</span><br>скинов
+          </h1>
+          <p style="margin-top:1.5rem;max-width:32rem;font-size:1rem;color:#94a3b8;line-height:1.7">
+            Маркетплейс игровых предметов, кейсы с прозрачными шансами и редакционный блог о рынке.
+            Личный кабинет покупателя, студия автора и модерация — всё в одном месте.
+          </p>
+          <div class="flex flex-wrap gap-3" style="margin-top:2rem">
+            <button class="btn btn-primary" onclick="navigate('skins')">Открыть каталог</button>
+            <button class="btn btn-ghost" onclick="navigate('cases')">Кейсы и рулетка</button>
+            ${!currentUser()?'<button class="btn btn-lime" onclick="navigate(\'register\')">Создать кабинет</button>':''}
+          </div>
+          <div class="grid" style="grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem;max-width:28rem">
+            ${[['Скинов',stats.skins],['Кейсов',stats.cases],['Статей',stats.posts],['Трейдеров',stats.traders]].map(([l,v])=>`
+              <div style="border-left:1px solid var(--line);padding-left:.75rem">
+                <dt class="mono-label">${l}</dt>
+                <dd class="display" style="font-size:2rem;color:#fff;margin-top:.2rem">${v}</dd>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div style="position:relative">
+          <div class="panel panel-glow clip-corner" style="padding:1.25rem">
+            <div class="flex justify-between items-center">
+              <span class="mono-label">Drop of the day</span>
+              <span style="font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.2em;color:var(--lime)">live</span>
+            </div>
+            <div class="grid" style="grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1rem">
+              ${top4.map((s,i)=>`<div style="${i===0?'grid-column:span 2':''}">${skinCardHtml(s)}</div>`).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="overflow:hidden;border-bottom:1px solid var(--line);background:rgba(11,14,26,.6);padding:.75rem 0">
+      <div style="display:flex;gap:2.5rem;width:max-content;animation:ticker 30s linear infinite">
+        ${[...skins,...skins].map(s=>`<span style="display:flex;align-items:center;gap:.75rem;white-space:nowrap;font-family:var(--font-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.2em;color:#94a3b8"><span style="color:var(--lime)">▲</span>${escHtml(s.title)}<span style="color:#fff">${money(s.price)}</span><span style="color:#1d2440">/</span></span>`).join('')}
+      </div>
+    </section>
+
+    <section class="container" style="padding:4rem 0">
+      <div class="section-title flex justify-between items-end flex-wrap gap-3">
+        <div><p class="mono-label">Каталог</p><h2>Свежие поступления</h2></div>
+        <button class="btn btn-ghost" onclick="navigate('skins')">Весь каталог →</button>
+      </div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem">
+        ${skins.slice(0,8).map(s=>skinCardHtml(s)).join('')}
+      </div>
+    </section>
+
+    <section style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(11,14,26,.4);padding:4rem 0">
+      <div class="container">
+        <div class="section-title flex justify-between items-end flex-wrap gap-3">
+          <div><p class="mono-label">Рулетка</p><h2>Кейсы недели</h2></div>
+          <button class="btn btn-ghost" onclick="navigate('cases')">Все кейсы →</button>
+        </div>
+        <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.25rem">
+          ${cases.map(c=>caseCardHtml(c)).join('')}
+        </div>
+      </div>
+    </section>
+
+    <section class="container" style="padding:4rem 0">
+      <div class="section-title"><p class="mono-label">Как это работает</p><h2>Четыре шага до инвентаря мечты</h2></div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem">
+        ${[
+          ['01','Регистрация','Создаём кабинет покупателя, начисляем 500 ₽ приветственного баланса.'],
+          ['02','Выбор','Фильтруем каталог по игре, редкости и цене. У каждого предмета — описание и float.'],
+          ['03','Покупка / кейс','Списываем баланс, предмет появляется в инвентаре. Кейс — с анимацией рулетки.'],
+          ['04','Публикация','Авторы загружают контент, администратор проверяет и публикует.'],
+        ].map(([n,title,text])=>`
+          <div class="panel clip-corner" style="padding:1.25rem">
+            <span class="display" style="font-size:2.5rem;color:rgba(124,92,255,.7)">${n}</span>
+            <h3 class="display" style="font-size:1.25rem;color:#fff;margin-top:.5rem">${title}</h3>
+            <p style="margin-top:.5rem;font-size:.85rem;color:#94a3b8;line-height:1.6">${text}</p>
+          </div>
+        `).join('')}
+      </div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-top:2rem">
+        ${[
+          ['Покупатель','#dashboard','Баланс и пополнение, история заказов, инвентарь с продажей, избранное и профиль.'],
+          ['Автор','#studio','Загрузка скинов, кейсов и статей: картинки, видео и файлы-вложения.'],
+          ['Администратор','#admin','Одобрение или отклонение каждого материала, управление ролями и балансами.'],
+        ].map(([tag,href,text])=>`
+          <a href="${href}" class="panel clip-corner skin-card" style="padding:1.5rem;color:inherit;text-decoration:none" onclick="event.preventDefault();navigate('${href.slice(1)}')">
+            <span style="border:1px solid rgba(41,231,255,.4);padding:.15rem .5rem;font-family:var(--font-mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.2em;color:var(--cyan)">${tag}</span>
+            <h3 class="display" style="font-size:1.4rem;color:#fff;margin-top:.8rem">${tag === 'Покупатель' ? 'Личный кабинет покупателя' : tag === 'Автор' ? 'Студия автора' : 'Панель модерации'}</h3>
+            <p style="margin-top:.5rem;font-size:.85rem;color:#94a3b8;line-height:1.6">${text}</p>
+            <span style="display:inline-block;margin-top:1rem;font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:var(--lime)">Перейти →</span>
+          </a>
+        `).join('')}
+      </div>
+    </section>
+
+    <section style="border-top:1px solid var(--line);background:rgba(11,14,26,.4);padding:4rem 0">
+      <div class="container">
+        <div class="section-title flex justify-between items-end flex-wrap gap-3">
+          <div><p class="mono-label">Редакция</p><h2>Блог о рынке скинов</h2></div>
+          <button class="btn btn-ghost" onclick="navigate('blog')">Все статьи →</button>
+        </div>
+        <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.25rem">
+          ${posts.map(p=>postCardHtml(p)).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+// ----- SKINS CATALOG -----
+function renderSkins() {
+  const p = APP.params;
+  const allSkins = getSkins().filter(s=>s.status==='approved');
+  const games = [...new Set(allSkins.map(s=>s.game).filter(Boolean))];
+
+  let filtered = allSkins;
+  if (p.q) { const q=p.q.toLowerCase(); filtered=filtered.filter(s=>(s.title+s.weapon+s.description).toLowerCase().includes(q)); }
+  if (p.game) filtered=filtered.filter(s=>s.game===p.game);
+  if (p.rarity) filtered=filtered.filter(s=>s.rarity===p.rarity);
+
+  if (p.sort==='price-asc') filtered.sort((a,b)=>a.price-b.price);
+  else if (p.sort==='price-desc') filtered.sort((a,b)=>b.price-a.price);
+  else if (p.sort==='popular') filtered.sort((a,b)=>b.views-a.views);
+  else filtered.sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+
+  return `
+    <div class="container" style="padding:2.5rem 0">
+      <div class="section-title"><p class="mono-label">Маркетплейс</p><h2>Каталог скинов · ${filtered.length}</h2></div>
+
+      <div class="panel clip-corner" style="padding:1.25rem;margin-bottom:1.5rem">
+        <div class="grid" style="grid-template-columns:1.4fr 1fr 1fr auto;gap:1rem" id="skinFilterForm">
+          <div><label class="mono-label">Поиск</label><input class="field" style="margin-top:.4rem" placeholder="AK-47, нож…" id="skinQ" value="${escHtml(p.q||'')}"></div>
+          <div><label class="mono-label">Игра</label><select class="field" style="margin-top:.4rem" id="skinGame"><option value="">Любая</option>${games.map(g=>`<option value="${escHtml(g)}" ${p.game===g?'selected':''}>${escHtml(g)}</option>`).join('')}</select></div>
+          <div><label class="mono-label">Редкость</label><select class="field" style="margin-top:.4rem" id="skinRarity"><option value="">Любая</option>${RARITIES.map(r=>`<option value="${r.key}" ${p.rarity===r.key?'selected':''}>${r.label}</option>`).join('')}</select></div>
+          <div style="display:flex;align-items:flex-end;gap:.5rem">
+            <select class="field" style="margin-top:.4rem" id="skinSort"><option value="new" ${p.sort==='new'||!p.sort?'selected':''}>Новые</option><option value="price-asc" ${p.sort==='price-asc'?'selected':''}>Цена ↑</option><option value="price-desc" ${p.sort==='price-desc'?'selected':''}>Цена ↓</option><option value="popular" ${p.sort==='popular'?'selected':''}>Популярные</option></select>
+            <button class="btn btn-primary" id="skinFilterBtn">Найти</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2" style="margin-bottom:1.5rem">
+        <span class="chip ${!p.game?'active':''}" data-filter-game="">Все игры</span>
+        ${games.map(g=>`<span class="chip ${p.game===g?'active':''}" data-filter-game="${escHtml(g)}">${escHtml(g)}</span>`).join('')}
+      </div>
+      <div class="flex flex-wrap gap-2" style="margin-bottom:2rem">
+        <span class="chip ${!p.rarity?'active':''}" data-filter-rarity="">Любая</span>
+        ${RARITIES.map(r=>`<span class="chip ${p.rarity===r.key?'active':''}" data-filter-rarity="${r.key}"><span style="display:inline-block;width:8px;height:8px;margin-right:4px;background:${r.color};vertical-align:middle"></span>${r.label}</span>`).join('')}
+      </div>
+
+      ${filtered.length===0?`
+        <div class="panel clip-corner text-center" style="padding:2.5rem">
+          <p class="display" style="font-size:1.5rem;color:#fff">Ничего не найдено</p>
+          <p style="margin-top:.5rem;font-size:.85rem;color:#94a3b8">Попробуйте изменить фильтры или загляните в <a href="#" onclick="event.preventDefault();navigate('cases')" style="color:var(--cyan)">кейсы</a>.</p>
+        </div>
+      `:`
+        <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem">
+          ${filtered.map(s=>skinCardHtml(s)).join('')}
+        </div>
+      `}
+    </div>
+  `;
+}
+
+// ----- SKIN DETAIL -----
+function renderSkinDetail() {
+  const id = APP.params.id;
+  const skins = getSkins();
+  const skin = skins.find(s=>s.id===id);
+  if (!skin) return '<div class="container text-center" style="padding:6rem 0"><h1 class="display" style="font-size:3rem;color:#fff">404</h1><p style="color:#94a3b8;margin-top:1rem">Скин не найден</p></div>';
+
+  const user = currentUser();
+  const r = rarityInfo(skin.rarity);
+  const favs = getFavorites();
+  const isFav = user && favs.some(f=>f.userId===user.id && f.skinId===skin.id);
+
+  return `
+    <div class="container" style="padding:2.5rem 0">
+      <nav style="margin-bottom:1.5rem;font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:#5c668a">
+        <a href="#" onclick="event.preventDefault();navigate('home')" style="color:#5c668a">Главная</a> /
+        <a href="#" onclick="event.preventDefault();navigate('skins')" style="color:#5c668a">Скины</a> /
+        <span style="color:#cbd5e1">${escHtml(skin.title)}</span>
+      </nav>
+
+      <div class="grid" style="grid-template-columns:1.1fr .9fr;gap:2rem">
+        <div class="panel clip-corner relative overflow-hidden" style="background:var(--panel2)">
+          <img src="${escHtml(skin.imageUrl||'')}" alt="${escHtml(skin.title)}" style="width:100%;aspect-ratio:4/3;object-fit:contain;padding:1.5rem;animation:float-slow 7s ease-in-out infinite" onerror="this.style.display='none'">
+          <div style="position:absolute;bottom:0;left:0;right:0;height:4px;background:${r.color};box-shadow:0 0 22px 2px ${r.color}"></div>
+        </div>
+
+        <div>
+          <div class="flex flex-wrap items-center gap-3">
+            <span style="padding:.25rem .6rem;font-family:var(--font-mono);font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--void);background:${r.color}">${r.label}</span>
+            <span style="border:1px solid rgba(41,231,255,.4);padding:.25rem .6rem;font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.2em;color:var(--cyan)">${escHtml(skin.game||'—')}</span>
+            <span class="mono-label">👁 ${(skin.views||0)+1}</span>
+          </div>
+          <h1 class="display" style="font-size:clamp(2rem,5vw,3rem);margin-top:.8rem;color:#fff">${escHtml(skin.title)}</h1>
+          <p class="mono-label" style="margin-top:.3rem">${escHtml(skin.weapon)} · ${escHtml(skin.exterior)}</p>
+
+          <div class="panel clip-corner" style="padding:1.25rem;margin-top:1.5rem">
+            <div class="flex flex-wrap justify-between gap-4">
+              <div><p class="mono-label">Цена</p><p class="display" style="font-size:2.5rem;color:var(--lime)">${money(skin.price)}</p></div>
+              <div class="text-right font-mono text-xs" style="text-transform:uppercase;letter-spacing:.16em;color:#5c668a">
+                <p>Продавец: ${escHtml(getUsers().find(u=>u.id===skin.authorId)?.username||'SkinForge')}</p>
+                <p>В каталоге с ${formatDate(skin.createdAt)}</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-3" style="margin-top:1.2rem">
+              ${user?`<button class="btn btn-primary pulse-ring" onclick="buySkin('${skin.id}')">Купить за ${money(skin.price)}</button>`:`<button class="btn btn-primary" onclick="navigate('login')">Войти и купить</button>`}
+              <button class="btn btn-ghost" onclick="toggleFavorite('${skin.id}')">${isFav?'★ В избранном':'☆ В избранное'}</button>
+            </div>
+            ${user?`<p style="margin-top:1rem;font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.16em;color:#5c668a">Ваш баланс: <span style="color:var(--lime)">${money(user.balance)}</span>${user.balance<skin.price?' — недостаточно':''}</p>`:''}
+          </div>
+
+          <div class="grid" style="grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.5rem">
+            ${[['Качество',skin.exterior],['Float',skin.floatValue||'—'],['Тип',skin.weapon||'—'],['Редкость',r.label]].map(([l,v])=>`
+              <div style="border:1px solid var(--line);background:rgba(11,14,26,.6);padding:.75rem">
+                <p class="mono-label">${l}</p>
+                <p style="margin-top:.25rem;font-family:var(--font-mono);font-size:.85rem;color:#fff">${escHtml(v)}</p>
+              </div>
+            `).join('')}
+          </div>
+
+          <div style="margin-top:1.5rem">
+            <p class="mono-label">Описание</p>
+            <p style="margin-top:.5rem;white-space:pre-line;font-size:.9rem;color:#cbd5e1;line-height:1.7">${escHtml(skin.description||'Описание не добавлено.')}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ----- CASE CARD -----
+function caseCardHtml(c) {
+  return `
+    <a href="#case/${c.id}" onclick="event.preventDefault();navigate('caseDetail',{id:'${c.id}'})" class="panel clip-corner skin-card" style="color:inherit;text-decoration:none">
+      <div class="relative overflow-hidden" style="aspect-ratio:16/10">
+        <img src="${escHtml(c.imageUrl||'')}" alt="${escHtml(c.title)}" style="width:100%;height:100%;object-fit:cover;opacity:.9" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--void),rgba(5,6,12,.3),transparent)"></div>
+        <div style="position:absolute;bottom:.75rem;left:1rem;right:1rem">
+          <p class="mono-label">${escHtml(c.game||'Кейс')}</p>
+          <h3 class="display" style="font-size:1.25rem;color:#fff">${escHtml(c.title)}</h3>
+        </div>
+      </div>
+      <div class="flex justify-between items-center" style="padding:1rem">
+        <div><p class="mono-label">Содержимое</p><p style="font-family:var(--font-mono);font-size:.85rem;color:#fff">${(c.skinIds||[]).length} предметов</p></div>
+        <span class="btn btn-primary" style="padding:.5rem .8rem">${money(c.price)}</span>
+      </div>
+    </a>
+  `;
+}
+
+// ----- CASES LIST -----
+function renderCases() {
+  const cases = getCases().filter(c=>c.status==='approved');
+  return `
+    <div class="container" style="padding:2.5rem 0">
+      <div class="section-title"><p class="mono-label">Рулетка</p><h2>Кейсы · ${cases.length}</h2></div>
+      <p style="max-width:40rem;margin-top:-1rem;margin-bottom:2rem;font-size:.85rem;color:#94a3b8;line-height:1.7">
+        Каждый кейс содержит только проверенные предметы. Шансы указаны для каждой позиции. Открытие списывает баланс кабинета и кладёт предмет в инвентарь.
+      </p>
+      ${cases.length===0?'<div class="panel clip-corner text-center" style="padding:2.5rem;font-size:.85rem;color:#94a3b8">Пока нет одобренных кейсов.</div>':`
+        <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.25rem">
+          ${cases.map(c=>caseCardHtml(c)).join('')}
+        </div>
+      `}
+    </div>
+  `;
+}
+
+// ----- CASE DETAIL -----
+function renderCaseDetail() {
+  const id = APP.params.id;
+  const cs = getCases().find(c=>c.id===id);
+  if (!cs) return '<div class="container text-center" style="padding:6rem 0"><h1 class="display" style="font-size:3rem;color:#fff">404</h1></div>';
+  const user = currentUser();
+  const skins = getSelsForCase(cs);
+  const totalWeight = skins.reduce((a,s)=>a+s.weight,0)||1;
+  const ev = skins.reduce((a,s)=>a+s.skin.price*(s.weight/totalWeight),0);
+
+  return `
+    <div class="container" style="padding:2.5rem 0">
+      <nav style="margin-bottom:1.5rem;font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:#5c668a">
+        <a href="#" onclick="event.preventDefault();navigate('home')" style="color:#5c668a">Главная</a> /
+        <a href="#" onclick="event.preventDefault();navigate('cases')" style="color:#5c668a">Кейсы</a> /
+        <span style="color:#cbd5e1">${escHtml(cs.title)}</span>
+      </nav>
+
+      <div class="grid" style="grid-template-columns:.85fr 1.15fr;gap:2rem">
+        <div>
+          <div class="panel clip-corner overflow-hidden">
+            <img src="${escHtml(cs.imageUrl||'')}" alt="${escHtml(cs.title)}" style="width:100%;aspect-ratio:4/3;object-fit:cover;animation:float-slow 7s ease-in-out infinite" onerror="this.style.display='none'">
+          </div>
+          <div class="panel clip-corner" style="padding:1.25rem;margin-top:1.25rem">
+            <p class="mono-label">Описание</p>
+            <p style="margin-top:.5rem;font-size:.85rem;color:#cbd5e1;line-height:1.7">${escHtml(cs.description)}</p>
+            <div class="grid" style="grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1rem">
+              ${[['Игра',cs.game||'—'],['Предметов',String(skins.length)],['Автор',getUsers().find(u=>u.id===cs.authorId)?.username||'SkinForge'],['Добавлен',formatDate(cs.createdAt)]].map(([l,v])=>`
+                <div style="border:1px solid var(--line);background:rgba(5,7,15,.5);padding:.75rem">
+                  <p class="mono-label">${l}</p>
+                  <p style="margin-top:.25rem;font-family:var(--font-mono);font-size:.85rem;color:#fff">${escHtml(v)}</p>
+                </div>
+              `).join('')}
+            </div>
+            <div style="margin-top:1rem;border:1px solid rgba(182,255,61,.4);background:rgba(182,255,61,.05);padding:.75rem">
+              <p class="mono-label">Ожидаемая ценность</p>
+              <p style="font-family:var(--font-mono);font-size:1.1rem;color:var(--lime)">${money(Math.round(ev))} <span style="color:#5c668a">при цене ${money(cs.price)}</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:1.5rem">
+          <div><p class="mono-label">${escHtml(cs.game||'Кейс')}</p><h1 class="display" style="font-size:clamp(2rem,5vw,3rem);color:#fff">${escHtml(cs.title)}</h1></div>
+
+          <div class="panel clip-corner overflow-hidden" id="caseOpenerPanel">
+            <div class="flex flex-wrap justify-between gap-3" style="border-bottom:1px solid var(--line);padding:1rem 1.25rem">
+              <div><p class="mono-label">Рулетка кейса</p><p style="font-family:var(--font-mono);font-size:.85rem;color:#fff">Стоимость: <span style="color:var(--lime)">${money(cs.price)}</span></p></div>
+              <div class="text-right"><p class="mono-label">Баланс</p><p style="font-family:var(--font-mono);font-size:.85rem;color:var(--lime)">${money(user?user.balance:0)}</p></div>
+            </div>
+            <div class="case-reel-wrap">
+              <div class="fade-l"></div><div class="marker"></div><div class="fade-r"></div>
+              <div class="case-reel" id="caseReel">
+                ${skins.map((s,i)=>reelItemHtml(s.skin,s.weight,i)).join('')}
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-3" style="border-top:1px solid var(--line);padding:1rem 1.25rem">
+              <button class="btn btn-primary pulse-ring" id="openCaseBtn" data-case-id="${cs.id}" ${!user||user.balance<cs.price?'disabled':''}>${user?`Открыть за ${money(cs.price)}`:'Войдите, чтобы открыть'}</button>
+              <span style="font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.2em;color:#5c668a">честный рандом · шансы в таблице</span>
+            </div>
+            <div id="caseDropZone"></div>
+          </div>
+
+          <div class="panel clip-corner overflow-hidden">
+            <div style="border-bottom:1px solid var(--line);padding:1rem 1.25rem"><span class="mono-label">Содержимое и шансы</span></div>
+            <div style="overflow-x:auto">
+              <table class="sf-table">
+                <thead><tr><th>Предмет</th><th>Редкость</th><th>Цена</th><th>Шанс</th></tr></thead>
+                <tbody>
+                  ${skins.map(({skin:s,weight})=>{
+                    const r=rarityInfo(s.rarity);const ch=(weight/totalWeight)*100;
+                    return `<tr>
+                      <td><a href="#" onclick="event.preventDefault();navigate('skinDetail',{id:'${s.id}'})">${escHtml(s.title)}</a> <span style="font-family:var(--font-mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.16em;color:#5c668a">${escHtml(s.exterior)}</span></td>
+                      <td><span style="padding:.1rem .4rem;font-family:var(--font-mono);font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--void);background:${r.color}">${r.label}</span></td>
+                      <td style="font-family:var(--font-mono);color:var(--lime)">${money(s.price)}</td>
+                      <td><div style="display:flex;align-items:center;gap:.5rem"><div style="height:6px;width:5rem;background:var(--line)"><div style="height:100%;width:${Math.min(ch*2,100)}%;background:${r.color}"></div></div><span style="font-family:var(--font-mono);font-size:.72rem;color:#cbd5e1">${ch.toFixed(1)}%</span></div></td>
+                    </tr>`;
+                  }).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function reelItemHtml(skin, weight, i) {
+  const r = rarityInfo(skin.rarity);
+  return `<div class="reel-item" style="border-bottom:3px solid ${r.color}">
+    <img src="${escHtml(skin.imageUrl||'')}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6" onerror="this.style.display='none'">
+    <span>${escHtml(skin.title)}</span>
+  </div>`;
+}
+
+function getSelForCaseId(caseId) {
+  const cs = getCases().find(c=>c.id===caseId);
+  if (!cs) return [];
+  return (cs.skinIds||[]).map((sid,i)=>({skin:getSkins().find(s=>s.id===sid),weight:(cs.weights||[])[i]||10})).filter(x=>x.skin);
+}
+
+// Alias that was missing — fixing:
+function getSelSkinsForCase(cs) {
+  return (cs.skinIds||[]).map((sid,i)=>({skin:getSkins().find(s=>s.id===sid),weight:(cs.weights||[])[i]||10})).filter(x=>x.skin);
+}
+
+function getSelSkinsForCaseX(cs) {
+  return (cs.skinIds||[]).map((sid,i)=>{
+    const skin=getSkins().find(s=>s.id===sid);
+    return skin?{skin,weight:(cs.weights||[])[i]||10}:null;
+  }).filter(Boolean);
+}
+
+// use correct alias throughout — getSelSkinsForCaseX → fix renderCaseDetail
+// Actually let me just inline it properly:
+
+function getSelsForCase(cs) {
+  return (cs.skinIds||[]).map((sid,i)=>{
+    const skin=getSkins().find(s=>s.id===sid);
+    return skin?{skin,weight:(cs.weights||[])[i]||10}:null;
+  }).filter(Boolean);
+}
+
+// ----- OPEN CASE -----
+function openCase(caseId) {
+  const user = currentUser();
+  if (!user) { toast('Войдите, чтобы открывать кейсы','error'); return; }
+  const cs = getCases().find(c=>c.id===caseId);
+  if (!cs||cs.status!=='approved') { toast('Кейс недоступен','error'); return; }
+  if (user.balance<cs.price) { toast('Недостаточно средств','error'); return; }
+
+  const contents = getSelsForCase(cs);
+  if (contents.length===0) { toast('Кейс пуст','error'); return; }
+
+  const totalWeight = contents.reduce((a,c)=>a+c.weight,0);
+  let roll = Math.random()*totalWeight;
+  let drop = contents[0];
+  for (const item of contents) { roll-=item.weight; if(roll<=0){drop=item;break;} }
+
+  // Анимация
+  const reel = $('#caseReel');
+  if (reel) {
+    const strip = [];
+    for (let i=0;i<42;i++) {
+      const pick = contents[Math.floor(Math.random()*contents.length)];
+      strip.push(pick.skin);
+    }
+    strip[38] = drop.skin;
+    reel.innerHTML = strip.map((s,i)=>reelItemHtml(s,0,i)).join('');
+    reel.style.transform='';
+    reel.classList.remove('rolling');
+    void reel.offsetWidth;
+    reel.style.setProperty('--roll-to','-78%');
+    reel.classList.add('rolling');
+  }
+
+  // Списать баланс и добавить в инвентарь
+  const users = getUsers();
+  const u = users.find(x=>x.id===user.id);
+  if (u) {
+    u.balance -= cs.price;
+    saveUsers(users);
+  }
+  const orders = getOrders();
+  orders.push({id:'o_'+uid(),userId:user.id,total:cs.price,status:'paid',items:cs.title+' → '+drop.skin.title,createdAt:new Date().toISOString()});
+  saveOrders(orders);
+  const inv = getInventory();
+  inv.push({id:'i_'+uid(),userId:user.id,skinId:drop.skin.id,source:'case',sourceCaseId:cs.id,pricePaid:cs.price,createdAt:new Date().toISOString()});
+  saveInventory(inv);
+
+  const chance = ((drop.weight/totalWeight)*100).toFixed(1);
+  const r = rarityInfo(drop.skin.rarity);
+
+  setTimeout(()=>{
+    const zone = $('#caseDropZone');
+    if (zone) {
+      zone.innerHTML = `
+        <div style="border-top:1px solid var(--line);padding:1.5rem">
+          <p class="mono-label">Ваш дроп</p>
+          <div class="drop-in" style="margin-top:.75rem;display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem;border:1px solid ${r.color};background:${r.color}14;padding:1rem">
+            <div style="width:8rem;height:6rem;overflow:hidden;border:1px solid var(--line);background:rgba(5,7,15,.6)">
+              <img src="${escHtml(drop.skin.imageUrl||'')}" alt="" style="width:100%;height:100%;object-fit:cover">
+            </div>
+            <div>
+              <span style="padding:.15rem .4rem;font-family:var(--font-mono);font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--void);background:${r.color}">${r.label}</span>
+              <p class="display" style="font-size:1.4rem;color:#fff;margin-top:.3rem">${escHtml(drop.skin.title)}</p>
+              <p style="font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.16em;color:#94a3b8">${escHtml(drop.skin.exterior)} · рыночная ${money(drop.skin.price)} · шанс ${chance}%</p>
+            </div>
+            <span style="margin-left:auto;font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.2em;color:var(--lime)">добавлено в инвентарь →</span>
+          </div>
+        </div>
+      `;
+    }
+    renderHeader();
+    toast(`Кейс открыт! Выпал: ${drop.skin.title}`,'ok');
+  },3000);
+}
+
+// ----- BLOG -----
+function renderBlog() {
+  const p = APP.params;
+  const posts = getPosts().filter(ps=>ps.status==='approved').sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+  const allTags = [...new Set(posts.flatMap(ps=>ps.tags.split(',').map(t=>t.trim()).filter(Boolean)))];
+  const filtered = p.tag ? posts.filter(ps=>ps.tags.includes(p.tag)) : posts;
+  const [lead, ...rest] = filtered;
+
+  return `
+    <div class="container" style="padding:2.5rem 0">
+      <div class="section-title"><p class="mono-label">Редакция SkinForge</p><h2>Блог о скинах и рынке</h2></div>
+      <div class="flex flex-wrap gap-2" style="margin-bottom:2rem">
+        <span class="chip ${!p.tag?'active':''}" data-blog-tag="">Все темы</span>
+        ${allTags.map(t=>`<span class="chip ${p.tag===t?'active':''}" data-blog-tag="${escHtml(t)}">#${escHtml(t)}</span>`).join('')}
+      </div>
+      ${!lead?'<div class="panel clip-corner text-center" style="padding:2.5rem;font-size:.85rem;color:#94a3b8">Статей по этой теме пока нет.</div>':`
+        ${postCardHtml(lead)}
+        ${rest.length?`<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:1.25rem;margin-top:1.25rem">${rest.map(p=>postCardHtml(p)).join('')}</div>`:''}
+      `}
+    </div>
+  `;
+}
+
+function postCardHtml(p) {
+  const tags = p.tags.split(',').map(t=>t.trim()).filter(Boolean);
+  const attImgs = (p.attachments||[]).filter(a=>a.kind==='image').length;
+  const attVids = (p.attachments||[]).filter(a=>a.kind==='video').length;
+  const attFiles = (p.attachments||[]).filter(a=>a.kind==='file').length;
+  const author = getUsers().find(u=>u.id===p.authorId);
+
+  return `
+    <article class="panel clip-corner" style="display:grid;grid-template-columns:200px 1fr;overflow:hidden" data-post-slug="${p.slug}">
+      <div class="relative overflow-hidden" style="min-height:10rem">
+        <img src="${escHtml(p.coverUrl||'')}" alt="" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.style.background='linear-gradient(135deg,rgba(124,92,255,.3),rgba(41,231,255,.2))'">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.5rem;padding:1.25rem">
+        <div class="flex flex-wrap items-center gap-2">
+          ${tags.map(t=>`<span style="border:1px solid var(--line);padding:.1rem .4rem;font-family:var(--font-mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.2em;color:var(--cyan)">#${escHtml(t)}</span>`).join('')}
+        </div>
+        <a href="#post/${p.slug}" onclick="event.preventDefault();navigate('postDetail',{slug:'${p.slug}'})" class="display" style="font-size:1.4rem;line-height:1;color:#fff">${escHtml(p.title)}</a>
+        <p style="font-size:.85rem;color:#94a3b8;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${escHtml(p.excerpt)}</p>
+        <div class="flex flex-wrap gap-3 mt-auto" style="font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.2em;color:#5c668a;padding-top:.5rem">
+          <span>✍ ${escHtml(author?.username||'неизвестен')}</span>
+          <span>◷ ${formatDate(p.createdAt)}</span>
+          ${attImgs?`<span style="color:var(--cyan)">🖼 ${attImgs}</span>`:''}
+          ${attVids?`<span style="color:var(--ember)">🎬 ${attVids}</span>`:''}
+          ${attFiles?`<span style="color:var(--lime)">📎 ${attFiles}</span>`:''}
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+// ----- POST DETAIL -----
+function renderPostDetail() {
+  const slug = APP.params.slug;
+  const post = getPosts().find(p=>p.slug===slug);
+  if (!post) return '<div class="container text-center" style="padding:6rem 0"><h1 class="display" style="font-size:3rem;color:#fff">404</h1></div>';
+  const author = getUsers().find(u=>u.id===post.authorId);
+  const images = (post.attachments||[]).filter(a=>a.kind==='image');
+  const videos = (post.attachments||[]).filter(a=>a.kind==='video');
+  const files = (post.attachments||[]).filter(a=>a.kind==='file');
+  const tags = post.tags.split(',').map(t=>t.trim()).filter(Boolean);
+
+  function embedUrl(url) {
+    if (!url) return '';
+    const yt=url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
+    if (yt) return 'https://www.youtube.com/embed/'+yt[1];
+    const vm=url.match(/vimeo\.com\/(\d+)/);
+    if (vm) return 'https://player.vimeo.com/video/'+vm[1];
+    return url;
+  }
+
+  const paragraphs = post.body.split('\n').filter(Boolean).map(p=>`<p>${escHtml(p)}</p>`).join('');
+
+  return `
+    <article class="container" style="max-width:900px;padding:2.5rem 0">
+      <nav style="margin-bottom:1.5rem;font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:#5c668a">
+        <a href="#" onclick="event.preventDefault();navigate('home')" style="color:#5c668a">Главная</a> /
+        <a href="#" onclick="event.preventDefault();navigate('blog')" style="color:#5c668a">Блог</a> /
+        <span style="color:#cbd5e1">${escHtml(post.title)}</span>
+      </nav>
+
+      <div class="flex flex-wrap gap-2">
+        ${tags.map(t=>`<a href="#" onclick="event.preventDefault();APP.params={tag:'${t}'};navigate('blog')" style="border:1px solid var(--line);padding:.15rem .5rem;font-family:var(--font-mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.2em;color:var(--cyan)">#${escHtml(t)}</a>`).join('')}
+      </div>
+      <h1 class="display" style="font-size:clamp(2rem,5vw,3rem);margin-top:.8rem;color:#fff">${escHtml(post.title)}</h1>
+      <p style="margin-top:.5rem;font-size:1rem;color:#94a3b8">${escHtml(post.excerpt)}</p>
+      <div class="flex flex-wrap gap-4" style="margin-top:1rem;padding:.75rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.2em;color:#5c668a">
+        <span>✍ ${escHtml(author?.username||'редакция')}</span><span>◷ ${formatDate(post.createdAt)}</span><span>👁 ${(post.views||0)+1}</span>
+        <span style="color:var(--cyan)">🖼 ${images.length}</span><span style="color:var(--ember)">🎬 ${videos.length+(post.videoUrl?1:0)}</span><span style="color:var(--lime)">📎 ${files.length}</span>
+      </div>
+
+      ${post.coverUrl?`<div class="panel clip-corner overflow-hidden" style="margin-top:2rem"><img src="${escHtml(post.coverUrl)}" alt="" style="width:100%;aspect-ratio:2.4/1;object-fit:cover"></div>`:''}
+
+      <div style="margin-top:2rem;display:flex;flex-direction:column;gap:1.25rem;font-size:.95rem;color:#cbd5e1;line-height:1.8">${paragraphs}</div>
+
+      ${post.videoUrl?`
+        <section style="margin-top:2.5rem">
+          <h2 class="display" style="font-size:1.5rem;color:#fff;margin-bottom:1rem">Видео</h2>
+          <div class="panel clip-corner overflow-hidden" style="aspect-ratio:16/9">
+            <iframe src="${embedUrl(post.videoUrl)}" style="width:100%;height:100%;border:none" allowfullscreen></iframe>
+          </div>
+        </section>
+      `:''}
+
+      ${images.length?`
+        <section style="margin-top:2.5rem">
+          <h2 class="display" style="font-size:1.5rem;color:#fff;margin-bottom:1rem">Галерея</h2>
+          <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem">
+            ${images.map(a=>`
+              <figure class="panel clip-corner overflow-hidden">
+                <img src="${escHtml(a.url||'')}" alt="${escHtml(a.title||'')}" style="width:100%;aspect-ratio:16/9;object-fit:cover">
+                <figcaption style="border-top:1px solid var(--line);padding:.5rem 1rem;font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.2em;color:#5c668a">${escHtml(a.title||'')}</figcaption>
+              </figure>
+            `).join('')}
+          </div>
+        </section>
+      `:''}
+
+      ${videos.length?`
+        <section style="margin-top:2.5rem">
+          <h2 class="display" style="font-size:1.5rem;color:#fff;margin-bottom:1rem">Видео-вложения</h2>
+          <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem">
+            ${videos.map(a=>{
+              const src = a.url.startsWith('data:')?a.url:embedUrl(a.url);
+              return a.url.startsWith('data:')?
+                `<figure class="panel clip-corner overflow-hidden"><video src="${src}" controls style="width:100%;aspect-ratio:16/9;background:#000"></video><figcaption style="border-top:1px solid var(--line);padding:.5rem 1rem;font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.2em;color:#5c668a">${escHtml(a.title||'')}</figcaption></figure>`:
+                `<figure class="panel clip-corner overflow-hidden" style="aspect-ratio:16/9"><iframe src="${src}" style="width:100%;height:100%;border:none" allowfullscreen></iframe></figure>`;
+            }).join('')}
+          </div>
+        </section>
+      `:''}
+
+      ${files.length?`
+        <section style="margin-top:2.5rem">
+          <h2 class="display" style="font-size:1.5rem;color:#fff;margin-bottom:1rem">Файлы</h2>
+          <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem">
+            ${files.map(a=>`
+              <a href="${escHtml(a.url||'#')}" target="_blank" rel="noreferrer" class="panel clip-corner flex items-center gap-4" style="padding:1rem;transition:border-color .2s;color:inherit;text-decoration:none">
+                <span style="display:grid;place-items:center;width:2.75rem;height:2.75rem;border:1px solid var(--line);background:rgba(5,7,15,.6);font-size:1.25rem">📎</span>
+                <span style="flex:1;min-width:0"><span style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--font-mono);font-size:.85rem;color:#fff">${escHtml(a.title||'Файл')}</span><span class="mono-label">скачать</span></span>
+                <span style="font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.2em;color:var(--lime)">↓</span>
+              </a>
+            `).join('')}
+          </div>
+        </section>
+      `:''}
+
+      <div class="panel clip-corner flex flex-wrap items-center gap-4" style="margin-top:3rem;padding:1.25rem">
+        <span style="display:grid;place-items:center;width:3.5rem;height:3.5rem;border-radius:50%;background:linear-gradient(135deg,var(--neon),var(--cyan));font-family:var(--font-mono);font-size:1.1rem;font-weight:900;color:var(--void)">${(author?.username||'SF').slice(0,2).toUpperCase()}</span>
+        <div style="flex:1;min-width:0">
+          <p class="mono-label">Автор материала</p>
+          <p class="display" style="font-size:1.25rem;color:#fff">${escHtml(author?.username||'Редакция SkinForge')}</p>
+          <p style="margin-top:.3rem;font-size:.85rem;color:#94a3b8">${escHtml(author?.bio||'Колумнист SkinForge.')}</p>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+// ----- LOGIN -----
+function renderLogin() {
+  const user = currentUser();
+  if (user) { setTimeout(()=>navigate(user.role==='admin'?'admin':user.role==='author'?'studio':'dashboard'),0); return ''; }
+  return `
+    <div class="container" style="display:grid;gap:2rem;padding:3rem 0;max-width:900px;grid-template-columns:1fr 1.1fr">
+      <div class="panel panel-glow clip-corner" style="padding:2rem">
+        <p class="mono-label">Вход в систему</p>
+        <h1 class="display" style="font-size:2.5rem;color:#fff;margin-top:.3rem">Личный кабинет</h1>
+        <p style="margin-top:.75rem;font-size:.85rem;color:#94a3b8">Единая точка входа для покупателей, авторов и администратора.</p>
+        <div id="loginError"></div>
+        <form id="loginForm" style="margin-top:1.5rem;display:flex;flex-direction:column;gap:1rem">
+          <div><label class="mono-label">E-mail или никнейм</label><input class="field" style="margin-top:.4rem" name="identity" required placeholder="buyer@skinvault.gg"></div>
+          <div><label class="mono-label">Пароль</label><input class="field" style="margin-top:.4rem" name="password" type="password" required placeholder="••••••"></div>
+          <button type="submit" class="btn btn-primary w-full">Войти</button>
+        </form>
+        <p style="margin-top:1.5rem;font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:#5c668a">Нет аккаунта? <a href="#" onclick="event.preventDefault();navigate('register')">Зарегистрироваться</a></p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div class="panel clip-corner" style="padding:1.5rem">
+          <p class="mono-label">Демо-доступы для проверки</p>
+          ${[
+            ['Администратор','admin@skinvault.gg','admin123','Модерация всего контента'],
+            ['Автор','author@skinvault.gg','author123','Загрузка в блог и каталог'],
+            ['Покупатель','buyer@skinvault.gg','buyer123','Баланс, инвентарь, кейсы'],
+          ].map(([role,email,pass,note])=>`
+            <div style="border:1px solid var(--line);background:rgba(5,7,15,.5);padding:.75rem;margin-top:.75rem">
+              <div class="flex flex-wrap justify-between gap-2">
+                <span style="font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:var(--cyan)">${role}</span>
+                <span style="font-family:var(--font-mono);font-size:.72rem;color:#fff">${email}</span>
+                <span style="font-family:var(--font-mono);font-size:.72rem;color:var(--lime)">${pass}</span>
+              </div>
+              <p style="margin-top:.4rem;font-size:.72rem;color:#5c668a">${note}</p>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ----- REGISTER -----
+function renderRegister() {
+  const user = currentUser();
+  if (user) { setTimeout(()=>navigate(user.role==='admin'?'admin':user.role==='author'?'studio':'dashboard'),0); return ''; }
+  return `
+    <div class="container" style="display:grid;gap:2rem;padding:3rem 0;max-width:900px;grid-template-columns:1.1fr .9fr">
+      <div class="panel panel-glow clip-corner" style="padding:2rem">
+        <p class="mono-label">Регистрация</p>
+        <h1 class="display" style="font-size:2.5rem;color:#fff;margin-top:.3rem">Создать кабинет</h1>
+        <p style="margin-top:.75rem;font-size:.85rem;color:#94a3b8">Личный кабинет, приветственный баланс 500 ₽, доступ к покупкам и кейсам.</p>
+        <div id="regError"></div>
+        <form id="regForm" style="margin-top:1.5rem;display:grid;gap:1rem;grid-template-columns:1fr 1fr">
+          <div style="grid-column:span 2"><label class="mono-label">Никнейм</label><input class="field" style="margin-top:.4rem" name="username" required minlength="3" placeholder="SKINHUNTER"></div>
+          <div style="grid-column:span 2"><label class="mono-label">E-mail</label><input class="field" style="margin-top:.4rem" name="email" type="email" required placeholder="you@example.com"></div>
+          <div><label class="mono-label">Пароль</label><input class="field" style="margin-top:.4rem" name="password" type="password" required minlength="6" placeholder="от 6 символов"></div>
+          <div><label class="mono-label">Повтор</label><input class="field" style="margin-top:.4rem" name="repeat" type="password" required minlength="6" placeholder="••••••"></div>
+          <label style="grid-column:span 2;display:flex;align-items:flex-start;gap:.5rem;font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.18em;color:#5c668a"><input type="checkbox" required style="margin-top:.15rem;accent-color:var(--neon)"> Соглашаюсь с правилами: предметы виртуальные, контент — после модерации</label>
+          <button type="submit" class="btn btn-primary" style="grid-column:span 2;width:100%">Зарегистрироваться</button>
+        </form>
+        <p style="margin-top:1.5rem;font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:#5c668a">Уже есть аккаунт? <a href="#" onclick="event.preventDefault();navigate('login')">Войти</a></p>
+      </div>
+      <div class="panel clip-corner" style="padding:1.5rem">
+        <p class="mono-label">Что внутри</p>
+        <ul style="margin-top:1rem;display:flex;flex-direction:column;gap:.75rem;font-size:.85rem;color:#94a3b8">
+          <li><span style="color:var(--lime)">◆</span> Баланс с пополнением</li>
+          <li><span style="color:var(--lime)">◆</span> Инвентарь предметов</li>
+          <li><span style="color:var(--lime)">◆</span> Продажа предметов за 70%</li>
+          <li><span style="color:var(--lime)">◆</span> Избранное и профиль</li>
+          <li><span style="color:var(--lime)">◆</span> Отправка материалов на модерацию</li>
+        </ul>
+      </div>
+    </div>
+  `;
+}
+
+// ----- DASHBOARD (BUYER) -----
+function renderDashboard() {
+  const user = currentUser();
+  if (!user) { setTimeout(()=>navigate('login'),0); return ''; }
+  const p = APP.params;
+  const tab = p.tab||'overview';
+  const inv = getInventory().filter(i=>i.userId===user.id).sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+  const orders = getOrders().filter(o=>o.userId===user.id).sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+  const favs = getFavorites().filter(f=>f.userId===user.id);
+  const allSkins = getSkins();
+
+  function skinById(id) { return allSkins.find(s=>s.id===id); }
+
+  const invValue = inv.reduce((a,i)=>{const s=skinById(i.skinId);return a+(s?.price||0);},0);
+  const spent = orders.filter(o=>o.status==='paid').reduce((a,o)=>a+o.total,0);
+  const tabItems = [['overview','Обзор'],['inventory','Инвентарь'],['orders','Заказы'],['favorites','Избранное'],['profile','Профиль']];
+
+  return `
+    <div class="container" style="padding:2.5rem 0">
+      <div class="flex flex-wrap justify-between gap-4" style="margin-bottom:2rem">
+        <div>
+          <p class="mono-label">Личный кабинет покупателя</p>
+          <h1 class="display" style="font-size:clamp(2rem,5vw,3rem);color:#fff">Привет, ${escHtml(user.username)}</h1>
+          <p class="mono-label" style="color:#5c668a;margin-top:.3rem">С ${formatDate(user.createdAt)} · ${inv.length} предметов в инвентаре</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="btn btn-ghost" onclick="navigate('skins')">В каталог</button>
+          <button class="btn btn-primary" onclick="navigate('cases')">Открыть кейс</button>
+        </div>
+      </div>
+
+      <div style="display:grid;gap:1.5rem;grid-template-columns:300px 1fr">
+        <aside style="display:flex;flex-direction:column;gap:1.25rem">
+          <div class="panel panel-glow clip-corner" style="padding:1.25rem">
+            <p class="mono-label">Баланс</p>
+            <p class="display" style="font-size:2.5rem;color:var(--lime)">${money(user.balance)}</p>
+            <form id="depositForm" style="margin-top:1rem;display:flex;flex-direction:column;gap:.75rem">
+              <div><label class="mono-label">Пополнить</label><input class="field" style="margin-top:.4rem" name="amount" value="1000" placeholder="1000"></div>
+              <div class="flex flex-wrap gap-2">
+                ${['500','1000','2500','5000'].map(v=>`<button type="button" class="chip quick-deposit" data-amount="${v}">+${v} ₽</button>`).join('')}
+              </div>
+              <button type="submit" class="btn btn-lime w-full">Пополнить</button>
+            </form>
+          </div>
+          <div class="panel clip-corner">
+            ${[['Стоимость инвентаря',money(invValue)],['Потрачено',money(spent)],['Заказов',String(orders.length)],['В избранном',String(favs.length)]].map(([l,v])=>`
+              <div class="flex justify-between items-center" style="padding:.75rem 1rem;border-bottom:1px solid rgba(29,36,64,.5)"><span class="mono-label">${l}</span><span style="font-family:var(--font-mono);font-size:.85rem;color:#fff">${v}</span></div>
+            `).join('')}
+          </div>
+        </aside>
+
+        <section>
+          <div class="tabs">
+            ${tabItems.map(([k,l])=>`<button class="tab-btn ${tab===k?'active':''}" data-dash-tab="${k}">${l}</button>`).join('')}
+          </div>
+
+          ${tab==='overview'?`
+            <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin-bottom:2rem">
+              ${[['Куплено',inv.filter(i=>i.source==='purchase').length,'💠'],['Из кейсов',inv.filter(i=>i.source==='case').length,'🎲'],['В избранном',favs.length,'★']].map(([l,v,e])=>`
+                <div class="panel clip-corner stat-card"><span style="font-size:1.5rem">${e}</span><p class="value">${v}</p><p class="label">${l}</p></div>
+              `).join('')}
+            </div>
+            <h3 class="display" style="font-size:1.5rem;color:#fff;margin-bottom:1rem">Последние предметы</h3>
+            <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem">
+              ${inv.slice(0,6).map(i=>{const s=skinById(i.skinId);return s?skinCardHtml(s):'';}).join('')}
+              ${inv.length===0?'<div class="panel clip-corner" style="padding:1.5rem;font-size:.85rem;color:#94a3b8">Инвентарь пуст.</div>':''}
+            </div>
+          `:''}
+
+          ${tab==='inventory'?`
+            ${inv.length===0?'<div class="panel clip-corner text-center" style="padding:2rem;font-size:.85rem;color:#94a3b8">Здесь появятся купленные предметы.</div>':
+              inv.map(i=>{
+                const s=skinById(i.skinId);if(!s)return '';
+                const r=rarityInfo(s.rarity);
+                return `<div class="inv-row">
+                  <img src="${escHtml(s.imageUrl||'')}" alt="">
+                  <div class="info">
+                    <div class="title"><a href="#" onclick="event.preventDefault();navigate('skinDetail',{id:'${s.id}'})" style="color:#fff">${escHtml(s.title)}</a></div>
+                    <div class="meta"><span style="color:${r.color}">● ${r.label}</span> · ${escHtml(s.exterior)} · ${i.source==='case'?'из кейса':'покупка'} · ${formatDate(i.createdAt)}</div>
+                  </div>
+                  <div class="actions"><span style="font-family:var(--font-mono);color:var(--lime)">${money(s.price)}</span><br><button class="btn btn-ghost sell-item-btn" data-item-id="${i.id}" data-skin-price="${s.price}" style="margin-top:.4rem;padding:.3rem .6rem;font-size:.58rem">Продать за ${money(Math.round(s.price*0.7))}</button></div>
+                </div>`;
+              }).join('')
+            }
+          `:''}
+
+          ${tab==='orders'?`
+            <div class="panel clip-corner overflow-hidden">
+              <div style="border-bottom:1px solid var(--line);padding:1rem 1.25rem"><span class="mono-label">История заказов</span></div>
+              ${orders.length===0?'<p style="padding:1.5rem;font-size:.85rem;color:#94a3b8">Заказов нет.</p>':`
+                <div style="overflow-x:auto"><table class="sf-table">
+                  <thead><tr><th>№</th><th>Дата</th><th>Состав</th><th>Сумма</th></tr></thead>
+                  <tbody>${orders.map(o=>`<tr><td style="font-family:var(--font-mono);color:#94a3b8">#${o.id.slice(-4)}</td><td style="font-family:var(--font-mono);color:#94a3b8">${formatDate(o.createdAt)}</td><td style="color:#cbd5e1">${escHtml(o.items||'—')}</td><td style="font-family:var(--font-mono);color:var(--lime)">${money(o.total)}</td></tr>`).join('')}</tbody>
+                </table></div>
+              `}
+            </div>
+          `:''}
+
+          ${tab==='favorites'?`
+            <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem">
+              ${favs.length===0?'<div class="panel clip-corner text-center" style="padding:2rem;font-size:.85rem;color:#94a3b8;grid-column:1/-1">Нет избранных.</div>':
+                favs.map(f=>{const s=skinById(f.skinId);return s?skinCardHtml(s):'';}).join('')
+              }
+            </div>
+          `:''}
+
+          ${tab==='profile'?`
+            <div class="panel clip-corner" style="padding:1.5rem">
+              <p class="mono-label">Настройки профиля</p>
+              <form id="profileForm" style="margin-top:1rem;display:grid;gap:1rem;grid-template-columns:1fr 1fr">
+                <div><label class="mono-label">Никнейм</label><input class="field" style="margin-top:.4rem" name="username" value="${escHtml(user.username)}"></div>
+                <div><span class="mono-label">E-mail</span><p style="margin-top:.6rem;font-family:var(--font-mono);font-size:.85rem;color:#94a3b8">${escHtml(user.email)}</p></div>
+                <div style="grid-column:span 2"><label class="mono-label">Аватар</label><div class="upload-zone" id="avatarUploadZone" style="margin-top:.4rem"><input type="file" id="avatarInput" accept="image/*" style="display:none"><span style="font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--cyan)">⬆ Выберите изображение</span><div id="avatarPreview"></div></div></div>
+                <div style="grid-column:span 2"><label class="mono-label">О себе</label><textarea class="field" style="margin-top:.4rem" name="bio" rows="3">${escHtml(user.bio||'')}</textarea></div>
+                <button type="submit" class="btn btn-primary" style="grid-column:span 2">Сохранить</button>
+              </form>
+            </div>
+          `:''}
+        </section>
+      </div>
+    </div>
+  `;
+}
+
+// ----- STUDIO (AUTHOR) -----
+function renderStudio() {
+  const user = currentUser();
+  if (!user) { setTimeout(()=>navigate('login'),0); return ''; }
+  const p = APP.params;
+  const tab = p.tab||'skin';
+  const tabItems = [['skin','＋ Скин'],['case','＋ Кейс'],['post','＋ Статья'],['mine','Мои материалы']];
+  const allSkins = getSkins().filter(s=>s.status==='approved');
+  const mySkins = getSkins().filter(s=>s.authorId===user.id);
+  const myCases = getCases().filter(c=>c.authorId===user.id);
+  const myPosts = getPosts().filter(ps=>ps.authorId===user.id);
+
+  return `
+    <div class="container" style="padding:2.5rem 0">
+      <div class="flex flex-wrap justify-between gap-4" style="margin-bottom:2rem">
+        <div>
+          <p class="mono-label">Студия автора</p>
+          <h1 class="display" style="font-size:clamp(2rem,5vw,3rem);color:#fff">Добавить материал</h1>
+          <p style="max-width:40rem;font-size:.85rem;color:#94a3b8">Загружайте скины, кейсы и статьи. Всё отправляется на проверку — публикация только после одобрения.</p>
+        </div>
+      </div>
+
+      <div class="tabs">${tabItems.map(([k,l])=>`<button class="tab-btn ${tab===k?'active':''}" data-studio-tab="${k}">${l}</button>`).join('')}</div>
+
+      ${tab==='skin'?`
+        <form id="studioSkinForm" class="panel clip-corner" style="padding:1.5rem;display:grid;gap:1rem;grid-template-columns:1fr 1fr">
+          <div style="grid-column:span 2"><label class="mono-label">Название скина *</label><input class="field" style="margin-top:.4rem" name="title" required placeholder="AK-47 | Neon Circuit"></div>
+          <div><label class="mono-label">Оружие</label><input class="field" style="margin-top:.4rem" name="weapon" placeholder="AK-47"></div>
+          <div><label class="mono-label">Игра</label><select class="field" style="margin-top:.4rem" name="game"><option value="">Не выбрана</option><option>CS2</option><option>Dota 2</option><option>Valorant</option><option>Fortnite</option></select></div>
+          <div><label class="mono-label">Редкость</label><select class="field" style="margin-top:.4rem" name="rarity">${RARITIES.map(r=>`<option value="${r.key}">${r.label}</option>`).join('')}</select></div>
+          <div><label class="mono-label">Качество</label><select class="field" style="margin-top:.4rem" name="exterior">${EXTERIORS.map(e=>`<option>${e}</option>`).join('')}</select></div>
+          <div><label class="mono-label">Float</label><input class="field" style="margin-top:.4rem" name="floatValue" placeholder="0.021"></div>
+          <div><label class="mono-label">Цена, ₽ *</label><input class="field" style="margin-top:.4rem" name="price" required placeholder="4899"></div>
+          <div style="grid-column:span 2"><label class="mono-label">Описание</label><textarea class="field" style="margin-top:.4rem" name="description" rows="3" placeholder="Паттерн, тираж, особенности…"></textarea></div>
+          <div style="grid-column:span 2"><label class="mono-label">Картина</label><div class="upload-zone" style="margin-top:.4rem" data-upload-for="skinImage"><input type="file" name="imageFile" accept="image/*" style="display:none"><span style="font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--cyan)">⬆ Выберите изображение (до 2 МБ)</span><div class="upload-preview" data-preview-for="skinImage"></div></div></div>
+          <div style="grid-column:span 2"><label class="mono-label">…или ссылка</label><input class="field" style="margin-top:.4rem" name="imageUrl" placeholder="https://…"></div>
+          <button type="submit" class="btn btn-primary" style="grid-column:span 2">Отправить на модерацию</button>
+        </form>
+      `:''}
+
+      ${tab==='case'?`
+        <form id="studioCaseForm" class="panel clip-corner" style="padding:1.5rem;display:grid;gap:1rem;grid-template-columns:1fr 1fr">
+          <div style="grid-column:span 2"><label class="mono-label">Название кейса *</label><input class="field" style="margin-top:.4rem" name="title" required placeholder="Neon Circuit Case"></div>
+          <div><label class="mono-label">Игра</label><select class="field" style="margin-top:.4rem" name="game"><option value="">Не выбрана</option><option>CS2</option><option>Dota 2</option><option>Valorant</option><option>Fortnite</option></select></div>
+          <div><label class="mono-label">Цена открытия, ₽ *</label><input class="field" style="margin-top:.4rem" name="price" required placeholder="349"></div>
+          <div style="grid-column:span 2"><label class="mono-label">Описание</label><textarea class="field" style="margin-top:.4rem" name="description" rows="2"></textarea></div>
+          <div style="grid-column:span 2"><label class="mono-label">Обложка</label><div class="upload-zone" style="margin-top:.4rem" data-upload-for="caseImage"><input type="file" name="imageFile" accept="image/*" style="display:none"><span style="font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--cyan)">⬆ Выберите изображение</span><div class="upload-preview" data-preview-for="caseImage"></div></div></div>
+          <div style="grid-column:span 2"><p class="mono-label">Содержимое (одобренные скины)</p><div class="checkbox-list" style="margin-top:.4rem">${allSkins.map(s=>`<label><input type="checkbox" name="skinIds" value="${s.id}"> ${escHtml(s.title)} <span style="margin-left:auto;color:var(--lime)">${money(s.price)}</span></label>`).join('')}</div></div>
+          <button type="submit" class="btn btn-primary" style="grid-column:span 2">Отправить на модерацию</button>
+        </form>
+      `:''}
+
+      ${tab==='post'?`
+        <form id="studioPostForm" class="panel clip-corner" style="padding:1.5rem;display:grid;gap:1rem;grid-template-columns:1fr 1fr">
+          <div style="grid-column:span 2"><label class="mono-label">Заголовок *</label><input class="field" style="margin-top:.4rem" name="title" required placeholder="Как формируется цена…"></div>
+          <div style="grid-column:span 2"><label class="mono-label">Краткое описание</label><input class="field" style="margin-top:.4rem" name="excerpt" placeholder="2–3 предложения"></div>
+          <div style="grid-column:span 2"><label class="mono-label">Текст статьи *</label><textarea class="field" style="margin-top:.4rem;min-height:180px" name="body" required placeholder="Абзацы разделяйте пустой строкой…"></textarea></div>
+          <div><label class="mono-label">Теги (через запятую)</label><input class="field" style="margin-top:.4rem" name="tags" placeholder="рынок, аналитика"></div>
+          <div><label class="mono-label">Видео (YouTube/Vimeo)</label><input class="field" style="margin-top:.4rem" name="videoUrl" placeholder="https://youtube.com/watch?v=…"></div>
+          <div style="grid-column:span 2"><label class="mono-label">Обложка статьи</label><div class="upload-zone" style="margin-top:.4rem" data-upload-for="postCover"><input type="file" name="coverFile" accept="image/*" style="display:none"><span style="font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--cyan)">⬆ Выберите обложку</span><div class="upload-preview" data-preview-for="postCover"></div></div></div>
+          <div style="grid-column:span 2"><label class="mono-label">Вложения (картинки, видео, файлы)</label><div class="upload-zone" style="margin-top:.4rem" data-upload-for="postAttachments"><input type="file" name="attachmentFiles" accept="image/*,video/*,.pdf,.zip,.txt" multiple style="display:none"><span style="font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--cyan)">⬆ Выберите файлы (несколько)</span><div class="upload-preview" data-preview-for="postAttachments"></div></div></div>
+          <div><label class="mono-label">Внешняя ссылка</label><input class="field" style="margin-top:.4rem" name="externalUrl" placeholder="https://…"></div>
+          <div><label class="mono-label">Тип ссылки</label><select class="field" style="margin-top:.4rem" name="externalKind"><option value="image">Картина</option><option value="video">Видео</option><option value="file">Файл</option></select></div>
+          <button type="submit" class="btn btn-primary" style="grid-column:span 2">Отправить на модерацию</button>
+        </form>
+      `:''}
+
+      ${tab==='mine'?`
+        <div style="display:flex;flex-direction:column;gap:1.5rem">
+          <div class="panel clip-corner" style="padding:1.25rem">
+            <p class="mono-label">Мои скины (${mySkins.length})</p>
+            ${mySkins.length===0?'<p style="margin-top:.75rem;font-size:.85rem;color:#94a3b8">Вы не отправляли скины.</p>':`
+              <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:1rem">
+                ${mySkins.map(s=>skinCardHtml(s)).join('')}
+              </div>
+            `}
+          </div>
+          <div class="panel clip-corner" style="padding:1.25rem">
+            <p class="mono-label">Мои кейсы (${myCases.length})</p>
+            ${myCases.length===0?'<p style="margin-top:.75rem;font-size:.85rem;color:#94a3b8">Не отправлялись.</p>':`
+              <div style="margin-top:1rem;display:flex;flex-direction:column;gap:.5rem">
+                ${myCases.map(c=>`<div class="flex flex-wrap items-center gap-3" style="border:1px solid var(--line);background:rgba(5,7,15,.5);padding:.75rem">
+                  <span class="display" style="font-size:1.1rem;color:#fff">${escHtml(c.title)}</span>
+                  <span style="font-family:var(--font-mono);font-size:.72rem;color:var(--lime)">${money(c.price)}</span>
+                  <span style="font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.16em;color:${statusInfo(c.status).color}">● ${statusInfo(c.status).label}</span>
+                </div>`).join('')}
+              </div>
+            `}
+          </div>
+          <div class="panel clip-corner" style="padding:1.25rem">
+            <p class="mono-label">Мои статьи (${myPosts.length})</p>
+            ${myPosts.length===0?'<p style="margin-top:.75rem;font-size:.85rem;color:#94a3b8">Не отправлялись.</p>':`
+              <div style="margin-top:1rem;display:flex;flex-direction:column;gap:.5rem">
+                ${myPosts.map(p=>`<div style="border:1px solid var(--line);background:rgba(5,7,15,.5);padding:.75rem">
+                  <div class="flex flex-wrap items-center gap-3">
+                    <span class="display" style="font-size:1.1rem;color:#fff">${escHtml(p.title)}</span>
+                    <span style="font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.16em;color:${statusInfo(p.status).color}">● ${statusInfo(p.status).label}</span>
+                    <span class="mono-label" style="color:#5c668a">👁 ${p.views} · ${formatDate(p.createdAt)}</span>
+                  </div>
+                  ${p.reviewNote?`<p style="margin-top:.4rem;font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.16em;color:var(--warn)">Комментарий: ${escHtml(p.reviewNote)}</p>`:''}
+                </div>`).join('')}
+              </div>
+            `}
+          </div>
+        </div>
+      `:''}
+    </div>
+  `;
+}
+
+// ----- ADMIN -----
+function renderAdmin() {
+  const user = currentUser();
+  if (!user||user.role!=='admin') return `
+    <div class="container" style="max-width:600px;padding:6rem 0;text-align:center">
+      <div class="panel clip-corner" style="padding:2.5rem">
+        <p class="display" style="font-size:2rem;color:#fff">Доступ запрещён</p>
+        <p style="margin-top:1rem;font-size:.85rem;color:#94a3b8">Только для администратора.</p>
+        <div class="flex justify-center gap-3" style="margin-top:1.5rem">
+          <button class="btn btn-ghost" onclick="navigate('dashboard')">Мой кабинет</button>
+          <button class="btn btn-primary" onclick="navigate('studio')">Студия</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const p = APP.params;
+  const tab = p.tab||'overview';
+  const pendingSkins = getSkins().filter(s=>s.status==='pending');
+  const pendingCases = getCases().filter(c=>c.status==='pending');
+  const pendingPosts = getPosts().filter(ps=>ps.status==='pending');
+  const allUsers = getUsers();
+  const allSkins = getSkins().filter(s=>s.status==='approved');
+  const tabItems = [['overview','Обзор'],['skins','Скины'],['cases','Кейсы'],['posts','Блог'],['users','Пользователи']];
+
+  return `
+    <div class="container" style="padding:2.5rem 0">
+      <div class="section-title"><p class="mono-label">Панель администратора</p><h2>Модерация SkinForge</h2></div>
+
+      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin:2rem 0">
+        ${[
+          ['В очереди',pendingSkins.length+pendingCases.length+pendingPosts.length,'#f5c451'],
+          ['Скинов',getSkins().filter(s=>s.status==='approved').length,'#4ade80'],
+          ['Кейсов',getCases().filter(c=>c.status==='approved').length,'#29e7ff'],
+          ['Статей',getPosts().filter(p=>p.status==='approved').length,'#b6ff3d'],
+          ['Пользователей',allUsers.length,'#7c5cff'],
+        ].map(([l,v,c])=>`
+          <div class="panel clip-corner stat-card" style="border-top:2px solid ${c}">
+            <p class="label">${l}</p><p class="value">${v}</p>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="tabs">${tabItems.map(([k,l])=>`<button class="tab-btn ${tab===k?'active':''}" data-admin-tab="${k}">${l}</button>`).join('')}</div>
+
+      ${tab==='overview'?`
+        <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem">
+          ${[['Скины на модерации',pendingSkins,'skins'],['Кейсы',pendingCases,'cases'],['Статьи',pendingPosts,'posts']].map(([title,items,href])=>`
+            <div class="panel clip-corner" style="padding:1.25rem">
+              <div class="flex justify-between items-center"><span class="mono-label">${title}</span><a href="#" onclick="event.preventDefault();APP.params={tab:'${href}'};navigate('admin')" style="font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.2em;color:var(--cyan)">открыть →</a></div>
+              <p class="display" style="font-size:2.5rem;color:#fff;margin-top:.3rem">${items.length}</p>
+              <ul style="margin-top:.75rem">${items.slice(0,5).map(i=>`<li style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--font-mono);font-size:.72rem;color:#94a3b8">· ${escHtml(i.title)}</li>`).join('')}${items.length===0?'<li style="font-family:var(--font-mono);font-size:.72rem;color:var(--lime)">очередь пуста</li>':''}</ul>
+            </div>
+          `).join('')}
+        </div>
+      `:''}
+
+      ${tab==='skins'?`
+        ${pendingSkins.length===0?'<div class="panel clip-corner text-center" style="padding:2rem;font-size:.85rem;color:#94a3b8">Очередь пуста.</div>':`
+          <div style="display:flex;flex-direction:column;gap:1rem">
+            ${pendingSkins.map(s=>{
+              const r=rarityInfo(s.rarity);
+              return `<div class="panel clip-corner" style="padding:1.25rem;display:grid;gap:1.25rem;grid-template-columns:180px 1fr">
+                <div style="border:1px solid var(--line);background:rgba(5,7,15,.6);overflow:hidden">
+                  <img src="${escHtml(s.imageUrl||'')}" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover" onerror="this.style.display='none'">
+                </div>
+                <div>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span style="padding:.1rem .4rem;font-family:var(--font-mono);font-size:.58rem;font-weight:800;text-transform:uppercase;color:var(--void);background:${r.color}">${r.label}</span>
+                    <span class="mono-label" style="color:${statusInfo(s.status).color}">● ${statusInfo(s.status).label}</span>
+                    <span style="font-family:var(--font-mono);font-size:.72rem;color:var(--lime)">${money(s.price)}</span>
+                    <span class="mono-label" style="color:#5c668a">автор: ${escHtml(getUsers().find(u=>u.id===s.authorId)?.username||'—')}</span>
+                  </div>
+                  <h3 class="display" style="font-size:1.4rem;color:#fff;margin-top:.3rem">${escHtml(s.title)}</h3>
+                  <p style="margin-top:.5rem;max-width:40rem;font-size:.85rem;color:#cbd5e1;line-height:1.6">${escHtml(s.description)}</p>
+                  <form class="moderate-skin-form" data-skin-id="${s.id}" style="margin-top:1rem;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem">
+                    <input class="field" style="max-width:16rem" name="note" placeholder="Комментарий…" value="${escHtml(s.reviewNote||'')}">
+                    <button type="submit" name="decision" value="approved" class="btn btn-lime" style="padding:.5rem 1rem">✓ Опубликовать</button>
+                    <button type="submit" name="decision" value="rejected" class="btn btn-danger" style="padding:.5rem 1rem">✕ Отклонить</button>
+                  </form>
+                </div>
+              </div>`;
+            }).join('')}
+          </div>
+        `}
+      `:''}
+
+      ${tab==='cases'?`
+        ${pendingCases.length===0?'<div class="panel clip-corner text-center" style="padding:2rem;font-size:.85rem;color:#94a3b8">Очередь пуста.</div>':`
+          <div style="display:flex;flex-direction:column;gap:1rem">
+            ${pendingCases.map(c=>`
+              <div class="panel clip-corner" style="padding:1.25rem">
+                <div class="flex flex-wrap items-center gap-3">
+                  <h3 class="display" style="font-size:1.4rem;color:#fff">${escHtml(c.title)}</h3>
+                  <span style="font-family:var(--font-mono);font-size:.72rem;color:var(--lime)">${money(c.price)}</span>
+                  <span style="font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.16em;color:${statusInfo(c.status).color}">● ${statusInfo(c.status).label}</span>
+                </div>
+                <p style="margin-top:.5rem;max-width:40rem;font-size:.85rem;color:#cbd5e1">${escHtml(c.description)}</p>
+                <form class="moderate-case-form" data-case-id="${c.id}" style="margin-top:1rem;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem">
+                  <input class="field" style="max-width:16rem" name="note" placeholder="Комментарий…">
+                  <button type="submit" name="decision" value="approved" class="btn btn-lime" style="padding:.5rem 1rem">✓ Опубликовать</button>
+                  <button type="submit" name="decision" value="rejected" class="btn btn-danger" style="padding:.5rem 1rem">✕ Отклонить</button>
+                </form>
+                <details style="margin-top:1rem;border:1px solid var(--line);background:rgba(5,7,15,.5);padding:.75rem">
+                  <summary style="cursor:pointer;font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.2em;color:var(--cyan)">Наполнить кейс</summary>
+                  <form class="case-contents-form" data-case-id="${c.id}" style="margin-top:.75rem;display:flex;flex-direction:column;gap:.75rem">
+                    <div class="checkbox-list">${allSkins.map(s=>`<label><input type="checkbox" name="skinIds" value="${s.id}" ${(c.skinIds||[]).includes(s.id)?'checked':''}> ${escHtml(s.title)} <span style="margin-left:auto;color:var(--lime)">${money(s.price)}</span></label>`).join('')}</div>
+                    <button type="submit" class="btn btn-ghost" style="padding:.5rem 1rem">Сохранить содержимое</button>
+                  </form>
+                </details>
+              </div>
+            `).join('')}
+          </div>
+        `}
+      `:''}
+
+      ${tab==='posts'?`
+        ${pendingPosts.length===0?'<div class="panel clip-corner text-center" style="padding:2rem;font-size:.85rem;color:#94a3b8">Очередь пуста.</div>':`
+          <div style="display:flex;flex-direction:column;gap:1rem">
+            ${pendingPosts.map(ps=>`
+              <div class="panel clip-corner" style="padding:1.25rem">
+                <div class="flex flex-wrap items-center gap-3">
+                  <h3 class="display" style="font-size:1.4rem;color:#fff">${escHtml(ps.title)}</h3>
+                  <span style="font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.16em;color:${statusInfo(ps.status).color}">● ${statusInfo(ps.status).label}</span>
+                </div>
+                <p style="margin-top:.4rem;font-size:.85rem;color:#94a3b8">${escHtml(ps.excerpt)}</p>
+                <pre style="margin-top:.5rem;max-height:8rem;overflow:auto;border:1px solid var(--line);background:rgba(5,7,15,.5);padding:.75rem;white-space:pre-wrap;font-size:.82rem;color:#cbd5e1;line-height:1.7">${escHtml(ps.body)}</pre>
+                <form class="moderate-post-form" data-post-id="${ps.id}" style="margin-top:1rem;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem">
+                  <input class="field" style="max-width:16rem" name="note" placeholder="Комментарий…">
+                  <button type="submit" name="decision" value="approved" class="btn btn-lime" style="padding:.5rem 1rem">✓ Опубликовать</button>
+                  <button type="submit" name="decision" value="rejected" class="btn btn-danger" style="padding:.5rem 1rem">✕ Отклонить</button>
+                </form>
+              </div>
+            `).join('')}
+          </div>
+        `}
+      `:''}
+
+      ${tab==='users'?`
+        <div class="panel clip-corner overflow-hidden">
+          <div style="border-bottom:1px solid var(--line);padding:1rem 1.25rem"><span class="mono-label">Пользователи (${allUsers.length})</span></div>
+          ${allUsers.map(u=>`
+            <div class="flex flex-wrap items-center gap-3" style="padding:1rem;border-bottom:1px solid rgba(29,36,64,.5)">
+              <span style="display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:50%;background:linear-gradient(135deg,var(--neon),var(--ember));font-family:var(--font-mono);font-size:.7rem;font-weight:900;color:var(--void)">${u.username.slice(0,2).toUpperCase()}</span>
+              <div style="flex:1;min-width:120px">
+                <p class="display" style="font-size:1.1rem;color:#fff">${escHtml(u.username)}</p>
+                <p class="mono-label" style="color:#5c668a">${escHtml(u.email)} · ${u.status==='banned'?'<span style="color:#ff98a2">заблокирован</span>':'<span style="color:var(--lime)">активен</span>'}</p>
+              </div>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--lime)">${money(u.balance)}</span>
+              ${u.id===user.id?'<span class="mono-label" style="color:var(--cyan)">это вы · админ</span>':`
+                <form class="admin-user-form" data-user-id="${u.id}" style="display:flex;flex-wrap:wrap;gap:.5rem">
+                  <select class="field" style="width:110px;padding:.4rem;font-size:.72rem" name="role"><option value="user" ${u.role==='user'?'selected':''}>Покупатель</option><option value="author" ${u.role==='author'?'selected':''}>Автор</option><option value="admin" ${u.role==='admin'?'selected':''}>Админ</option></select>
+                  <select class="field" style="width:100px;padding:.4rem;font-size:.72rem" name="status"><option value="active" ${u.status==='active'?'selected':''}>Активен</option><option value="banned" ${u.status==='banned'?'selected':''}>Бан</option></select>
+                  <input class="field" style="width:110px;padding:.4rem;font-size:.72rem" name="balanceDelta" placeholder="± ₽">
+                  <button type="submit" class="btn btn-primary" style="padding:.4rem .8rem;font-size:.58rem">Применить</button>
+                </form>
+              `}
+            </div>
+          `).join('')}
+        </div>
+      `:''}
+    </div>
+  `;
+}
+
+// ======================== EVENT HANDLERS ========================
+
+function attachPageEvents() {
+  // Login form
+  const loginForm = $('#loginForm');
+  if (loginForm) loginForm.addEventListener('submit', e=>{
+    e.preventDefault();
+    const fd = new FormData(loginForm);
+    const res = loginUser(fd.get('identity'), fd.get('password'));
+    if (res.ok) {
+      toast('Добро пожаловать, '+res.user.username,'ok');
+      navigate(res.user.role==='admin'?'admin':res.user.role==='author'?'studio':'dashboard');
+    } else {
+      $('#loginError').innerHTML=`<div class="notice error" style="margin-top:1rem">${escHtml(res.message)}</div>`;
+    }
+  });
+
+  // Register form
+  const regForm = $('#regForm');
+  if (regForm) regForm.addEventListener('submit', e=>{
+    e.preventDefault();
+    const fd = new FormData(regForm);
+    if (fd.get('password')!==fd.get('repeat')) {
+      $('#regError').innerHTML=`<div class="notice error" style="margin-top:1rem">Пароли не совпадают</div>`;
+      return;
+    }
+    const res = registerUser(fd.get('email'), fd.get('username'), fd.get('password'));
+    if (res.ok) {
+      toast('Кабинет создан! +500 ₽','ok');
+      navigate('dashboard');
+    } else {
+      $('#regError').innerHTML=`<div class="notice error" style="margin-top:1rem">${escHtml(res.message)}</div>`;
+    }
+  });
+
+  // Dashboard tabs
+  $$('[data-dash-tab]').forEach(b=>b.addEventListener('click',()=>{
+    APP.params={...APP.params,tab:b.dataset.dashTab};renderMain();attachPageEvents();
+  }));
+
+  // Studio tabs
+  $$('[data-studio-tab]').forEach(b=>b.addEventListener('click',()=>{
+    APP.params={...APP.params,tab:b.dataset.studioTab};renderMain();attachPageEvents();
+  }));
+
+  // Admin tabs
+  $$('[data-admin-tab]').forEach(b=>b.addEventListener('click',()=>{
+    APP.params={...APP.params,tab:b.dataset.adminTab};renderMain();attachPageEvents();
+  }));
+
+  // Skin filters
+  const skinBtn = $('#skinFilterBtn');
+  if (skinBtn) skinBtn.addEventListener('click',()=>{
+    APP.params={q:$('#skinQ').value,game:$('#skinGame').value,rarity:$('#skinRarity').value,sort:$('#skinSort').value};
+    renderMain();attachPageEvents();
+  });
+  $$('[data-filter-game]').forEach(c=>c.addEventListener('click',()=>{
+    APP.params={...APP.params,game:c.dataset.filterGame};renderMain();attachPageEvents();
+  }));
+  $$('[data-filter-rarity]').forEach(c=>c.addEventListener('click',()=>{
+    APP.params={...APP.params,rarity:c.dataset.filterRarity};renderMain();attachPageEvents();
+  }));
+
+  // Blog tags
+  $$('[data-blog-tag]').forEach(c=>c.addEventListener('click',()=>{
+    APP.params={tag:c.dataset.blogTag};renderMain();attachPageEvents();
+  }));
+
+  // Deposit
+  const depForm = $('#depositForm');
+  if (depForm) depForm.addEventListener('submit',e=>{
+    e.preventDefault();
+    const amt = parseMoney(depForm.elements.amount.value);
+    if (amt<=0) { toast('Некорректная сумма','error'); return; }
+    const user = currentUser();
+    updateUser(user.id,{balance:user.balance+amt});
+    toast('Баланс пополнен: +'+money(amt),'ok');
+    renderMain();attachPageEvents();
+  });
+  $$('.quick-deposit').forEach(b=>b.addEventListener('click',()=>{
+    const input = depForm?.querySelector('[name="amount"]');
+    if (input) input.value=b.dataset.amount;
+  }));
+
+  // Sell item
+  $$('.sell-item-btn').forEach(b=>b.addEventListener('click',()=>{
+    const itemId = b.dataset.itemId;
+    const skinPrice = parseInt(b.dataset.skinPrice);
+    const payout = Math.round(skinPrice*0.7);
+    const inv = getInventory().filter(i=>i.id!==itemId);
+    saveInventory(inv);
+    const user = currentUser();
+    updateUser(user.id,{balance:user.balance+payout});
+    toast('Продано за '+money(payout),'ok');
+    renderMain();attachPageEvents();
+  }));
+
+  // Profile form
+  const profForm = $('#profileForm');
+  if (profForm) profForm.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const fd = new FormData(profForm);
+    const user = currentUser();
+    let avatar = user.avatar;
+    const fileInput = $('#avatarInput');
+    if (fileInput && fileInput.files.length>0) {
+      try { avatar = await fileToDataURL(fileInput.files[0]); } catch {}
+    }
+    updateUser(user.id,{username:fd.get('username'),bio:fd.get('bio'),avatar});
+    toast('Профиль сохранён','ok');
+    render();attachPageEvents();
+  });
+
+  // Upload zones
+  $$('[data-upload-for]').forEach(zone=>{
+    const input = zone.querySelector('input[type="file"]');
+    if (!input) return;
+    zone.addEventListener('click',()=>input.click());
+    zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('drag-over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('drag-over'));
+    zone.addEventListener('drop',e=>{e.preventDefault();zone.classList.remove('drag-over');if(e.dataTransfer.files.length)input.files=e.dataTransfer.files;});
+    const preview = zone.querySelector('.upload-preview');
+    input.addEventListener('change',()=>{
+      if (!preview) return;
+      preview.innerHTML='';
+      Array.from(input.files||[]).forEach(f=>{
+        const isImg = f.type.startsWith('image/');
+        const d = document.createElement('div');
+        d.className='thumb';
+        if (isImg) {
+          const img = document.createElement('img');
+          img.src=URL.createObjectURL(f);
+          img.style.cssText='width:100%;height:100%;object-fit:cover';
+          d.appendChild(img);
+        } else {
+          d.innerHTML=`<div style="width:100%;height:100%;display:grid;place-items:center;background:rgba(5,7,15,.7);font-size:1.5rem">${f.type.startsWith('video/')?'🎬':'📎'}</div>`;
+        }
+        const rm = document.createElement('span');
+        rm.className='remove';rm.textContent='✕';
+        rm.addEventListener('click',e=>{e.stopPropagation();d.remove();});
+        d.appendChild(rm);
+        const nm = document.createElement('div');
+        nm.style.cssText='font-family:var(--font-mono);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;color:#5c668a;max-width:5rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap';
+        nm.textContent=f.name;
+        const wrapper = document.createElement('div');
+        wrapper.appendChild(d);wrapper.appendChild(nm);
+        preview.appendChild(wrapper);
+      });
+    });
+  });
+
+  // Studio skin form
+  const skinForm = $('#studioSkinForm');
+  if (skinForm) skinForm.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const fd = new FormData(skinForm);
+    const user = currentUser();
+    let imageUrl = fd.get('imageUrl')||'https://picsum.photos/seed/'+uid()+'/600/450';
+    const imgInput = skinForm.querySelector('[name="imageFile"]');
+    if (imgInput && imgInput.files.length>0) {
+      try { imageUrl = await fileToDataURL(imgInput.files[0]); } catch {}
+    }
+    const skin = {id:'s_'+uid(),title:fd.get('title'),weapon:fd.get('weapon')||'',game:fd.get('game')||'CS2',rarity:fd.get('rarity'),exterior:fd.get('exterior'),floatValue:fd.get('floatValue')||'',price:parseMoney(fd.get('price')),description:fd.get('description')||'',imageUrl,status:'pending',authorId:user.id,reviewerId:'',reviewNote:'',views:0,createdAt:new Date().toISOString(),reviewedAt:null};
+    const skins = getSkins();skins.push(skin);saveSkins(skins);
+    toast('Скин отправлен на модерацию','ok');
+    APP.params={tab:'mine'};renderMain();attachPageEvents();
+  });
+
+  // Studio case form
+  const caseForm = $('#studioCaseForm');
+  if (caseForm) caseForm.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const fd = new FormData(caseForm);
+    const user = currentUser();
+    let imageUrl = fd.get('imageUrl')||'https://picsum.photos/seed/case_'+uid()+'/800/500';
+    const imgInput = caseForm.querySelector('[name="imageFile"]');
+    if (imgInput && imgInput.files.length>0) {
+      try { imageUrl = await fileToDataURL(imgInput.files[0]); } catch {}
+    }
+    const skinIds = fd.getAll('skinIds');
+    const cs = {id:'c_'+uid(),title:fd.get('title'),game:fd.get('game')||'CS2',price:parseMoney(fd.get('price')),description:fd.get('description')||'',imageUrl,status:'pending',authorId:user.id,skinIds,weights:skinIds.map(()=>10),createdAt:new Date().toISOString()};
+    const cases = getCases();cases.push(cs);saveCases(cases);
+    toast('Кейс отправлен на модерацию','ok');
+    APP.params={tab:'mine'};renderMain();attachPageEvents();
+  });
+
+  // Studio post form
+  const postForm = $('#studioPostForm');
+  if (postForm) postForm.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const fd = new FormData(postForm);
+    const user = currentUser();
+    let coverUrl = fd.get('coverUrl')||'https://picsum.photos/seed/post_'+uid()+'/1200/500';
+    const coverInput = postForm.querySelector('[name="coverFile"]');
+    if (coverInput && coverInput.files.length>0) {
+      try { coverUrl = await fileToDataURL(coverInput.files[0]); } catch {}
+    }
+    const attachments = [];
+    const attInput = postForm.querySelector('[name="attachmentFiles"]');
+    if (attInput) {
+      for (const f of Array.from(attInput.files||[])) {
+        let url = 'https://picsum.photos/seed/att_'+uid()+'/800/400';
+        try { url = await fileToDataURL(f); } catch {}
+        const kind = f.type.startsWith('video/')?'video':f.type.startsWith('image/')?'image':'file';
+        attachments.push({kind,url,title:f.name});
+      }
+    }
+    const extUrl = fd.get('externalUrl');
+    if (extUrl) attachments.push({kind:fd.get('externalKind')||'image',url:extUrl,title:fd.get('title')+' (ссылка)'});
+    const title = fd.get('title');
+    const body = fd.get('body');
+    const slug = title.toLowerCase().replace(/[^a-zа-яё0-9]+/gi,'-').replace(/^-|-$/g,'')+'-'+Date.now().toString(36).slice(-4);
+    const ps = {id:'p_'+uid(),title,slug,excerpt:fd.get('excerpt')||body.slice(0,160),body,coverUrl,videoUrl:fd.get('videoUrl')||'',tags:fd.get('tags')||'',attachments,status:'pending',authorId:user.id,views:0,createdAt:new Date().toISOString(),reviewedAt:null};
+    const posts = getPosts();posts.push(ps);savePosts(posts);
+    toast('Статья отправлена на модерацию','ok');
+    APP.params={tab:'mine'};renderMain();attachPageEvents();
+  });
+
+  // Moderation: skins
+  $$('.moderate-skin-form').forEach(f=>f.addEventListener('submit',e=>{
+    e.preventDefault();
+    const btn = e.submitter;
+    const decision = btn.value;
+    const note = f.querySelector('[name="note"]').value;
+    const skinId = f.dataset.skinId;
+    const skins = getSkins();
+    const s = skins.find(x=>x.id===skinId);
+    if (s) { s.status=decision;s.reviewNote=note;s.reviewerId=currentUser().id;s.reviewedAt=new Date().toISOString(); }
+    saveSkins(skins);
+    toast(decision==='approved'?'Опубликовано':'Отклонено',decision==='approved'?'ok':'error');
+    renderMain();attachPageEvents();
+  }));
+
+  // Moderation: cases
+  $$('.moderate-case-form').forEach(f=>f.addEventListener('submit',e=>{
+    e.preventDefault();
+    const btn = e.submitter;
+    const decision = btn.value;
+    const note = f.querySelector('[name="note"]').value;
+    const caseId = f.dataset.caseId;
+    const cases = getCases();
+    const c = cases.find(x=>x.id===caseId);
+    if (c) { c.status=decision;c.reviewNote=note; }
+    saveCases(cases);
+    toast(decision==='approved'?'Кейс опубликован':'Отклонено',decision==='approved'?'ok':'error');
+    renderMain();attachPageEvents();
+  }));
+
+  // Moderation: posts
+  $$('.moderate-post-form').forEach(f=>f.addEventListener('submit',e=>{
+    e.preventDefault();
+    const btn = e.submitter;
+    const decision = btn.value;
+    const note = f.querySelector('[name="note"]').value;
+    const postId = f.dataset.postId;
+    const posts = getPosts();
+    const p = posts.find(x=>x.id===postId);
+    if (p) { p.status=decision;p.reviewNote=note;p.reviewedAt=new Date().toISOString(); }
+    savePosts(posts);
+    toast(decision==='approved'?'Статья опубликована':'Отклонено',decision==='approved'?'ok':'error');
+    renderMain();attachPageEvents();
+  }));
+
+  // Case contents form
+  $$('.case-contents-form').forEach(f=>f.addEventListener('submit',e=>{
+    e.preventDefault();
+    const caseId = f.dataset.caseId;
+    const skinIds = Array.from(f.querySelectorAll('[name="skinIds"]:checked')).map(c=>c.value);
+    const cases = getCases();
+    const c = cases.find(x=>x.id===caseId);
+    if (c) { c.skinIds=skinIds; c.weights=skinIds.map(()=>10); }
+    saveCases(cases);
+    toast('Содержимое обновлено','ok');
+  }));
+
+  // Admin user form
+  $$('.admin-user-form').forEach(f=>f.addEventListener('submit',e=>{
+    e.preventDefault();
+    const fd = new FormData(f);
+    const userId = f.dataset.userId;
+    const delta = parseMoney(fd.get('balanceDelta'));
+    const users = getUsers();
+    const u = users.find(x=>x.id===userId);
+    if (u) {
+      u.role=fd.get('role');
+      u.status=fd.get('status');
+      if (delta) u.balance=Math.max(0,u.balance+delta);
+      if (u.status==='banned') {
+        const sessions = getSessions().filter(s=>s.userId!==u.id);
+        saveSessions(sessions);
+      }
+    }
+    saveUsers(users);
+    toast('Пользователь обновлён','ok');
+    renderMain();attachPageEvents();
+  }));
+
+  // Avatar upload zone click
+  const avatarZone = $('#avatarUploadZone');
+  if (avatarZone) {
+    const input = $('#avatarInput');
+    avatarZone.addEventListener('click',()=>input?.click());
+    input?.addEventListener('change',()=>{
+      const preview = $('#avatarPreview');
+      if (!preview||!input.files.length) return;
+      preview.innerHTML='';
+      const f=input.files[0];
+      if (f.type.startsWith('image/')) {
+        const img = document.createElement('img');
+        img.src=URL.createObjectURL(f);
+        img.style.cssText='width:4rem;height:4rem;object-fit:cover;border:1px solid var(--line);margin-top:.5rem';
+        preview.appendChild(img);
+      }
+    });
+  }
+}
+
+// ======================== GLOBAL ACTIONS ========================
+
+function buySkin(skinId) {
+  const user = currentUser();
+  if (!user) { navigate('login'); return; }
+  const skins = getSkins();
+  const skin = skins.find(s=>s.id===skinId);
+  if (!skin||skin.status!=='approved') { toast('Скин недоступен','error'); return; }
+  if (user.balance<skin.price) { toast('Недостаточно средств','error'); return; }
+  updateUser(user.id,{balance:user.balance-skin.price});
+  const orders=getOrders();
+  orders.push({id:'o_'+uid(),userId:user.id,total:skin.price,status:'paid',items:skin.title,createdAt:new Date().toISOString()});
+  saveOrders(orders);
+  const inv=getInventory();
+  inv.push({id:'i_'+uid(),userId:user.id,skinId:skin.id,source:'purchase',pricePaid:skin.price,createdAt:new Date().toISOString()});
+  saveInventory(inv);
+  toast('Куплено: '+skin.title,'ok');
+  navigate('dashboard',{tab:'inventory'});
+}
+
+function toggleFavorite(skinId) {
+  const user = currentUser();
+  if (!user) { navigate('login'); return; }
+  const favs = getFavorites();
+  const idx = favs.findIndex(f=>f.userId===user.id&&f.skinId===skinId);
+  if (idx>=0) { favs.splice(idx,1); toast('Убрано из избранного','ok'); }
+  else { favs.push({id:'f_'+uid(),userId:user.id,skinId,createdAt:new Date().toISOString()}); toast('В избранном','ok'); }
+  saveFavorites(favs);
+  renderMain();attachPageEvents();
+}
+
+// ======================== HASH ROUTING ========================
+
+function handleHash() {
+  const hash = location.hash.slice(1)||'home';
+  const parts = hash.split('/');
+  const page = parts[0]||'home';
+  const param = parts[1]||'';
+  const pageMap = {
+    home:'home',skins:'skins',skin:'skinDetail',cases:'cases',case:'caseDetail',
+    blog:'blog',post:'postDetail',login:'login',register:'register',
+    dashboard:'dashboard',studio:'studio',admin:'admin',
+  };
+  APP.page = pageMap[page]||'home';
+  APP.params = {};
+  if (page==='skin'&&param) APP.params={id:param};
+  if (page==='case'&&param) APP.params={id:param};
+  if (page==='post'&&param) APP.params={slug:param};
+  render();
+  attachPageEvents();
+}
+
+window.addEventListener('hashchange', handleHash);
+window.addEventListener('load', handleHash);
+</script>
+</body>
+</html>
