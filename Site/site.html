@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автошкола DriveSchool.kz — Обучение вождению</title>
+    <meta name="description" content="Автошкола DriveSchool.kz: профессиональное обучение вождению на категорию B. Высокий процент сдачи экзамена с первого раза, современные автомобили и опытные инструкторы.">
+    
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ========================================================================== -->
+    <!-- ЕДИНЫЕ СТИЛИ (CSS)                                                         -->
+    <!-- ========================================================================== -->
+    <style>
+        :root {
+            --primary: #1d4ed8;
+            --primary-hover: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-bg: #eff6ff;
+            --dark: #0f172a;
+            --dark-muted: #334155;
+            --text: #475569;
+            --text-light: #94a3b8;
+            --bg-white: #ffffff;
+            --bg-light: #f8fafc;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --whatsapp: #25d366;
+            --whatsapp-hover: #128c7e;
+            --instagram: #e1306c;
+
+            --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 4px 20px -2px rgba(29, 78, 216, 0.08);
+            --shadow-lg: 0 12px 30px -4px rgba(29, 78, 216, 0.12);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-main); color: var(--text); background-color: var(--bg-white); line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
+        button, input, select { font-family: inherit; outline: none; }
+
+        .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 90px 0; }
+        .bg-light { background-color: var(--bg-light); }
+        .text-center { text-align: center; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-header { margin-bottom: 50px; }
+        .section-subtitle {
+            display: inline-block; color: var(--primary); font-weight: 700; font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;
+            background: var(--primary-bg); padding: 6px 16px; border-radius: var(--radius-full);
+        }
+        .section-title { font-size: 2.25rem; font-weight: 800; color: var(--dark); line-height: 1.25; margin-bottom: 12px; }
+        .section-description { font-size: 1.1rem; color: var(--text); max-width: 640px; margin: 0 auto; }
+
+        /* Buttons */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; border-radius: var(--radius-md); cursor: pointer; transition: var(--transition); border: 2px solid transparent; }
+        .btn--primary { background-color: var(--primary); color: var(--bg-white); box-shadow: 0 4px 14px rgba(29, 78, 216, 0.35); }
+        .btn--primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(29, 78, 216, 0.45); }
+        .btn--outline { background-color: transparent; color: var(--primary); border-color: var(--primary); }
+        .btn--outline:hover { background-color: var(--primary-bg); transform: translateY(-2px); }
+        .btn--whatsapp { background-color: var(--whatsapp); color: #ffffff; border-color: var(--whatsapp); box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3); }
+        .btn--whatsapp:hover { background-color: var(--whatsapp-hover); border-color: var(--whatsapp-hover); transform: translateY(-2px); }
+        .btn--sm { padding: 8px 18px; font-size: 0.9rem; }
+        .btn--lg { padding: 16px 32px; font-size: 1.05rem; }
+        .btn--full { width: 100%; }
+
+        /* Header */
+        .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: rgba(255, 255, 255, 0.94); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226, 232, 240, 0.8); transition: var(--transition); }
+        .header__container { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 1.5rem; font-weight: 800; color: var(--dark); }
+        .logo__img { height: 48px; width: 48px; object-fit: contain; border-radius: var(--radius-full); }
+        .logo__accent { color: var(--primary); }
+        .nav__list { display: flex; align-items: center; gap: 30px; }
+        .nav__link { font-weight: 600; font-size: 0.95rem; color: var(--dark-muted); position: relative; padding: 6px 0; }
+        .nav__link:hover, .nav__link.active { color: var(--primary); }
+        .nav__link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px; background-color: var(--primary); transition: var(--transition); border-radius: 2px; }
+        .nav__link:hover::after, .nav__link.active::after { width: 100%; }
+        .header__actions { display: flex; align-items: center; gap: 16px; }
+        .header__phone { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--dark); font-size: 0.95rem; }
+        .header__phone i { color: var(--primary); }
+
+        .burger { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 20px; background: transparent; border: none; cursor: pointer; z-index: 1001; }
+        .burger span { width: 100%; height: 3px; background-color: var(--dark); border-radius: 3px; transition: var(--transition); }
+
+        /* Hero */
+        .hero { padding-top: 150px; padding-bottom: 90px; background: radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 60%); }
+        .hero__container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .badge { display: inline-flex; align-items: center; gap: 8px; background-color: var(--primary-bg); color: var(--primary); padding: 8px 16px; border-radius: var(--radius-full); font-size: 0.9rem; font-weight: 700; margin-bottom: 20px; border: 1px solid rgba(59, 130, 246, 0.2); }
+        .badge__icon { color: #ef4444; }
+        .hero__title { font-size: 3.25rem; font-weight: 800; color: var(--dark); line-height: 1.15; margin-bottom: 20px; letter-spacing: -0.5px; }
+        .hero__subtitle { font-size: 1.2rem; color: var(--text); margin-bottom: 35px; max-width: 540px; }
+        .hero__btns { display: flex; align-items: center; gap: 16px; margin-bottom: 45px; flex-wrap: wrap; }
+        .hero__stats { display: flex; align-items: center; gap: 24px; padding-top: 25px; border-top: 1px solid var(--border); }
+        .stat-item { display: flex; flex-direction: column; }
+        .stat-item__number { font-size: 1.75rem; font-weight: 800; color: var(--primary); }
+        .stat-item__label { font-size: 0.85rem; color: var(--text-light); font-weight: 500; }
+        .stat-divider { width: 1px; height: 40px; background-color: var(--border); }
+
+        .hero__image-wrapper { position: relative; display: flex; justify-content: center; }
+        .hero__image { width: 100%; max-height: 480px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
+        .hero__card { position: absolute; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 16px 20px; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); border: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+        .hero__card--top { top: -20px; left: -20px; }
+        .hero__card--top i { font-size: 1.8rem; color: var(--primary); }
+        .hero__card--top strong { display: block; color: var(--dark); font-size: 0.95rem; }
+        .hero__card--top span { font-size: 0.8rem; color: var(--text); }
+        .hero__card--bottom { bottom: -20px; right: -20px; flex-direction: column; align-items: flex-start; gap: 4px; }
+        .rating-stars { color: #f59e0b; font-size: 0.85rem; }
+
+        /* Features */
+        .features__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .feature-card { background: var(--bg-white); padding: 30px 24px; border-radius: var(--radius-md); border: 1px solid var(--border); transition: var(--transition); }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--primary-light); }
+        .feature-card__icon { width: 54px; height: 54px; background-color: var(--primary-bg); color: var(--primary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 20px; }
+        .feature-card__title { font-size: 1.15rem; color: var(--dark); font-weight: 700; margin-bottom: 10px; }
+        .feature-card__text { font-size: 0.95rem; color: var(--text); }
+
+        /* Fleet & Instructors */
+        .filter-buttons { display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; }
+        .filter-btn { padding: 10px 22px; border-radius: var(--radius-full); border: 1px solid var(--border); background-color: var(--bg-white); color: var(--dark-muted); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: var(--transition); }
+        .filter-btn:hover, .filter-btn.active { background-color: var(--primary); color: var(--bg-white); border-color: var(--primary); }
+
+        .fleet__grid, .instructors__grid, .pricing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .car-card, .instructor-card, .price-card { background: var(--bg-white); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); transition: var(--transition); }
+        .car-card:hover, .instructor-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
+        .car-card__image-container, .instructor-card__image-wrapper { position: relative; height: 240px; background-color: #f1f5f9; overflow: hidden; }
+        .car-card__image, .instructor-card__image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .car-card:hover .car-card__image { transform: scale(1.05); }
+
+        .car-card__badge { position: absolute; top: 14px; right: 14px; padding: 6px 14px; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 800; color: var(--bg-white); }
+        .badge--akpp { background-color: #2563eb; }
+        .badge--mkpp { background-color: #059669; }
+
+        .car-card__body, .instructor-card__info { padding: 24px; }
+        .car-card__title, .instructor-card__name { font-size: 1.3rem; color: var(--dark); font-weight: 700; margin-bottom: 12px; }
+        .car-card__specs { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+        .spec-item { font-size: 0.9rem; color: var(--text); display: flex; align-items: center; gap: 10px; }
+        .spec-item i { color: var(--primary); width: 16px; }
+
+        .instructor-card__experience { position: absolute; bottom: 14px; left: 14px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); color: var(--bg-white); padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 600; }
+        .instructor-card__role { display: block; color: var(--primary); font-weight: 600; font-size: 0.9rem; margin-bottom: 12px; }
+        .instructor-card__desc { font-size: 0.95rem; color: var(--text); margin-bottom: 16px; }
+        .instructor-card__rating { font-size: 0.85rem; color: var(--dark); font-weight: 700; display: flex; align-items: center; gap: 6px; }
+        .instructor-card__rating i { color: #f59e0b; }
+
+        /* Pricing */
+        .price-card { padding: 36px 30px; position: relative; display: flex; flex-direction: column; justify-content: space-between; }
+        .price-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+        .price-card--popular { border: 2px solid var(--primary); box-shadow: var(--shadow-lg); padding-top: 48px; }
+        .popular-badge { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: var(--bg-white); padding: 6px 18px; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; box-shadow: 0 4px 10px rgba(29, 78, 216, 0.25); }
+        .price-card__title { font-size: 1.4rem; color: var(--dark); font-weight: 700; margin-bottom: 10px; }
+        .price-card__amount { font-size: 2.3rem; font-weight: 800; color: var(--primary); line-height: 1.1; margin-bottom: 6px; }
+        .price-unit { font-size: 0.95rem; color: var(--text-light); font-weight: 500; }
+        .price-card__sub { display: block; font-size: 0.85rem; color: var(--text-light); margin-bottom: 24px; }
+        .price-card__list { margin-bottom: 30px; display: flex; flex-direction: column; gap: 12px; }
+        .price-card__list li { font-size: 0.95rem; color: var(--text); display: flex; align-items: center; gap: 10px; }
+        .price-card__list i { color: var(--success); }
+
+        /* 2GIS Container Card */
+        .gis-widget-wrapper { margin-bottom: 0; }
+        .gis-card { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: var(--radius-lg); padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; box-shadow: var(--shadow-md); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gis-card__badge-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .gis-card__title { font-size: 1.25rem; font-weight: 800; color: #ffffff; margin-bottom: 4px; }
+        .gis-card__sub { font-size: 0.88rem; color: #94a3b8; }
+        .gis-card__widget-box { display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.05); padding: 10px 16px; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.1); }
+
+        /* Footer */
+        .footer { background-color: var(--dark); color: #cbd5e1; padding-top: 80px; }
+        .footer__container { display: grid; grid-template-columns: 2fr 2fr 1fr; gap: 50px; margin-bottom: 60px; }
+        .logo--footer { color: var(--bg-white); margin-bottom: 16px; }
+        .logo__img--footer { filter: brightness(1.2); }
+        .footer__desc { font-size: 0.9rem; color: #94a3b8; margin-bottom: 20px; max-width: 320px; }
+        .social-links { display: flex; gap: 12px; }
+        .social-link { width: 38px; height: 38px; background: rgba(255, 255, 255, 0.08); color: var(--bg-white); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+        .social-link:hover { background: var(--primary); transform: translateY(-3px); }
+        .social-link--wa { background: var(--whatsapp); }
+        .social-link--wa:hover { background: var(--whatsapp-hover); }
+        .social-link--insta { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .social-link--insta:hover { transform: translateY(-3px) scale(1.08); box-shadow: 0 4px 12px rgba(225, 48, 108, 0.4); }
+        .footer__title { color: var(--bg-white); font-size: 1.15rem; font-weight: 700; margin-bottom: 20px; }
+        .contacts-list { display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; }
+        .contacts-list li { display: flex; align-items: flex-start; gap: 12px; }
+        .contacts-list i { color: var(--primary-light); margin-top: 4px; }
+        .contacts-list i.fa-whatsapp { color: var(--whatsapp); }
+        .contacts-list i.fa-instagram { color: var(--instagram); }
+        .contacts-list a:hover { color: var(--bg-white); }
+        .footer__links ul { display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; }
+        .footer__links a:hover { color: var(--bg-white); padding-left: 4px; }
+        .footer__bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 24px 0; font-size: 0.85rem; color: #94a3b8; }
+        .footer__bottom-container { display: flex; align-items: center; justify-content: space-between; }
+        .privacy-link:hover { color: var(--bg-white); }
+
+        html[data-theme="dark"] {
+            --dark: #f1f5f9;
+            --dark-muted: #cbd5e1;
+            --text: #cbd5e1;
+            --text-light: #94a3b8;
+            --bg-white: #111827;
+            --bg-light: #0b1220;
+            --border: #334155;
+            --primary-bg: #172554;
+        }
+        html[data-theme="dark"] .header { background-color: rgba(17, 24, 39, 0.94); border-color: var(--border); }
+        html[data-theme="dark"] .hero { background: radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.14) 0%, transparent 60%); }
+        html[data-theme="dark"] .feature-card,
+        html[data-theme="dark"] .car-card,
+        html[data-theme="dark"] .instructor-card,
+        html[data-theme="dark"] .price-card,
+        html[data-theme="dark"] .filter-btn { background-color: #111827; }
+        html[data-theme="dark"] .nav { background-color: #111827; }
+        html[data-theme="dark"] .car-card__image-container { background-color: #1e293b; }
+        .icon-button { width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-white); color: var(--dark); cursor: pointer; }
+        .icon-button:hover { color: var(--primary); border-color: var(--primary); }
+        .blog__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+        .blog-card { overflow: hidden; background: var(--bg-white); border: 1px solid var(--border); border-radius: 8px; }
+        .blog-card__media { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: var(--bg-light); }
+        .blog-card__body { padding: 20px; }
+        .blog-card__title { margin-bottom: 8px; color: var(--dark); font-size: 1.1rem; }
+        .blog-card__text { color: var(--text); white-space: pre-wrap; overflow-wrap: anywhere; }
+        .blog-card__date { display: block; margin-bottom: 10px; color: var(--text-light); font-size: 0.85rem; }
+        .admin-dialog { width: min(920px, calc(100% - 24px)); max-height: min(90vh, 900px); padding: 0; color: var(--text); background: var(--bg-white); border: 1px solid var(--border); border-radius: 12px; }
+        .admin-dialog::backdrop { background: rgba(2, 6, 23, 0.68); backdrop-filter: blur(3px); }
+        .admin-shell { padding: 24px; }
+        .admin-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 20px; }
+        .admin-top h2, .admin-panel h3 { color: var(--dark); }
+        .admin-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+        .admin-tab, .admin-button { min-height: 40px; padding: 9px 14px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-white); color: var(--dark); font-weight: 700; cursor: pointer; }
+        .admin-tab.active, .admin-button--primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+        .admin-button--danger { color: #dc2626; }
+        .admin-form { display: grid; gap: 14px; max-width: 620px; }
+        .admin-form label { display: grid; gap: 6px; color: var(--dark); font-size: 0.92rem; font-weight: 700; }
+        .admin-form input, .admin-form textarea, .admin-form select { width: 100%; min-height: 42px; padding: 10px 12px; color: var(--dark); background: var(--bg-white); border: 1px solid var(--border); border-radius: 6px; }
+        .admin-form textarea { min-height: 96px; resize: vertical; }
+        .admin-list { display: grid; gap: 10px; margin-top: 20px; }
+        .admin-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 6px; }
+        .admin-row__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+        .admin-note { margin: 0 0 18px; padding: 12px; background: var(--primary-bg); border-radius: 6px; font-size: 0.9rem; }
+        .admin-error { color: #dc2626; }
+        .admin-empty { color: var(--text-light); }
+
+        /* Responsive */
+        @media (min-width: 769px) and (max-width: 1200px) {
+            .nav__list { gap: 16px; }
+            .header__phone span { display: none; }
+        }
+        @media (max-width: 1024px) {
+            .hero__title { font-size: 2.6rem; }
+            .features__grid, .pricing__grid, .fleet__grid, .instructors__grid { grid-template-columns: repeat(2, 1fr); }
+            .footer__container { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 60px 0; }
+            .header__container { gap: 8px; }
+            .logo { gap: 6px; font-size: 1.1rem; }
+            .logo__img { width: 36px; height: 36px; }
+            .header__actions { gap: 6px; }
+            .header__phone { display: none; }
+            .header__actions .btn--whatsapp { width: 38px; height: 38px; padding: 0; font-size: 0; gap: 0; }
+            .header__actions .btn--whatsapp span { display: none; }
+            .header__actions .icon-button { width: 38px; height: 38px; flex: 0 0 38px; }
+            .burger { display: flex; }
+            .nav { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); background-color: var(--bg-white); padding: 40px; transition: var(--transition); box-shadow: var(--shadow-lg); }
+            .nav.active { left: 0; }
+            .nav__list { flex-direction: column; align-items: flex-start; gap: 24px; }
+            .nav__link { font-size: 1.2rem; }
+            .header__phone span { display: none; }
+            .hero { padding-top: 120px; }
+            .hero__container { grid-template-columns: 1fr; gap: 40px; }
+            .hero__title { font-size: 2.2rem; }
+            .hero__card--top, .hero__card--bottom { display: none; }
+            .features__grid, .fleet__grid, .instructors__grid, .pricing__grid, .footer__container { grid-template-columns: 1fr; }
+            .price-card--popular { padding-top: 48px; }
+            .gis-card { flex-direction: column; text-align: center; padding: 20px; }
+            .footer__bottom-container { flex-direction: column; gap: 10px; text-align: center; }
+            .blog__grid { grid-template-columns: 1fr; }
+            .admin-shell { padding: 18px; }
+            .admin-row { align-items: flex-start; flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header class="header" id="header">
+        <div class="container header__container">
+            <a href="#hero" class="logo">
+                <img src="logo.png" alt="DriveSchool.kz Логотип" class="logo__img">
+                <span class="logo__text">DriveSchool<span class="logo__accent">.kz</span></span>
+            </a>
+
+            <nav class="nav" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#hero" class="nav__link active">Главная</a></li>
+                    <li class="nav__item"><a href="#fleet" class="nav__link">Автопарк</a></li>
+                    <li class="nav__item"><a href="#instructors" class="nav__link">Инструкторы</a></li>
+                    <li class="nav__item"><a href="#pricing" class="nav__link">Тарифы</a></li>
+                    <li class="nav__item"><a href="#blog" class="nav__link">Блог</a></li>
+                    <li class="nav__item"><a href="#reviews" class="nav__link">Отзывы</a></li>
+                    <li class="nav__item"><a href="#contacts" class="nav__link">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <div class="header__actions">
+                <a href="tel:+77774414888" class="header__phone">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+7 (777) 441-48-88</span>
+                </a>
+                <a href="https://wa.me/77774414888" target="_blank" rel="noopener" class="btn btn--whatsapp btn--sm">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <button class="icon-button" id="theme-toggle" type="button" aria-label="Переключить тему" title="Переключить тему"><i class="fa-solid fa-moon"></i></button>
+                <button class="icon-button" id="cabinet-open" type="button" aria-label="Личный кабинет" title="Личный кабинет"><i class="fa-solid fa-user"></i></button>
+                <button class="burger" id="burger-toggle" aria-label="Открыть меню">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="container hero__container">
+                <div class="hero__content">
+                    <div class="badge">
+                        <i class="fa-solid fa-fire badge__icon"></i> Набор в новые группы открыт
+                    </div>
+                    <h1 class="hero__title">
+                        Научим водить <span class="text-gradient">уверенно</span> и <span class="text-gradient">безопасно</span>
+                    </h1>
+                    <p class="hero__subtitle">
+                        Обучение вождению категории B на автоматической и механической коробках передач. Подготовка к сдаче экзамена в ЦОНе с первого раза!
+                    </p>
+                    <div class="hero__btns">
+                        <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20записаться%20на%20курс%20в%20DriveSchool.kz" target="_blank" rel="noopener" class="btn btn--whatsapp btn--lg">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Записаться через WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <div class="hero__stats">
+                        <div class="stat-item">
+                            <span class="stat-item__number">98%</span>
+                            <span class="stat-item__label">Сдача с первого раза</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-item__number">12+</span>
+                            <span class="stat-item__label">Лет успешного опыта</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-item__number">5 000+</span>
+                            <span class="stat-item__label">Выпускников с правами</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero__image-wrapper">
+                    <div class="hero__card hero__card--top">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <div>
+                            <strong>100% Безопасность</strong>
+                            <span>Двойные педали на всех авто</span>
+                        </div>
+                    </div>
+                    <img src="placeholder-hero.jpg" alt="Обучение вождению в DriveSchool.kz" class="hero__image" onerror="this.src='https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80'">
+                    <div class="hero__card hero__card--bottom">
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <strong>4.9 из 5.0</strong>
+                        <span>Рейтинг на основе отзывов</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ПРЕИМУЩЕСТВА -->
+        <section class="features section bg-light">
+            <div class="container">
+                <div class="features__grid">
+                    <div class="feature-card">
+                        <div class="feature-card__icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <h3 class="feature-card__title">Удобное время</h3>
+                        <p class="feature-card__text">Утренние, дневные и вечерние группы с 09:00 до 18:00 (Пн - Пт).</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon"><i class="fa-solid fa-credit-card"></i></div>
+                        <h3 class="feature-card__title">Рассрочка 0%</h3>
+                        <p class="feature-card__text">Оплата частями без переплат и скрытых комиссий на весь период.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon"><i class="fa-solid fa-route"></i></div>
+                        <h3 class="feature-card__title">Маршруты ЦОН</h3>
+                        <p class="feature-card__text">Отработка реальных экзаменационных автодромов и городских маршрутов.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon"><i class="fa-solid fa-user-shield"></i></div>
+                        <h3 class="feature-card__title">Терпеливые инструкторы</h3>
+                        <p class="feature-card__text">Вежливые специалисты со стажем преподавания от 7 лет.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- АВТОПАРК -->
+        <section class="fleet section" id="fleet">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Современный транспорт</span>
+                    <h2 class="section-title">Наш автопарк</h2>
+                    <p class="section-description">Все автомобили проходят регулярное ТО, оснащены дублирующими педалями и кондиционерами.</p>
+                </div>
+
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Все авто</button>
+                    <button class="filter-btn" data-filter="akpp">АКПП (Автомат)</button>
+                    <button class="filter-btn" data-filter="mkpp">МКПП (Механика)</button>
+                </div>
+
+                <div class="fleet__grid">
+                    <div class="car-card" data-category="akpp">
+                        <div class="car-card__image-container">
+                            <span class="car-card__badge badge--akpp">АКПП</span>
+                            <img src="placeholder-car.jpg" alt="Фото машины Hyundai Accent" class="car-card__image" onerror="this.src='https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=600&q=80'">
+                        </div>
+                        <div class="car-card__body">
+                            <h3 class="car-card__title">Hyundai Accent (2023)</h3>
+                            <div class="car-card__specs">
+                                <div class="spec-item"><i class="fa-solid fa-gear"></i> Коробка: <strong>Автомат (АКПП)</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-snowflake"></i> Климат-контроль: <strong>Есть</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-circle-check"></i> Дублирующие педали: <strong>Да</strong></div>
+                            </div>
+                            <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20обучаться%20на%20Hyundai%20Accent%20АКПП" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span>Выбрать на WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="car-card" data-category="mkpp">
+                        <div class="car-card__image-container">
+                            <span class="car-card__badge badge--mkpp">МКПП</span>
+                            <img src="placeholder-car.jpg" alt="Фото машины Kia Rio" class="car-card__image" onerror="this.src='https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80'">
+                        </div>
+                        <div class="car-card__body">
+                            <h3 class="car-card__title">Kia Rio (2022)</h3>
+                            <div class="car-card__specs">
+                                <div class="spec-item"><i class="fa-solid fa-gear"></i> Коробка: <strong>Механика (МКПП)</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-snowflake"></i> Кондиционер: <strong>Есть</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-circle-check"></i> Дублирующие педали: <strong>Да</strong></div>
+                            </div>
+                            <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20обучаться%20на%20Kia%20Rio%20МКПП" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span>Выбрать на WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="car-card" data-category="akpp">
+                        <div class="car-card__image-container">
+                            <span class="car-card__badge badge--akpp">АКПП</span>
+                            <img src="placeholder-car.jpg" alt="Фото машины Toyota Corolla" class="car-card__image" onerror="this.src='https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=600&q=80'">
+                        </div>
+                        <div class="car-card__body">
+                            <h3 class="car-card__title">Toyota Corolla (2023)</h3>
+                            <div class="car-card__specs">
+                                <div class="spec-item"><i class="fa-solid fa-gear"></i> Коробка: <strong>Автомат (АКПП)</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-snowflake"></i> Климат-контроль: <strong>Есть</strong></div>
+                                <div class="spec-item"><i class="fa-solid fa-circle-check"></i> Дублирующие педали: <strong>Да</strong></div>
+                            </div>
+                            <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20обучаться%20на%20Toyota%20Corolla%20АКПП" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span>Выбрать на WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ИНСТРУКТОРЫ -->
+        <section class="instructors section bg-light" id="instructors">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Профессионалы своего дела</span>
+                    <h2 class="section-title">Опытные инструкторы</h2>
+                    <p class="section-description">Наши наставники найдут подход к каждому ученику и научат действовать спокойно в любых ситуациях.</p>
+                </div>
+
+                <div class="instructors__grid">
+                    <div class="instructor-card">
+                        <div class="instructor-card__image-wrapper">
+                            <img src="placeholder-instructor.jpg" alt="Фото инструктора — Арман Сериков" class="instructor-card__image" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80'">
+                            <span class="instructor-card__experience">Стаж: 12 лет</span>
+                        </div>
+                        <div class="instructor-card__info">
+                            <h3 class="instructor-card__name">Арман Сериков</h3>
+                            <span class="instructor-card__role">Старший инструктор (МКПП / АКПП)</span>
+                            <p class="instructor-card__desc">Специализируется на преодолении страха вождения и подготовке к успешной сдаче экзаменов в ЦОНе.</p>
+                            <div class="instructor-card__rating">
+                                <i class="fa-solid fa-star"></i> <span>4.95 / 5.0 (140+ учеников)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="instructor-card">
+                        <div class="instructor-card__image-wrapper">
+                            <img src="placeholder-instructor.jpg" alt="Фото инструктора — Елена Смирнова" class="instructor-card__image" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80'">
+                            <span class="instructor-card__experience">Стаж: 8 лет</span>
+                        </div>
+                        <div class="instructor-card__info">
+                            <h3 class="instructor-card__name">Елена Смирнова</h3>
+                            <span class="instructor-card__role">Инструктор (АКПП)</span>
+                            <p class="instructor-card__desc">Мастер контраварийной подготовки и вежливого методичного обучения вождению в плотном городском потоке.</p>
+                            <div class="instructor-card__rating">
+                                <i class="fa-solid fa-star"></i> <span>4.98 / 5.0 (110+ учеников)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="instructor-card">
+                        <div class="instructor-card__image-wrapper">
+                            <img src="placeholder-instructor.jpg" alt="Фото инструктора — Данияр Ахметов" class="instructor-card__image" onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80'">
+                            <span class="instructor-card__experience">Стаж: 15 лет</span>
+                        </div>
+                        <div class="instructor-card__info">
+                            <h3 class="instructor-card__name">Данияр Ахметов</h3>
+                            <span class="instructor-card__role">Инструктор (МКПП)</span>
+                            <p class="instructor-card__desc">Эксперт по маневрированию и парковке в сложных условиях. Отличные результаты сдачи с первого раза.</p>
+                            <div class="instructor-card__rating">
+                                <i class="fa-solid fa-star"></i> <span>4.92 / 5.0 (180+ учеников)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ТАРИФЫ -->
+        <section class="pricing section" id="pricing">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Прайс-лист DriveSchool.kz</span>
+                    <h2 class="section-title">Тарифы обучения</h2>
+                    <p class="section-description">Выбирайте удобный формат теоретических и практических занятий</p>
+                </div>
+
+                <div class="pricing__grid">
+                    <!-- Онлайн занятия -->
+                    <div class="price-card">
+                        <div class="price-card__header">
+                            <h3 class="price-card__title">Онлайн занятия</h3>
+                            <div class="price-card__amount">от 59 000 ₸</div>
+                            <span class="price-card__sub">Изучение теории ПДД в любое удобное время</span>
+                        </div>
+                        <ul class="price-card__list">
+                            <li><i class="fa-solid fa-check"></i> Доступ к онлайн-платформе и приложению</li>
+                            <li><i class="fa-solid fa-check"></i> Видеоуроки, тесты и экзаменационные билеты</li>
+                            <li><i class="fa-solid fa-check"></i> Консультации с преподавателем онлайн</li>
+                            <li><i class="fa-solid fa-check"></i> Подготовка полного пакета документов</li>
+                        </ul>
+                        <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20записаться%20на%20онлайн%20занятия" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Записаться в WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <!-- Оффлайн занятия -->
+                    <div class="price-card price-card--popular">
+                        <div class="popular-badge">Популярный выбор</div>
+                        <div class="price-card__header">
+                            <h3 class="price-card__title">Оффлайн занятия</h3>
+                            <div class="price-card__amount">от 84 000 ₸</div>
+                            <span class="price-card__sub">Очные уроки с преподавателем в классе</span>
+                        </div>
+                        <ul class="price-card__list">
+                            <li><i class="fa-solid fa-check"></i> Занятия в оборудованных учебных классах</li>
+                            <li><i class="fa-solid fa-check"></i> Живое общение и подробный разбор ПДД</li>
+                            <li><i class="fa-solid fa-check"></i> Симуляция экзаменационных тестов ЦОН</li>
+                            <li><i class="fa-solid fa-check"></i> Сопровождение и регистрация в базе</li>
+                        </ul>
+                        <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20записаться%20на%20оффлайн%20занятия" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Записаться в WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <!-- Практика -->
+                    <div class="price-card">
+                        <div class="price-card__header">
+                            <h3 class="price-card__title">Практика вождения</h3>
+                            <div class="price-card__amount">5 000 ₸ <span class="price-unit">/ 1 акад. час</span></div>
+                            <span class="price-card__sub">Или <strong>10 000 ₸</strong> за 90 минут полноценного занятия</span>
+                        </div>
+                        <ul class="price-card__list">
+                            <li><i class="fa-solid fa-check"></i> Индивидуальные уроки с инструктором</li>
+                            <li><i class="fa-solid fa-check"></i> Выбор АКПП (автомат) или МКПП (механика)</li>
+                            <li><i class="fa-solid fa-check"></i> Отработка автодрома и городских маршрутов ЦОН</li>
+                            <li><i class="fa-solid fa-check"></i> Топливо и бензин включены в стоимость</li>
+                        </ul>
+                        <a href="https://wa.me/77774414888?text=Здравствуйте!%20Хочу%20записаться%20на%20практику%20вождения" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Записаться в WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- БЛОГ -->
+        <section class="blog section" id="blog">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Новости автошколы</span>
+                    <h2 class="section-title">Блог</h2>
+                    <p class="section-description">Истории, полезные советы и события DriveSchool.kz</p>
+                </div>
+                <div class="blog__grid" id="blog-posts"></div>
+                <p class="admin-empty text-center" id="blog-empty">Публикации скоро появятся.</p>
+            </div>
+        </section>
+
+        <!-- ОТЗЫВЫ И 2ГИС -->
+        <section class="reviews section bg-light" id="reviews">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Честные оценки</span>
+                    <h2 class="section-title">Отзывы наших учеников</h2>
+                    <p class="section-description">Мы гордимся доверием наших выпускников. Ознакомьтесь с реальным рейтингом и отзывами в 2ГИС.</p>
+                </div>
+
+                <!-- ВИДЖЕТ 2ГИС -->
+                <div id="2gis-widget-container" class="gis-widget-wrapper">
+                    <div class="gis-card">
+                        <div class="gis-card__info">
+                            <div class="gis-card__badge-tag"><i class="fa-solid fa-location-dot"></i> 2ГИС Оценка</div>
+                            <h3 class="gis-card__title">DriveSchool.kz в 2ГИС</h3>
+                            <p class="gis-card__sub">Официальный рейтинговый виджет организации</p>
+                        </div>
+                        <div class="gis-card__widget-box">
+                            <iframe frameborder="0" width="150px" height="50px" src="https://widget.2gis.ru/api/widget?org_id=70000001116301566&amp;branch_id=70000001116301567&amp;size=medium&amp;theme=dark" style="border: 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ПОДВАЛ (FOOTER) -->
+    <footer class="footer" id="contacts">
+        <div class="container footer__container">
+            <div class="footer__brand">
+                <a href="#hero" class="logo logo--footer">
+                    <img src="logo.png" alt="DriveSchool.kz Логотип" class="logo__img logo__img--footer">
+                    <span class="logo__text">DriveSchool<span class="logo__accent">.kz</span></span>
+                </a>
+                <p class="footer__desc">Современная автошкола в Казахстане. Обучаем уверенному и безопасному вождению с гарантией результата.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/driveschool.kz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-link social-link--insta" title="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/77774414888" class="social-link social-link--wa" title="WhatsApp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer__contacts">
+                <h3 class="footer__title">Контакты</h3>
+                <ul class="contacts-list">
+                    <li><i class="fa-solid fa-location-dot"></i><span>Улица Айнакол 155</span></li>
+                    <li><i class="fa-solid fa-phone"></i><a href="tel:+77774414888">+7 (777) 441-48-88</a></li>
+                    <li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/77774414888" target="_blank" rel="noopener">+7 (777) 441-48-88 (WhatsApp)</a></li>
+                    <li><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com/driveschool.kz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">@driveschool.kz (Instagram)</a></li>
+                    <li><i class="fa-solid fa-clock"></i><span>Пн - Пт: 09:00 - 18:00 (Сб - Вс: выходной)</span></li>
+                </ul>
+            </div>
+
+            <div class="footer__links">
+                <h3 class="footer__title">Навигация</h3>
+                <ul>
+                    <li><a href="#hero">Главная</a></li>
+                    <li><a href="#fleet">Автопарк</a></li>
+                    <li><a href="#instructors">Инструкторы</a></li>
+                    <li><a href="#pricing">Тарифы</a></li>
+                    <li><a href="#blog">Блог</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <div class="container footer__bottom-container">
+                <p>&copy; 2026 DriveSchool.kz. Все права защищены.</p>
+                <a href="#" class="privacy-link">Политика конфиденциальности</a>
+            </div>
+        </div>
+    </footer>
+
+    <dialog class="admin-dialog" id="admin-dialog" aria-labelledby="admin-title">
+        <div class="admin-shell" id="admin-content"></div>
+    </dialog>
+
+    <!-- ========================================================================== -->
+    <!-- ЕДИНЫЙ СКРИПТ (JAVASCRIPT)                                                 -->
+    <!-- ========================================================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const DATA_KEY = 'driveschool-site-data-v1';
+            const ACCOUNT_KEY = 'driveschool-local-account-v1';
+            const MEDIA_DB = 'driveschool-media-v1';
+            const defaults = {
+                theme: 'light', whatsapp: '77774414888',
+                prices: ['от 59 000 ₸', 'от 84 000 ₸', '5 000 ₸ / 1 акад. час'],
+                cars: [
+                    { id: 'accent', name: 'Hyundai Accent (2023)', category: 'akpp', description: 'Автомат (АКПП). Климат-контроль. Дублирующие педали.', image: 'https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=600&q=80' },
+                    { id: 'rio', name: 'Kia Rio (2022)', category: 'mkpp', description: 'Механика (МКПП). Кондиционер. Дублирующие педали.', image: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80' },
+                    { id: 'corolla', name: 'Toyota Corolla (2023)', category: 'akpp', description: 'Автомат (АКПП). Климат-контроль. Дублирующие педали.', image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=600&q=80' }
+                ], posts: []
+            };
+            let state;
+            try {
+                state = { ...defaults, ...JSON.parse(localStorage.getItem(DATA_KEY) || '{}') };
+                state.prices = Array.isArray(state.prices) ? state.prices : defaults.prices;
+                state.cars = Array.isArray(state.cars) ? state.cars : defaults.cars;
+                state.posts = Array.isArray(state.posts) ? state.posts : [];
+            } catch {
+                state = { ...defaults, cars: [...defaults.cars], prices: [...defaults.prices], posts: [] };
+            }
+            const saveState = () => {
+                try {
+                    localStorage.setItem(DATA_KEY, JSON.stringify(state));
+                    return true;
+                } catch {
+                    alert('Не удалось сохранить изменения. Освободите место в хранилище браузера.');
+                    return false;
+                }
+            };
+            const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
+            const newId = () => window.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+            const mediaDb = () => new Promise((resolve, reject) => {
+                const request = indexedDB.open(MEDIA_DB, 1);
+                request.onupgradeneeded = () => request.result.createObjectStore('files');
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = () => reject(request.error);
+            });
+            const saveMedia = async file => {
+                const db = await mediaDb();
+                const id = newId();
+                await new Promise((resolve, reject) => {
+                    const request = db.transaction('files', 'readwrite').objectStore('files').put(file, id);
+                    request.onsuccess = resolve;
+                    request.onerror = () => reject(request.error);
+                });
+                db.close();
+                return id;
+            };
+            const hydrateMedia = async root => {
+                for (const element of root.querySelectorAll('[data-media-id]')) {
+                    try {
+                        const db = await mediaDb();
+                        const blob = await new Promise((resolve, reject) => {
+                            const request = db.transaction('files').objectStore('files').get(element.dataset.mediaId);
+                            request.onsuccess = () => resolve(request.result);
+                            request.onerror = () => reject(request.error);
+                        });
+                        db.close();
+                        if (blob) element.src = URL.createObjectURL(blob);
+                    } catch { /* A removed local file leaves its fallback image in place. */ }
+                }
+            };
+            const publicPhone = () => `+${state.whatsapp}`;
+            const syncContactLinks = () => {
+                document.querySelectorAll('a[href*="wa.me/"]').forEach(link => {
+                    link.href = link.href.replace(/wa\.me\/\d+/, `wa.me/${state.whatsapp}`);
+                });
+                document.querySelectorAll('a[href^="tel:"]').forEach(link => { link.href = `tel:+${state.whatsapp}`; });
+                document.querySelectorAll('.header__phone span, .contacts-list a[href*="wa.me/"]').forEach(node => { node.textContent = publicPhone(); });
+            };
+            const renderCars = () => {
+                const grid = document.querySelector('.fleet__grid');
+                grid.innerHTML = state.cars.map(car => {
+                    const fallback = 'https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=600&q=80';
+                    const image = car.mediaId ? `data-media-id="${escapeHtml(car.mediaId)}"` : `src="${escapeHtml(car.image || fallback)}"`;
+                    const category = car.category === 'mkpp' ? 'mkpp' : 'akpp';
+                    const label = category === 'mkpp' ? 'МКПП' : 'АКПП';
+                    return `<article class="car-card" data-category="${category}"><div class="car-card__image-container"><span class="car-card__badge badge--${category}">${label}</span><img ${image} alt="${escapeHtml(car.name)}" class="car-card__image" onerror="this.src='${fallback}'"></div><div class="car-card__body"><h3 class="car-card__title">${escapeHtml(car.name)}</h3><p class="car-card__specs">${escapeHtml(car.description)}</p><a href="https://wa.me/${state.whatsapp}?text=${encodeURIComponent(`Здравствуйте! Хочу обучаться на ${car.name}`)}" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full"><i class="fa-brands fa-whatsapp"></i><span>Выбрать на WhatsApp</span></a></div></article>`;
+                }).join('');
+                hydrateMedia(grid);
+                applyFleetFilter(document.querySelector('.filter-btn.active')?.dataset.filter || 'all');
+            };
+            const renderPrices = () => {
+                document.querySelectorAll('.price-card__amount').forEach((node, index) => {
+                    if (state.prices[index] !== undefined) node.textContent = state.prices[index];
+                });
+            };
+            const renderBlog = () => {
+                const grid = document.getElementById('blog-posts');
+                document.getElementById('blog-empty').hidden = state.posts.length > 0;
+                grid.innerHTML = [...state.posts].reverse().map(post => {
+                    let media = '';
+                    if (post.mediaId && post.mediaType === 'video') media = `<video class="blog-card__media" data-media-id="${escapeHtml(post.mediaId)}" controls preload="metadata"></video>`;
+                    else if (post.mediaId) media = `<img class="blog-card__media" data-media-id="${escapeHtml(post.mediaId)}" alt="${escapeHtml(post.title)}">`;
+                    return `<article class="blog-card">${media}<div class="blog-card__body"><span class="blog-card__date">${escapeHtml(post.date || '')}</span><h3 class="blog-card__title">${escapeHtml(post.title)}</h3><p class="blog-card__text">${escapeHtml(post.text)}</p></div></article>`;
+                }).join('');
+                hydrateMedia(grid);
+            };
+            const applyTheme = () => {
+                document.documentElement.dataset.theme = state.theme === 'dark' ? 'dark' : 'light';
+                const button = document.getElementById('theme-toggle');
+                button.innerHTML = state.theme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+                button.title = state.theme === 'dark' ? 'Включить светлую тему' : 'Включить тёмную тему';
+            };
+            function applyFleetFilter(filter) {
+                document.querySelectorAll('.car-card').forEach(card => { card.hidden = filter !== 'all' && card.dataset.category !== filter; });
+            }
+            const renderSite = () => { applyTheme(); syncContactLinks(); renderCars(); renderPrices(); renderBlog(); };
+
+            const dialog = document.getElementById('admin-dialog');
+            const content = document.getElementById('admin-content');
+            let activeTab = 'settings';
+            const account = () => { try { return JSON.parse(localStorage.getItem(ACCOUNT_KEY) || 'null'); } catch { return null; } };
+            const closeButton = '<button class="icon-button" type="button" data-action="close" aria-label="Закрыть"><i class="fa-solid fa-xmark"></i></button>';
+            const renderAuth = (message = '') => {
+                const hasAccount = Boolean(account());
+                content.innerHTML = `<div class="admin-top"><h2 id="admin-title">${hasAccount ? 'Вход в кабинет' : 'Создать аккаунт'}</h2>${closeButton}</div><p class="admin-note">Локальный кабинет: аккаунт и изменения хранятся только в этом браузере. Для общего доступа посетителей нужен сервер.</p><form class="admin-form" id="auth-form"><label>Имя пользователя<input name="username" autocomplete="username" required minlength="3"></label><label>Пароль<input name="password" type="password" autocomplete="${hasAccount ? 'current-password' : 'new-password'}" required minlength="8"></label><p class="admin-error">${escapeHtml(message)}</p><button class="admin-button admin-button--primary" type="submit">${hasAccount ? 'Войти' : 'Создать аккаунт'}</button></form>`;
+                content.querySelector('[data-action="close"]').onclick = () => dialog.close();
+                content.querySelector('#auth-form').onsubmit = async event => {
+                    event.preventDefault();
+                    const form = new FormData(event.currentTarget);
+                    const username = String(form.get('username')).trim();
+                    const password = String(form.get('password'));
+                    try {
+                        if (!crypto.subtle) throw new Error('Откройте страницу через HTTPS или localhost для работы кабинета.');
+                        const savedAccount = account();
+                        if (!savedAccount) {
+                            const salt = newId();
+                            const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(`${salt}:${password}`));
+                            localStorage.setItem(ACCOUNT_KEY, JSON.stringify({ username, salt, hash: Array.from(new Uint8Array(hash)).join(',') }));
+                        } else {
+                            const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(`${savedAccount.salt}:${password}`));
+                            if (savedAccount.username !== username || savedAccount.hash !== Array.from(new Uint8Array(hash)).join(',')) throw new Error('Неверное имя пользователя или пароль.');
+                        }
+                        sessionStorage.setItem('driveschool-local-session', username);
+                        activeTab = 'settings';
+                        renderAdmin();
+                    } catch (error) { renderAuth(error.message || 'Не удалось сохранить аккаунт.'); }
+                };
+            };
+            const tabNames = [['settings', 'Настройки'], ['prices', 'Цены'], ['cars', 'Автопарк'], ['blog', 'Блог']];
+            const tabBar = () => `<div class="admin-tabs">${tabNames.map(([id, label]) => `<button type="button" class="admin-tab ${activeTab === id ? 'active' : ''}" data-tab="${id}">${label}</button>`).join('')}</div>`;
+            const renderSettings = () => `<section class="admin-panel"><h3>Настройки сайта</h3><form class="admin-form" id="settings-form"><label>WhatsApp, номер с кодом страны<input name="whatsapp" inputmode="numeric" value="${escapeHtml(state.whatsapp)}" required pattern="[0-9]{10,15}"></label><button class="admin-button admin-button--primary">Сохранить</button></form><p class="admin-note">Тему можно переключить кнопкой с луной или солнцем в шапке сайта.</p></section>`;
+            const renderPricesEditor = () => `<section class="admin-panel"><h3>Цены</h3><form class="admin-form" id="prices-form">${state.prices.map((price, index) => `<label>${['Онлайн занятия', 'Оффлайн занятия', 'Практика вождения'][index] || `Тариф ${index + 1}`}<input name="price${index}" value="${escapeHtml(price)}" required></label>`).join('')}<button class="admin-button admin-button--primary">Сохранить цены</button></form></section>`;
+            const renderCarEditor = car => `<section class="admin-panel"><h3>${car ? 'Изменить автомобиль' : 'Добавить автомобиль'}</h3><form class="admin-form" id="car-form"><input type="hidden" name="id" value="${escapeHtml(car?.id || '')}"><label>Название<input name="name" value="${escapeHtml(car?.name || '')}" required></label><label>Коробка передач<select name="category"><option value="akpp" ${car?.category !== 'mkpp' ? 'selected' : ''}>АКПП</option><option value="mkpp" ${car?.category === 'mkpp' ? 'selected' : ''}>МКПП</option></select></label><label>Описание<textarea name="description" required>${escapeHtml(car?.description || '')}</textarea></label><label>Фотография<input name="image" type="file" accept="image/*"></label><button class="admin-button admin-button--primary">Сохранить автомобиль</button><button class="admin-button" type="button" data-action="cars-list">К списку</button></form></section>`;
+            const renderCarsEditor = () => `<section class="admin-panel"><h3>Автопарк</h3><button class="admin-button admin-button--primary" type="button" data-action="new-car">Добавить автомобиль</button><div class="admin-list">${state.cars.map(car => `<div class="admin-row"><strong>${escapeHtml(car.name)}</strong><div class="admin-row__actions"><button class="admin-button" type="button" data-edit-car="${escapeHtml(car.id)}">Редактировать</button><button class="admin-button admin-button--danger" type="button" data-delete-car="${escapeHtml(car.id)}">Удалить</button></div></div>`).join('') || '<p class="admin-empty">Автомобилей пока нет.</p>'}</div></section>`;
+            const renderPostEditor = post => `<section class="admin-panel"><h3>${post ? 'Редактировать публикацию' : 'Новая публикация'}</h3><form class="admin-form" id="post-form"><input type="hidden" name="id" value="${escapeHtml(post?.id || '')}"><label>Заголовок<input name="title" value="${escapeHtml(post?.title || '')}" required></label><label>Текст<textarea name="text" required>${escapeHtml(post?.text || '')}</textarea></label><label>Фото или видео<input name="media" type="file" accept="image/*,video/*"></label>${post?.mediaId ? `<label><input type="checkbox" name="removeMedia"> Удалить текущее фото или видео</label>` : ''}<button class="admin-button admin-button--primary">Опубликовать</button><button class="admin-button" type="button" data-action="blog-list">К публикациям</button></form></section>`;
+            const renderBlogEditor = () => `<section class="admin-panel"><h3>Публикации блога</h3><button class="admin-button admin-button--primary" type="button" data-action="new-post">Добавить публикацию</button><div class="admin-list">${state.posts.map(post => `<div class="admin-row"><strong>${escapeHtml(post.title)}</strong><div class="admin-row__actions"><button class="admin-button" type="button" data-edit-post="${escapeHtml(post.id)}">Редактировать</button><button class="admin-button admin-button--danger" type="button" data-delete-post="${escapeHtml(post.id)}">Удалить</button></div></div>`).join('') || '<p class="admin-empty">Публикаций пока нет.</p>'}</div></section>`;
+            function renderAdmin(editor = null) {
+                if (sessionStorage.getItem('driveschool-local-session') !== account()?.username) return renderAuth();
+                const panel = editor?.type === 'car' ? renderCarEditor(editor.item) : editor?.type === 'post' ? renderPostEditor(editor.item) : activeTab === 'settings' ? renderSettings() : activeTab === 'prices' ? renderPricesEditor() : activeTab === 'cars' ? renderCarsEditor() : renderBlogEditor();
+                content.innerHTML = `<div class="admin-top"><h2 id="admin-title">Личный кабинет</h2>${closeButton}</div><p class="admin-note">Локальный режим: данные видны только в этом браузере и не публикуются на сервере.</p>${tabBar()}${panel}<div class="admin-top" style="margin:20px 0 0"><span></span><button class="admin-button" type="button" data-action="logout">Выйти</button></div>`;
+                content.querySelector('[data-action="close"]').onclick = () => dialog.close();
+                content.querySelectorAll('[data-tab]').forEach(button => button.onclick = () => { activeTab = button.dataset.tab; renderAdmin(); });
+                const settingsForm = content.querySelector('#settings-form');
+                if (settingsForm) settingsForm.onsubmit = event => {
+                    event.preventDefault(); state.whatsapp = new FormData(settingsForm).get('whatsapp');
+                    saveState(); renderSite(); renderAdmin();
+                };
+                const pricesForm = content.querySelector('#prices-form');
+                if (pricesForm) pricesForm.onsubmit = event => {
+                    event.preventDefault(); const form = new FormData(pricesForm);
+                    state.prices = state.prices.map((_, index) => String(form.get(`price${index}`)).trim());
+                    saveState(); renderPrices(); renderAdmin();
+                };
+                const carForm = content.querySelector('#car-form');
+                if (carForm) carForm.onsubmit = async event => {
+                    event.preventDefault(); const form = new FormData(carForm); const id = String(form.get('id'));
+                    const current = state.cars.find(car => car.id === id);
+                    const file = form.get('image');
+                    let mediaId = current?.mediaId || '';
+                    if (file instanceof File && file.size) mediaId = await saveMedia(file);
+                    const car = { id: id || newId(), name: String(form.get('name')).trim(), category: String(form.get('category')), description: String(form.get('description')).trim(), image: current?.image || '', mediaId };
+                    state.cars = current ? state.cars.map(item => item.id === id ? car : item) : [...state.cars, car];
+                    saveState(); renderSite(); renderAdmin();
+                };
+                const postForm = content.querySelector('#post-form');
+                if (postForm) postForm.onsubmit = async event => {
+                    event.preventDefault(); const form = new FormData(postForm); const id = String(form.get('id'));
+                    const current = state.posts.find(post => post.id === id);
+                    const file = form.get('media');
+                    const removeMedia = form.get('removeMedia') === 'on';
+                    let mediaId = removeMedia ? '' : current?.mediaId || '';
+                    let mediaType = removeMedia ? '' : current?.mediaType || '';
+                    if (file instanceof File && file.size) { mediaId = await saveMedia(file); mediaType = file.type.startsWith('video/') ? 'video' : 'image'; }
+                    const post = { id: id || newId(), title: String(form.get('title')).trim(), text: String(form.get('text')).trim(), date: current?.date || new Date().toLocaleDateString('ru-RU'), mediaId, mediaType };
+                    state.posts = current ? state.posts.map(item => item.id === id ? post : item) : [...state.posts, post];
+                    saveState(); renderBlog(); renderAdmin();
+                };
+                content.querySelectorAll('[data-edit-car]').forEach(button => button.onclick = () => renderAdmin({ type: 'car', item: state.cars.find(car => car.id === button.dataset.editCar) }));
+                content.querySelectorAll('[data-delete-car]').forEach(button => button.onclick = () => {
+                    state.cars = state.cars.filter(car => car.id !== button.dataset.deleteCar); saveState(); renderSite(); renderAdmin();
+                });
+                content.querySelectorAll('[data-edit-post]').forEach(button => button.onclick = () => renderAdmin({ type: 'post', item: state.posts.find(post => post.id === button.dataset.editPost) }));
+                content.querySelectorAll('[data-delete-post]').forEach(button => button.onclick = () => {
+                    state.posts = state.posts.filter(post => post.id !== button.dataset.deletePost); saveState(); renderBlog(); renderAdmin();
+                });
+                content.querySelector('[data-action="new-car"]')?.addEventListener('click', () => renderAdmin({ type: 'car' }));
+                content.querySelector('[data-action="new-post"]')?.addEventListener('click', () => renderAdmin({ type: 'post' }));
+                content.querySelector('[data-action="cars-list"]')?.addEventListener('click', () => renderAdmin());
+                content.querySelector('[data-action="blog-list"]')?.addEventListener('click', () => renderAdmin());
+                content.querySelector('[data-action="logout"]')?.addEventListener('click', () => { sessionStorage.removeItem('driveschool-local-session'); renderAuth(); });
+            }
+
+            document.getElementById('cabinet-open').addEventListener('click', () => {
+                if (sessionStorage.getItem('driveschool-local-session') === account()?.username) renderAdmin(); else renderAuth();
+                dialog.showModal();
+            });
+            dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+            document.getElementById('theme-toggle').addEventListener('click', () => {
+                state.theme = state.theme === 'dark' ? 'light' : 'dark'; saveState(); applyTheme();
+            });
+            document.querySelectorAll('.filter-btn').forEach(button => button.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(item => item.classList.toggle('active', item === button));
+                applyFleetFilter(button.dataset.filter);
+            }));
+
+            const burgerToggle = document.getElementById('burger-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            if (burgerToggle && navMenu) {
+                burgerToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); burgerToggle.classList.toggle('active'); });
+                document.querySelectorAll('.nav__link').forEach(link => link.addEventListener('click', () => { navMenu.classList.remove('active'); burgerToggle.classList.remove('active'); }));
+            }
+            renderSite();
+        });
+    </script>
+</body>
+</html>
